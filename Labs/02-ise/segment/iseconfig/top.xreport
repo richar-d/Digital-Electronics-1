@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2020-02-19T09:05:26</DateModified>
+  <DateModified>2020-02-19T09:07:53</DateModified>
   <ModuleName>top</ModuleName>
-  <SummaryTimeStamp>2020-02-13T13:31:53</SummaryTimeStamp>
-  <SavedFilePath>/home/lab661/Documents/xsebor01/Digital-Electronics-1/Labs/02-ise/comparator/iseconfig/top.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>/home/lab661/Documents/xsebor01/Digital-Electronics-1/Labs/02-ise/comparator/</ImplementationReportsDirectory>
-  <DateInitialized>2020-02-13T12:21:23</DateInitialized>
+  <SummaryTimeStamp>Unknown</SummaryTimeStamp>
+  <SavedFilePath>/home/lab661/Documents/xsebor01/Digital-Electronics-1/Labs/02-ise/segment/iseconfig/top.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>/home/lab661/Documents/xsebor01/Digital-Electronics-1/Labs/02-ise/segment</ImplementationReportsDirectory>
+  <DateInitialized>2020-02-19T09:07:53</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>
  <body>
