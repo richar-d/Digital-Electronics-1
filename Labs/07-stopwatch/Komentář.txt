@@ -1,0 +1,1 @@
+Stopky neobsahují vstup ce_100Hz_i, protože jsem nepochopil na co by měl sloužit. Resetovací vstup na tlačítko definován je a pozastavení čítání také. 

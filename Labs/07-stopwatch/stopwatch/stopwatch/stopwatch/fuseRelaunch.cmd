@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -lib "secureip" -o "C:/Users/Marek/Desktop/Labs07-stopwatch/stopwatch/stopwatch_tb00_isim_beh.exe" -prj "C:/Users/Marek/Desktop/Labs07-stopwatch/stopwatch/stopwatch_tb00_beh.prj" "work.stopwatch_tb00" 

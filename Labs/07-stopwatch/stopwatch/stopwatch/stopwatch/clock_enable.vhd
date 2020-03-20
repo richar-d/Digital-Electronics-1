@@ -43,7 +43,7 @@ begin
     p_clk_enable : process(clk_i)
     begin
         if rising_edge(clk_i) then  -- Rising clock edge
-            if ( (srst_n_i = '0') or (s_cnt = x"000A") )then  -- Synchronous reset (active low)
+            if srst_n_i = '0' then  -- Synchronous reset (active low)
                 s_cnt <= (others => '0');   -- Clear all bits
                 clock_enable_o <= '0';
             else
