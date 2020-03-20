@@ -18,7 +18,7 @@ use ieee.std_logic_unsigned.all;    -- Provides unsigned numerical computation
 ------------------------------------------------------------------------
 entity clock_enable is
 generic (
-    g_NPERIOD : std_logic_vector(16-1 downto 0) := x"0004"
+    g_NPERIOD : std_logic_vector(16-1 downto 0)
 );
 port (
     clk_i          : in  std_logic;
@@ -43,7 +43,7 @@ begin
     p_clk_enable : process(clk_i)
     begin
         if rising_edge(clk_i) then  -- Rising clock edge
-            if ( (srst_n_i = '0') or (s_cnt = x"000A") )then  -- Synchronous reset (active low)
+            if  srst_n_i = '0' then  -- Synchronous reset (active low)
                 s_cnt <= (others => '0');   -- Clear all bits
                 clock_enable_o <= '0';
             else
