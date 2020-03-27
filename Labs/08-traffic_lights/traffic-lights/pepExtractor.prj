@@ -1,0 +1,3 @@
+work	"clock_enable.vhd"
+work	"light_controller.vhd"
+work	"top.vhd"

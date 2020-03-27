@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated   -->
+<!--     by the Xilinx ISE software.  Any direct editing or        -->
+<!--     changes made to this file may result in unpredictable     -->
+<!--     behavior or data corruption.  It is strongly advised that -->
+<!--     users do not edit the contents of this file.              -->
+<!--                                                               -->
+<!-- Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.    -->
+
+<messages>
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;C:/Users/Marek/Desktop/08-traffic_lights_zaloha/08-traffic_lights/traffic-lights/clock_enable.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;C:/Users/Marek/Desktop/08-traffic_lights_zaloha/08-traffic_lights/traffic-lights/light_controller.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;C:/Users/Marek/Desktop/08-traffic_lights_zaloha/08-traffic_lights/traffic-lights/top.vhd&quot; into library work</arg>
+</msg>
+
+</messages>
+
