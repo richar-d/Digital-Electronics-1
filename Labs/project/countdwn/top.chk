@@ -1,0 +1,108 @@
+
+----------------------------------
+|  P a r t i t i o n    F a i l  |
+----------------------------------
+
+There are 308 outputs and 5 inputs not partitioned
+Output: LED_o dio_o sclk_o KY_040/clock_en KY_040/clock_enable/s_cnt<10> KY_040/clock_enable/s_cnt<11> 
+        KY_040/clock_enable/s_cnt<12> KY_040/clock_enable/s_cnt<13> KY_040/clock_enable/s_cnt<14> 
+        KY_040/clock_enable/s_cnt<15> KY_040/clock_enable/s_cnt<3> KY_040/clock_enable/s_cnt<4> 
+        KY_040/clock_enable/s_cnt<5> KY_040/clock_enable/s_cnt<6> KY_040/clock_enable/s_cnt<7> 
+        KY_040/clock_enable/s_cnt<8> KY_040/clock_enable/s_cnt<9> KY_040/cnt0_0__or0000 KY_040/cnt0_1__or0000 
+        KY_040/cnt0_2__or0000 KY_040/cnt0_3__or0000 KY_040/cnt1_0__or0000 KY_040/cnt1_1__or0000 
+        KY_040/cnt1_2__or0000 KY_040/cnt1_3__or0000 KY_040/cnt2_0__or0000 KY_040/cnt2_1__or0000 
+        KY_040/cnt2_2__or0000 KY_040/cnt2_3__or0000 KY_040/cnt3_0__or0000 KY_040/cnt3_1__or0000 
+        KY_040/cnt3_2__or0000 KY_040/cnt3_3__or0000 KY_040/enable_set_val KY_040/prev_A KY_040/s_cnt0<0> 
+        KY_040/s_cnt0<1> KY_040/s_cnt0<2> KY_040/s_cnt0<3> KY_040/s_cnt1<0> KY_040/s_cnt1<1> KY_040/s_cnt1<2> 
+        KY_040/s_cnt1<3> KY_040/s_cnt1_0__or0000 KY_040/s_cnt1_and0000 KY_040/s_cnt2<0> KY_040/s_cnt2<1> 
+        KY_040/s_cnt2<2> KY_040/s_cnt2<3> KY_040/s_cnt2_0__or0000 KY_040/s_cnt2_and0000 KY_040/s_cnt3<0> 
+        KY_040/s_cnt3<1> KY_040/s_cnt3<2> KY_040/s_cnt3<3> KY_040/s_cnt3_0__or0000 KY_040/s_cnt3_and0000 
+        KY_040/signal_LED_or0000 KY_040/slow_clock KY_040/slow_clock_cmp_eq0000 KY_040/slow_clock_counter<0> 
+        KY_040/slow_clock_counter<10> KY_040/slow_clock_counter<11> KY_040/slow_clock_counter<12> 
+        KY_040/slow_clock_counter<13> KY_040/slow_clock_counter<14> KY_040/slow_clock_counter<15> 
+        KY_040/slow_clock_counter<16> KY_040/slow_clock_counter<17> KY_040/slow_clock_counter<18> 
+        KY_040/slow_clock_counter<19> KY_040/slow_clock_counter<1> KY_040/slow_clock_counter<20> 
+        KY_040/slow_clock_counter<21> KY_040/slow_clock_counter<22> KY_040/slow_clock_counter<23> 
+        KY_040/slow_clock_counter<24> KY_040/slow_clock_counter<25> KY_040/slow_clock_counter<26> 
+        KY_040/slow_clock_counter<27> KY_040/slow_clock_counter<28> KY_040/slow_clock_counter<29> 
+        KY_040/slow_clock_counter<2> KY_040/slow_clock_counter<30> KY_040/slow_clock_counter<31> 
+        KY_040/slow_clock_counter<3> KY_040/slow_clock_counter<4> KY_040/slow_clock_counter<5> 
+        KY_040/slow_clock_counter<6> KY_040/slow_clock_counter<7> KY_040/slow_clock_counter<8> 
+        KY_040/slow_clock_counter<9> KY_040/slow_clock_counter__add0000<30> N_PZ_1038 N_PZ_1045 N_PZ_1050 
+        N_PZ_630 N_PZ_636 N_PZ_649 N_PZ_717 N_PZ_718 N_PZ_748 N_PZ_763 N_PZ_829 N_PZ_930 N_PZ_960 N_PZ_961 
+        N_PZ_965 N_PZ_967 N_PZ_972 N_PZ_979 N_PZ_993 TM1637/Mtridata_dio__or0001 
+        TM1637/Mtridata_dio_and000079 TM1637/Mtridata_dio_mux0000 TM1637/Mtrien_dio 
+        TM1637/Mtrien_dio_and000082 TM1637/digit0<0> TM1637/digit0<1> TM1637/digit0<2> TM1637/digit0<3> 
+        TM1637/digit0<4> TM1637/digit0<5> TM1637/digit0<6> TM1637/digit1<0> TM1637/digit1<1> TM1637/digit1<2> 
+        TM1637/digit1<3> TM1637/digit1<4> TM1637/digit1<5> TM1637/digit1<6> TM1637/digit2<0> TM1637/digit2<1> 
+        TM1637/digit2<2> TM1637/digit2<3> TM1637/digit2<4> TM1637/digit2<5> TM1637/digit2<6> TM1637/digit3<0> 
+        TM1637/digit3<1> TM1637/digit3<2> TM1637/digit3<3> TM1637/digit3<4> TM1637/digit3<5> TM1637/digit3<6> 
+        TM1637/help_cnt_FSM_FFd1 TM1637/help_cnt_FSM_FFd10 TM1637/help_cnt_FSM_FFd100 
+        TM1637/help_cnt_FSM_FFd101 TM1637/help_cnt_FSM_FFd102 TM1637/help_cnt_FSM_FFd103 
+        TM1637/help_cnt_FSM_FFd104 TM1637/help_cnt_FSM_FFd105 TM1637/help_cnt_FSM_FFd106 
+        TM1637/help_cnt_FSM_FFd107 TM1637/help_cnt_FSM_FFd108 TM1637/help_cnt_FSM_FFd109 
+        TM1637/help_cnt_FSM_FFd11 TM1637/help_cnt_FSM_FFd110 TM1637/help_cnt_FSM_FFd111 
+        TM1637/help_cnt_FSM_FFd112 TM1637/help_cnt_FSM_FFd113 TM1637/help_cnt_FSM_FFd114 
+        TM1637/help_cnt_FSM_FFd115 TM1637/help_cnt_FSM_FFd116 TM1637/help_cnt_FSM_FFd117 
+        TM1637/help_cnt_FSM_FFd118 TM1637/help_cnt_FSM_FFd119 TM1637/help_cnt_FSM_FFd12 
+        TM1637/help_cnt_FSM_FFd120 TM1637/help_cnt_FSM_FFd121 TM1637/help_cnt_FSM_FFd122 
+        TM1637/help_cnt_FSM_FFd123 TM1637/help_cnt_FSM_FFd124 TM1637/help_cnt_FSM_FFd125 
+        TM1637/help_cnt_FSM_FFd126 TM1637/help_cnt_FSM_FFd127 TM1637/help_cnt_FSM_FFd128 
+        TM1637/help_cnt_FSM_FFd129 TM1637/help_cnt_FSM_FFd13 TM1637/help_cnt_FSM_FFd130 
+        TM1637/help_cnt_FSM_FFd131 TM1637/help_cnt_FSM_FFd132 TM1637/help_cnt_FSM_FFd133 
+        TM1637/help_cnt_FSM_FFd134 TM1637/help_cnt_FSM_FFd135 TM1637/help_cnt_FSM_FFd136 
+        TM1637/help_cnt_FSM_FFd137 TM1637/help_cnt_FSM_FFd138 TM1637/help_cnt_FSM_FFd139 
+        TM1637/help_cnt_FSM_FFd14 TM1637/help_cnt_FSM_FFd15 TM1637/help_cnt_FSM_FFd16 
+        TM1637/help_cnt_FSM_FFd17 TM1637/help_cnt_FSM_FFd18 TM1637/help_cnt_FSM_FFd19 
+        TM1637/help_cnt_FSM_FFd2 TM1637/help_cnt_FSM_FFd20 TM1637/help_cnt_FSM_FFd21 
+        TM1637/help_cnt_FSM_FFd22 TM1637/help_cnt_FSM_FFd23 TM1637/help_cnt_FSM_FFd24 
+        TM1637/help_cnt_FSM_FFd25 TM1637/help_cnt_FSM_FFd26 TM1637/help_cnt_FSM_FFd27 
+        TM1637/help_cnt_FSM_FFd28 TM1637/help_cnt_FSM_FFd29 TM1637/help_cnt_FSM_FFd3 
+        TM1637/help_cnt_FSM_FFd30 TM1637/help_cnt_FSM_FFd31 TM1637/help_cnt_FSM_FFd32 
+        TM1637/help_cnt_FSM_FFd33 TM1637/help_cnt_FSM_FFd34 TM1637/help_cnt_FSM_FFd35 
+        TM1637/help_cnt_FSM_FFd36 TM1637/help_cnt_FSM_FFd37 TM1637/help_cnt_FSM_FFd38 
+        TM1637/help_cnt_FSM_FFd39 TM1637/help_cnt_FSM_FFd4 TM1637/help_cnt_FSM_FFd40 
+        TM1637/help_cnt_FSM_FFd41 TM1637/help_cnt_FSM_FFd42 TM1637/help_cnt_FSM_FFd43 
+        TM1637/help_cnt_FSM_FFd44 TM1637/help_cnt_FSM_FFd45 TM1637/help_cnt_FSM_FFd46 
+        TM1637/help_cnt_FSM_FFd47 TM1637/help_cnt_FSM_FFd48 TM1637/help_cnt_FSM_FFd49 
+        TM1637/help_cnt_FSM_FFd5 TM1637/help_cnt_FSM_FFd50 TM1637/help_cnt_FSM_FFd51 
+        TM1637/help_cnt_FSM_FFd52 TM1637/help_cnt_FSM_FFd53 TM1637/help_cnt_FSM_FFd54 
+        TM1637/help_cnt_FSM_FFd55 TM1637/help_cnt_FSM_FFd56 TM1637/help_cnt_FSM_FFd57 
+        TM1637/help_cnt_FSM_FFd58 TM1637/help_cnt_FSM_FFd59 TM1637/help_cnt_FSM_FFd6 
+        TM1637/help_cnt_FSM_FFd60 TM1637/help_cnt_FSM_FFd61 TM1637/help_cnt_FSM_FFd62 
+        TM1637/help_cnt_FSM_FFd63 TM1637/help_cnt_FSM_FFd64 TM1637/help_cnt_FSM_FFd65 
+        TM1637/help_cnt_FSM_FFd66 TM1637/help_cnt_FSM_FFd67 TM1637/help_cnt_FSM_FFd68 
+        TM1637/help_cnt_FSM_FFd69 TM1637/help_cnt_FSM_FFd7 TM1637/help_cnt_FSM_FFd70 
+        TM1637/help_cnt_FSM_FFd71 TM1637/help_cnt_FSM_FFd72 TM1637/help_cnt_FSM_FFd73 
+        TM1637/help_cnt_FSM_FFd74 TM1637/help_cnt_FSM_FFd75 TM1637/help_cnt_FSM_FFd76 
+        TM1637/help_cnt_FSM_FFd77 TM1637/help_cnt_FSM_FFd78 TM1637/help_cnt_FSM_FFd79 
+        TM1637/help_cnt_FSM_FFd8 TM1637/help_cnt_FSM_FFd80 TM1637/help_cnt_FSM_FFd81 
+        TM1637/help_cnt_FSM_FFd82 TM1637/help_cnt_FSM_FFd83 TM1637/help_cnt_FSM_FFd84 
+        TM1637/help_cnt_FSM_FFd85 TM1637/help_cnt_FSM_FFd86 TM1637/help_cnt_FSM_FFd87 
+        TM1637/help_cnt_FSM_FFd88 TM1637/help_cnt_FSM_FFd89 TM1637/help_cnt_FSM_FFd9 
+        TM1637/help_cnt_FSM_FFd90 TM1637/help_cnt_FSM_FFd91 TM1637/help_cnt_FSM_FFd92 
+        TM1637/help_cnt_FSM_FFd93 TM1637/help_cnt_FSM_FFd94 TM1637/help_cnt_FSM_FFd95 
+        TM1637/help_cnt_FSM_FFd96 TM1637/help_cnt_FSM_FFd97 TM1637/help_cnt_FSM_FFd98 
+        TM1637/help_cnt_FSM_FFd99 TM1637/sclk_mux00001 TM1637/sclk_mux00004 TM1637/sclk_mux00005 
+        TM1637/sclk_mux00006 TM1637/sclk_mux00007 TM1637/sclk_mux000082 TM1637/sclk_mux000088 
+        TM1637/sclk_mux000090 hund_c<0> hund_c<1> hund_c<2> hund_c<3> tens_c<0> tens_c<1> tens_c<2> tens_c<3> 
+        thous_c<0> thous_c<1> thous_c<2> thous_c<3> uni_c<0> uni_c<1> uni_c<2> uni_c<3>
+Input: butt_i clk_i pinA_i pinB_i s_reset_i
+0 Group(s)
+
+----------------- B l o c k 0 ------------------
+----------------- B l o c k 1 ------------------
+----------------- B l o c k 2 ------------------
+----------------- B l o c k 3 ------------------
+----------------- B l o c k 4 ------------------
+----------------- B l o c k 5 ------------------
+----------------- B l o c k 6 ------------------
+----------------- B l o c k 7 ------------------
+----------------- B l o c k 8 ------------------
+----------------- B l o c k 9 ------------------
+----------------- B l o c k 10 ------------------
+----------------- B l o c k 11 ------------------
+----------------- B l o c k 12 ------------------
+----------------- B l o c k 13 ------------------
+----------------- B l o c k 14 ------------------
+----------------- B l o c k 15 ------------------

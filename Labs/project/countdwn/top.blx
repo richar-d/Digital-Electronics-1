@@ -1,0 +1,2907 @@
+# XPLAOPT Version 9.99.99.99
+# XPLAOPT -run s -it b -i top.blx -dev XC2C256-6TQ144 -reg -xor a -mode 1 -th 
+#         28 -fi 32 -bfi 38 -pre keep -unused keeper -terminate keeper -no_output_files 
+#$ MODULE top
+#$ PINS 7 "LED_o" "butt_i" "clk_i" "dio_o" "pinA_i" "pinB_i" "s_reset_i" 
+#$ PINS 1 "sclk_o" 
+#$ NODES 2 "KY_040/clock_en" "KY_040/clock_enable/s_cnt<10>" 
+#$ NODES 2 "KY_040/clock_enable/s_cnt<11>" "KY_040/clock_enable/s_cnt<12>" 
+#$ NODES 2 "KY_040/clock_enable/s_cnt<13>" "KY_040/clock_enable/s_cnt<14>" 
+#$ NODES 2 "KY_040/clock_enable/s_cnt<15>" "KY_040/clock_enable/s_cnt<3>" 
+#$ NODES 2 "KY_040/clock_enable/s_cnt<4>" "KY_040/clock_enable/s_cnt<5>" 
+#$ NODES 2 "KY_040/clock_enable/s_cnt<6>" "KY_040/clock_enable/s_cnt<7>" 
+#$ NODES 2 "KY_040/clock_enable/s_cnt<8>" "KY_040/clock_enable/s_cnt<9>" 
+#$ NODES 2 "KY_040/cnt0_0__or0000" "KY_040/cnt0_1__or0000" 
+#$ NODES 2 "KY_040/cnt0_2__or0000" "KY_040/cnt0_3__or0000" 
+#$ NODES 2 "KY_040/cnt1_0__or0000" "KY_040/cnt1_1__or0000" 
+#$ NODES 2 "KY_040/cnt1_2__or0000" "KY_040/cnt1_3__or0000" 
+#$ NODES 2 "KY_040/cnt2_0__or0000" "KY_040/cnt2_1__or0000" 
+#$ NODES 2 "KY_040/cnt2_2__or0000" "KY_040/cnt2_3__or0000" 
+#$ NODES 2 "KY_040/cnt3_0__or0000" "KY_040/cnt3_1__or0000" 
+#$ NODES 2 "KY_040/cnt3_2__or0000" "KY_040/cnt3_3__or0000" 
+#$ NODES 3 "KY_040/enable_set_val" "KY_040/prev_A" "KY_040/s_cnt0<0>" 
+#$ NODES 3 "KY_040/s_cnt0<1>" "KY_040/s_cnt0<2>" "KY_040/s_cnt0<3>" 
+#$ NODES 3 "KY_040/s_cnt1<0>" "KY_040/s_cnt1<1>" "KY_040/s_cnt1<2>" 
+#$ NODES 2 "KY_040/s_cnt1<3>" "KY_040/s_cnt1_0__or0000" 
+#$ NODES 3 "KY_040/s_cnt1_and0000" "KY_040/s_cnt2<0>" "KY_040/s_cnt2<1>" 
+#$ NODES 3 "KY_040/s_cnt2<2>" "KY_040/s_cnt2<3>" "KY_040/s_cnt2_0__or0000" 
+#$ NODES 3 "KY_040/s_cnt2_and0000" "KY_040/s_cnt3<0>" "KY_040/s_cnt3<1>" 
+#$ NODES 3 "KY_040/s_cnt3<2>" "KY_040/s_cnt3<3>" "KY_040/s_cnt3_0__or0000" 
+#$ NODES 2 "KY_040/s_cnt3_and0000" "KY_040/signal_LED_or0000" 
+#$ NODES 2 "KY_040/slow_clock" "KY_040/slow_clock_cmp_eq0000" 
+#$ NODES 2 "KY_040/slow_clock_counter<0>" "KY_040/slow_clock_counter<10>" 
+#$ NODES 2 "KY_040/slow_clock_counter<11>" "KY_040/slow_clock_counter<12>" 
+#$ NODES 2 "KY_040/slow_clock_counter<13>" "KY_040/slow_clock_counter<14>" 
+#$ NODES 2 "KY_040/slow_clock_counter<15>" "KY_040/slow_clock_counter<16>" 
+#$ NODES 2 "KY_040/slow_clock_counter<17>" "KY_040/slow_clock_counter<18>" 
+#$ NODES 2 "KY_040/slow_clock_counter<19>" "KY_040/slow_clock_counter<1>" 
+#$ NODES 2 "KY_040/slow_clock_counter<20>" "KY_040/slow_clock_counter<21>" 
+#$ NODES 2 "KY_040/slow_clock_counter<22>" "KY_040/slow_clock_counter<23>" 
+#$ NODES 2 "KY_040/slow_clock_counter<24>" "KY_040/slow_clock_counter<25>" 
+#$ NODES 2 "KY_040/slow_clock_counter<26>" "KY_040/slow_clock_counter<27>" 
+#$ NODES 2 "KY_040/slow_clock_counter<28>" "KY_040/slow_clock_counter<29>" 
+#$ NODES 2 "KY_040/slow_clock_counter<2>" "KY_040/slow_clock_counter<30>" 
+#$ NODES 2 "KY_040/slow_clock_counter<31>" "KY_040/slow_clock_counter<3>" 
+#$ NODES 2 "KY_040/slow_clock_counter<4>" "KY_040/slow_clock_counter<5>" 
+#$ NODES 2 "KY_040/slow_clock_counter<6>" "KY_040/slow_clock_counter<7>" 
+#$ NODES 2 "KY_040/slow_clock_counter<8>" "KY_040/slow_clock_counter<9>" 
+#$ NODES 2 "KY_040/slow_clock_counter__add0000<30>" "N_PZ_1038"'co' 
+#$ NODES 4 "N_PZ_1045"'co' "N_PZ_1050"'co' "N_PZ_630"'co' "N_PZ_636"'co' 
+#$ NODES 4 "N_PZ_649"'co' "N_PZ_717"'co' "N_PZ_718"'co' "N_PZ_748"'co' 
+#$ NODES 4 "N_PZ_763"'co' "N_PZ_829"'co' "N_PZ_930"'co' "N_PZ_960"'co' 
+#$ NODES 4 "N_PZ_961"'co' "N_PZ_965"'co' "N_PZ_967"'co' "N_PZ_972"'co' 
+#$ NODES 3 "N_PZ_979"'co' "N_PZ_993"'co' "TM1637/Mtridata_dio__or0001" 
+#$ NODES 2 "TM1637/Mtridata_dio_and000079" "TM1637/Mtridata_dio_mux0000" 
+#$ NODES 2 "TM1637/Mtrien_dio" "TM1637/Mtrien_dio_and000082" 
+#$ NODES 3 "TM1637/digit0<0>" "TM1637/digit0<1>" "TM1637/digit0<2>" 
+#$ NODES 3 "TM1637/digit0<3>" "TM1637/digit0<4>" "TM1637/digit0<5>" 
+#$ NODES 3 "TM1637/digit0<6>" "TM1637/digit1<0>" "TM1637/digit1<1>" 
+#$ NODES 3 "TM1637/digit1<2>" "TM1637/digit1<3>" "TM1637/digit1<4>" 
+#$ NODES 3 "TM1637/digit1<5>" "TM1637/digit1<6>" "TM1637/digit2<0>" 
+#$ NODES 3 "TM1637/digit2<1>" "TM1637/digit2<2>" "TM1637/digit2<3>" 
+#$ NODES 3 "TM1637/digit2<4>" "TM1637/digit2<5>" "TM1637/digit2<6>" 
+#$ NODES 3 "TM1637/digit3<0>" "TM1637/digit3<1>" "TM1637/digit3<2>" 
+#$ NODES 3 "TM1637/digit3<3>" "TM1637/digit3<4>" "TM1637/digit3<5>" 
+#$ NODES 2 "TM1637/digit3<6>" "TM1637/help_cnt_FSM_FFd1" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd10" "TM1637/help_cnt_FSM_FFd100" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd101" "TM1637/help_cnt_FSM_FFd102" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd103" "TM1637/help_cnt_FSM_FFd104" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd105" "TM1637/help_cnt_FSM_FFd106" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd107" "TM1637/help_cnt_FSM_FFd108" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd109" "TM1637/help_cnt_FSM_FFd11" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd110" "TM1637/help_cnt_FSM_FFd111" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd112" "TM1637/help_cnt_FSM_FFd113" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd114" "TM1637/help_cnt_FSM_FFd115" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd116" "TM1637/help_cnt_FSM_FFd117" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd118" "TM1637/help_cnt_FSM_FFd119" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd12" "TM1637/help_cnt_FSM_FFd120" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd121" "TM1637/help_cnt_FSM_FFd122" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd123" "TM1637/help_cnt_FSM_FFd124" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd125" "TM1637/help_cnt_FSM_FFd126" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd127" "TM1637/help_cnt_FSM_FFd128" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd129" "TM1637/help_cnt_FSM_FFd13" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd130" "TM1637/help_cnt_FSM_FFd131" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd132" "TM1637/help_cnt_FSM_FFd133" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd134" "TM1637/help_cnt_FSM_FFd135" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd136" "TM1637/help_cnt_FSM_FFd137" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd138" "TM1637/help_cnt_FSM_FFd139" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd14" "TM1637/help_cnt_FSM_FFd15" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd16" "TM1637/help_cnt_FSM_FFd17" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd18" "TM1637/help_cnt_FSM_FFd19" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd2" "TM1637/help_cnt_FSM_FFd20" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd21" "TM1637/help_cnt_FSM_FFd22" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd23" "TM1637/help_cnt_FSM_FFd24" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd25" "TM1637/help_cnt_FSM_FFd26" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd27" "TM1637/help_cnt_FSM_FFd28" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd29" "TM1637/help_cnt_FSM_FFd3" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd30" "TM1637/help_cnt_FSM_FFd31" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd32" "TM1637/help_cnt_FSM_FFd33" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd34" "TM1637/help_cnt_FSM_FFd35" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd36" "TM1637/help_cnt_FSM_FFd37" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd38" "TM1637/help_cnt_FSM_FFd39" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd4" "TM1637/help_cnt_FSM_FFd40" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd41" "TM1637/help_cnt_FSM_FFd42" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd43" "TM1637/help_cnt_FSM_FFd44" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd45" "TM1637/help_cnt_FSM_FFd46" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd47" "TM1637/help_cnt_FSM_FFd48" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd49" "TM1637/help_cnt_FSM_FFd5" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd50" "TM1637/help_cnt_FSM_FFd51" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd52" "TM1637/help_cnt_FSM_FFd53" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd54" "TM1637/help_cnt_FSM_FFd55" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd56" "TM1637/help_cnt_FSM_FFd57" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd58" "TM1637/help_cnt_FSM_FFd59" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd6" "TM1637/help_cnt_FSM_FFd60" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd61" "TM1637/help_cnt_FSM_FFd62" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd63" "TM1637/help_cnt_FSM_FFd64" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd65" "TM1637/help_cnt_FSM_FFd66" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd67" "TM1637/help_cnt_FSM_FFd68" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd69" "TM1637/help_cnt_FSM_FFd7" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd70" "TM1637/help_cnt_FSM_FFd71" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd72" "TM1637/help_cnt_FSM_FFd73" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd74" "TM1637/help_cnt_FSM_FFd75" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd76" "TM1637/help_cnt_FSM_FFd77" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd78" "TM1637/help_cnt_FSM_FFd79" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd8" "TM1637/help_cnt_FSM_FFd80" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd81" "TM1637/help_cnt_FSM_FFd82" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd83" "TM1637/help_cnt_FSM_FFd84" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd85" "TM1637/help_cnt_FSM_FFd86" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd87" "TM1637/help_cnt_FSM_FFd88" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd89" "TM1637/help_cnt_FSM_FFd9" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd90" "TM1637/help_cnt_FSM_FFd91" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd92" "TM1637/help_cnt_FSM_FFd93" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd94" "TM1637/help_cnt_FSM_FFd95" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd96" "TM1637/help_cnt_FSM_FFd97" 
+#$ NODES 2 "TM1637/help_cnt_FSM_FFd98" "TM1637/help_cnt_FSM_FFd99" 
+#$ NODES 2 "TM1637/sclk_mux00001" "TM1637/sclk_mux00004" 
+#$ NODES 2 "TM1637/sclk_mux00005" "TM1637/sclk_mux00006" 
+#$ NODES 2 "TM1637/sclk_mux00007" "TM1637/sclk_mux000082" 
+#$ NODES 3 "TM1637/sclk_mux000088" "TM1637/sclk_mux000090" "hund_c<0>" 
+#$ NODES 5 "hund_c<1>" "hund_c<2>" "hund_c<3>" "tens_c<0>" "tens_c<1>" 
+#$ NODES 5 "tens_c<2>" "tens_c<3>" "thous_c<0>" "thous_c<1>" "thous_c<2>" 
+#$ NODES 5 "thous_c<3>" "uni_c<0>" "uni_c<1>" "uni_c<2>" "uni_c<3>" 
+#$ PROPERTY xpla USER_SLEW_RATE LED_o dio_o sclk_o  
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd1 TM1637/help_cnt_FSM_FFd10 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd100 TM1637/help_cnt_FSM_FFd101 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd102 TM1637/help_cnt_FSM_FFd103 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd104 TM1637/help_cnt_FSM_FFd105 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd106 TM1637/help_cnt_FSM_FFd107 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd108 TM1637/help_cnt_FSM_FFd109 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd11 TM1637/help_cnt_FSM_FFd110 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd111 TM1637/help_cnt_FSM_FFd112 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd113 TM1637/help_cnt_FSM_FFd114 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd115 TM1637/help_cnt_FSM_FFd116 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd117 TM1637/help_cnt_FSM_FFd118 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd119 TM1637/help_cnt_FSM_FFd12 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd120 TM1637/help_cnt_FSM_FFd121 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd122 TM1637/help_cnt_FSM_FFd123 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd124 TM1637/help_cnt_FSM_FFd125 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd126 TM1637/help_cnt_FSM_FFd127 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd128 TM1637/help_cnt_FSM_FFd129 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd13 TM1637/help_cnt_FSM_FFd130 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd131 TM1637/help_cnt_FSM_FFd132 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd133 TM1637/help_cnt_FSM_FFd134 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd135 TM1637/help_cnt_FSM_FFd136 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd137 TM1637/help_cnt_FSM_FFd138 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd139 TM1637/help_cnt_FSM_FFd14 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd15 TM1637/help_cnt_FSM_FFd16 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd17 TM1637/help_cnt_FSM_FFd18 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd19 TM1637/help_cnt_FSM_FFd2 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd20 TM1637/help_cnt_FSM_FFd21 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd22 TM1637/help_cnt_FSM_FFd23 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd24 TM1637/help_cnt_FSM_FFd25 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd26 TM1637/help_cnt_FSM_FFd27 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd28 TM1637/help_cnt_FSM_FFd29 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd3 TM1637/help_cnt_FSM_FFd30 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd31 TM1637/help_cnt_FSM_FFd32 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd33 TM1637/help_cnt_FSM_FFd34 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd35 TM1637/help_cnt_FSM_FFd36 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd37 TM1637/help_cnt_FSM_FFd38 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd39 TM1637/help_cnt_FSM_FFd4 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd40 TM1637/help_cnt_FSM_FFd41 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd42 TM1637/help_cnt_FSM_FFd43 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd44 TM1637/help_cnt_FSM_FFd45 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd46 TM1637/help_cnt_FSM_FFd47 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd48 TM1637/help_cnt_FSM_FFd49 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd5 TM1637/help_cnt_FSM_FFd50 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd51 TM1637/help_cnt_FSM_FFd52 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd53 TM1637/help_cnt_FSM_FFd54 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd55 TM1637/help_cnt_FSM_FFd56 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd57 TM1637/help_cnt_FSM_FFd58 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd59 TM1637/help_cnt_FSM_FFd6 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd60 TM1637/help_cnt_FSM_FFd61 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd62 TM1637/help_cnt_FSM_FFd63 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd64 TM1637/help_cnt_FSM_FFd65 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd66 TM1637/help_cnt_FSM_FFd67 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd68 TM1637/help_cnt_FSM_FFd69 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd7 TM1637/help_cnt_FSM_FFd70 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd71 TM1637/help_cnt_FSM_FFd72 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd73 TM1637/help_cnt_FSM_FFd74 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd75 TM1637/help_cnt_FSM_FFd76 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd77 TM1637/help_cnt_FSM_FFd78 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd79 TM1637/help_cnt_FSM_FFd8 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd80 TM1637/help_cnt_FSM_FFd81 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd82 TM1637/help_cnt_FSM_FFd83 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd84 TM1637/help_cnt_FSM_FFd85 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd86 TM1637/help_cnt_FSM_FFd87 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd88 TM1637/help_cnt_FSM_FFd89 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd9 TM1637/help_cnt_FSM_FFd90 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd91 TM1637/help_cnt_FSM_FFd92 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd93 TM1637/help_cnt_FSM_FFd94 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd95 TM1637/help_cnt_FSM_FFd96 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd97 TM1637/help_cnt_FSM_FFd98 
+#$ PROPERTY xpla KEEP_TFF TM1637/help_cnt_FSM_FFd99  
+#$ PROPERTY xpla TERMINATE_KEEPER dio_o  
+#$ PROPERTY xpla POWER_UP_HIGH TM1637/help_cnt_FSM_FFd139  
+#$ PROPERTY xpla unused_keeper 
+#$ PROPERTY xpla IOSTD LED_o 2 -1
+#$ PROPERTY xpla IOSTD butt_i 2 -1
+#$ PROPERTY xpla IOSTD clk_i 2 -1
+#$ PROPERTY xpla IOSTD dio_o 2 -1
+#$ PROPERTY xpla IOSTD pinA_i 2 -1
+#$ PROPERTY xpla IOSTD pinB_i 2 -1
+#$ PROPERTY xpla IOSTD s_reset_i 2 -1
+#$ PROPERTY xpla IOSTD sclk_o 2 -1
+.model top
+.inputs  "s_reset_i" "sclk_o".Q "clk_i" "butt_i" "LED_o".Q "pinA_i" "pinB_i" 
+         "KY_040/enable_set_val".Q "hund_c<1>".Q "hund_c<2>".Q "tens_c<1>".Q 
+         "tens_c<2>".Q "thous_c<1>".Q "thous_c<2>".Q "hund_c<0>".Q "thous_c<0>".Q 
+         "tens_c<0>".Q "uni_c<1>".Q "uni_c<2>".Q "hund_c<3>".Q "tens_c<3>".Q 
+         "thous_c<3>".Q "uni_c<0>".Q "uni_c<3>".Q "TM1637/help_cnt_FSM_FFd139".Q 
+         "KY_040/slow_clock".Q "KY_040/s_cnt0<0>".Q "KY_040/s_cnt0<1>".Q 
+         "KY_040/s_cnt2<0>".Q "KY_040/s_cnt0<2>".Q "KY_040/s_cnt1<0>".Q 
+         "KY_040/s_cnt2<1>".Q "KY_040/s_cnt2<2>".Q "KY_040/s_cnt3<0>".Q 
+         "TM1637/help_cnt_FSM_FFd31".Q "TM1637/help_cnt_FSM_FFd33".Q 
+         "TM1637/help_cnt_FSM_FFd35".Q "TM1637/help_cnt_FSM_FFd37".Q 
+         "TM1637/help_cnt_FSM_FFd39".Q "TM1637/help_cnt_FSM_FFd41".Q 
+         "TM1637/help_cnt_FSM_FFd43".Q "TM1637/help_cnt_FSM_FFd49".Q 
+         "TM1637/help_cnt_FSM_FFd51".Q "TM1637/help_cnt_FSM_FFd53".Q 
+         "TM1637/help_cnt_FSM_FFd55".Q "TM1637/help_cnt_FSM_FFd57".Q 
+         "TM1637/help_cnt_FSM_FFd59".Q "TM1637/help_cnt_FSM_FFd61".Q 
+         "TM1637/help_cnt_FSM_FFd67".Q "TM1637/help_cnt_FSM_FFd69".Q 
+         "TM1637/help_cnt_FSM_FFd71".Q "TM1637/help_cnt_FSM_FFd73".Q 
+         "TM1637/help_cnt_FSM_FFd75".Q "TM1637/help_cnt_FSM_FFd77".Q 
+         "TM1637/help_cnt_FSM_FFd79".Q "TM1637/help_cnt_FSM_FFd85".Q 
+         "TM1637/help_cnt_FSM_FFd87".Q "TM1637/help_cnt_FSM_FFd89".Q 
+         "TM1637/help_cnt_FSM_FFd91".Q "TM1637/help_cnt_FSM_FFd93".Q 
+         "TM1637/help_cnt_FSM_FFd95".Q "TM1637/help_cnt_FSM_FFd97".Q 
+         "KY_040/s_cnt1<1>".Q "KY_040/s_cnt1<2>".Q "KY_040/s_cnt3<1>".Q 
+         "KY_040/s_cnt3<2>".Q "TM1637/help_cnt_FSM_FFd101".Q 
+         "TM1637/help_cnt_FSM_FFd103".Q "TM1637/help_cnt_FSM_FFd105".Q 
+         "TM1637/help_cnt_FSM_FFd107".Q "TM1637/help_cnt_FSM_FFd109".Q 
+         "TM1637/help_cnt_FSM_FFd11".Q "TM1637/help_cnt_FSM_FFd111".Q 
+         "TM1637/help_cnt_FSM_FFd113".Q "TM1637/help_cnt_FSM_FFd115".Q 
+         "TM1637/help_cnt_FSM_FFd116".Q "TM1637/help_cnt_FSM_FFd117".Q 
+         "TM1637/help_cnt_FSM_FFd119".Q "TM1637/help_cnt_FSM_FFd121".Q 
+         "TM1637/help_cnt_FSM_FFd123".Q "TM1637/help_cnt_FSM_FFd125".Q 
+         "TM1637/help_cnt_FSM_FFd127".Q "TM1637/help_cnt_FSM_FFd129".Q 
+         "TM1637/help_cnt_FSM_FFd13".Q "TM1637/help_cnt_FSM_FFd131".Q 
+         "TM1637/help_cnt_FSM_FFd133".Q "TM1637/help_cnt_FSM_FFd135".Q 
+         "TM1637/help_cnt_FSM_FFd137".Q "TM1637/help_cnt_FSM_FFd138".Q 
+         "TM1637/help_cnt_FSM_FFd15".Q "TM1637/help_cnt_FSM_FFd17".Q 
+         "TM1637/help_cnt_FSM_FFd19".Q "TM1637/help_cnt_FSM_FFd21".Q 
+         "TM1637/help_cnt_FSM_FFd25".Q "TM1637/help_cnt_FSM_FFd27".Q 
+         "TM1637/help_cnt_FSM_FFd29".Q "TM1637/help_cnt_FSM_FFd45".Q 
+         "TM1637/help_cnt_FSM_FFd47".Q "TM1637/help_cnt_FSM_FFd63".Q 
+         "TM1637/help_cnt_FSM_FFd65".Q "TM1637/help_cnt_FSM_FFd7".Q 
+         "TM1637/help_cnt_FSM_FFd81".Q "TM1637/help_cnt_FSM_FFd83".Q 
+         "TM1637/help_cnt_FSM_FFd9".Q "TM1637/help_cnt_FSM_FFd99".Q 
+         "KY_040/s_cnt0<3>".Q "KY_040/s_cnt2<3>".Q "TM1637/help_cnt_FSM_FFd22".Q 
+         "TM1637/help_cnt_FSM_FFd23".Q "TM1637/help_cnt_FSM_FFd5".Q 
+         "KY_040/s_cnt1<3>".Q "KY_040/s_cnt3<3>".Q "TM1637/help_cnt_FSM_FFd3".Q 
+         "TM1637/help_cnt_FSM_FFd10".Q "TM1637/help_cnt_FSM_FFd100".Q 
+         "TM1637/help_cnt_FSM_FFd102".Q "TM1637/help_cnt_FSM_FFd104".Q 
+         "TM1637/help_cnt_FSM_FFd106".Q "TM1637/help_cnt_FSM_FFd108".Q 
+         "TM1637/help_cnt_FSM_FFd110".Q "TM1637/help_cnt_FSM_FFd112".Q 
+         "TM1637/help_cnt_FSM_FFd114".Q "TM1637/help_cnt_FSM_FFd118".Q 
+         "TM1637/help_cnt_FSM_FFd12".Q "TM1637/help_cnt_FSM_FFd120".Q 
+         "TM1637/help_cnt_FSM_FFd122".Q "TM1637/help_cnt_FSM_FFd124".Q 
+         "TM1637/help_cnt_FSM_FFd126".Q "TM1637/help_cnt_FSM_FFd128".Q 
+         "TM1637/help_cnt_FSM_FFd130".Q "TM1637/help_cnt_FSM_FFd132".Q 
+         "TM1637/help_cnt_FSM_FFd134".Q "TM1637/help_cnt_FSM_FFd136".Q 
+         "TM1637/help_cnt_FSM_FFd14".Q "TM1637/help_cnt_FSM_FFd16".Q 
+         "TM1637/help_cnt_FSM_FFd18".Q "TM1637/help_cnt_FSM_FFd2".Q 
+         "TM1637/help_cnt_FSM_FFd20".Q "TM1637/help_cnt_FSM_FFd24".Q 
+         "TM1637/help_cnt_FSM_FFd26".Q "TM1637/help_cnt_FSM_FFd28".Q 
+         "TM1637/help_cnt_FSM_FFd30".Q "TM1637/help_cnt_FSM_FFd32".Q 
+         "TM1637/help_cnt_FSM_FFd34".Q "TM1637/help_cnt_FSM_FFd36".Q 
+         "TM1637/help_cnt_FSM_FFd38".Q "TM1637/help_cnt_FSM_FFd4".Q 
+         "TM1637/help_cnt_FSM_FFd40".Q "TM1637/help_cnt_FSM_FFd42".Q 
+         "TM1637/help_cnt_FSM_FFd44".Q "TM1637/help_cnt_FSM_FFd46".Q 
+         "TM1637/help_cnt_FSM_FFd48".Q "TM1637/help_cnt_FSM_FFd50".Q 
+         "TM1637/help_cnt_FSM_FFd52".Q "TM1637/help_cnt_FSM_FFd54".Q 
+         "TM1637/help_cnt_FSM_FFd56".Q "TM1637/help_cnt_FSM_FFd58".Q 
+         "TM1637/help_cnt_FSM_FFd6".Q "TM1637/help_cnt_FSM_FFd60".Q 
+         "TM1637/help_cnt_FSM_FFd62".Q "TM1637/help_cnt_FSM_FFd64".Q 
+         "TM1637/help_cnt_FSM_FFd66".Q "TM1637/help_cnt_FSM_FFd68".Q 
+         "TM1637/help_cnt_FSM_FFd70".Q "TM1637/help_cnt_FSM_FFd72".Q 
+         "TM1637/help_cnt_FSM_FFd74".Q "TM1637/help_cnt_FSM_FFd76".Q 
+         "TM1637/help_cnt_FSM_FFd78".Q "TM1637/help_cnt_FSM_FFd8".Q 
+         "TM1637/help_cnt_FSM_FFd80".Q "TM1637/help_cnt_FSM_FFd82".Q 
+         "TM1637/help_cnt_FSM_FFd84".Q "TM1637/help_cnt_FSM_FFd86".Q 
+         "TM1637/help_cnt_FSM_FFd88".Q "TM1637/help_cnt_FSM_FFd90".Q 
+         "TM1637/help_cnt_FSM_FFd92".Q "TM1637/help_cnt_FSM_FFd94".Q 
+         "TM1637/help_cnt_FSM_FFd96".Q "TM1637/help_cnt_FSM_FFd98".Q 
+         "TM1637/help_cnt_FSM_FFd1".Q "KY_040/prev_A".Q "TM1637/Mtrien_dio".Q 
+         "KY_040/clock_en".Q "KY_040/clock_enable/s_cnt<10>".Q 
+         "KY_040/clock_enable/s_cnt<11>".Q "KY_040/clock_enable/s_cnt<12>".Q 
+         "KY_040/clock_enable/s_cnt<13>".Q "KY_040/clock_enable/s_cnt<14>".Q 
+         "KY_040/clock_enable/s_cnt<8>".Q "KY_040/clock_enable/s_cnt<9>".Q 
+         "KY_040/slow_clock_counter<0>".Q "KY_040/clock_enable/s_cnt<15>".Q 
+         "KY_040/clock_enable/s_cnt<3>".Q "KY_040/slow_clock_counter<10>".Q 
+         "KY_040/slow_clock_counter<11>".Q "KY_040/slow_clock_counter<12>".Q 
+         "KY_040/slow_clock_counter<13>".Q "KY_040/slow_clock_counter<14>".Q 
+         "KY_040/slow_clock_counter<15>".Q "KY_040/slow_clock_counter<16>".Q 
+         "KY_040/slow_clock_counter<17>".Q "KY_040/slow_clock_counter<18>".Q 
+         "KY_040/slow_clock_counter<19>".Q "KY_040/slow_clock_counter<1>".Q 
+         "KY_040/slow_clock_counter<20>".Q "KY_040/slow_clock_counter<21>".Q 
+         "KY_040/slow_clock_counter<22>".Q "KY_040/slow_clock_counter<23>".Q 
+         "KY_040/slow_clock_counter<24>".Q "KY_040/slow_clock_counter<25>".Q 
+         "KY_040/slow_clock_counter<26>".Q "KY_040/slow_clock_counter<27>".Q 
+         "KY_040/slow_clock_counter<28>".Q "KY_040/slow_clock_counter<29>".Q 
+         "KY_040/slow_clock_counter<2>".Q "KY_040/slow_clock_counter<30>".Q 
+         "KY_040/slow_clock_counter<3>".Q "KY_040/slow_clock_counter<4>".Q 
+         "KY_040/slow_clock_counter<5>".Q "KY_040/slow_clock_counter<6>".Q 
+         "KY_040/slow_clock_counter<7>".Q "KY_040/slow_clock_counter<8>".Q 
+         "KY_040/slow_clock_counter<9>".Q "KY_040/clock_enable/s_cnt<4>".Q 
+         "KY_040/clock_enable/s_cnt<5>".Q "KY_040/clock_enable/s_cnt<6>".Q 
+         "KY_040/clock_enable/s_cnt<7>".Q "KY_040/slow_clock_counter<31>".Q 
+         "TM1637/digit0<0>".Q "TM1637/digit0<1>".Q "TM1637/digit0<2>".Q 
+         "TM1637/digit0<3>".Q "TM1637/digit0<4>".Q "TM1637/digit0<5>".Q 
+         "TM1637/digit0<6>".Q "TM1637/digit1<0>".Q "TM1637/digit1<1>".Q 
+         "TM1637/digit1<2>".Q "TM1637/digit1<3>".Q "TM1637/digit1<4>".Q 
+         "TM1637/digit1<5>".Q "TM1637/digit1<6>".Q "TM1637/digit2<0>".Q 
+         "TM1637/digit2<1>".Q "TM1637/digit2<2>".Q "TM1637/digit2<3>".Q 
+         "TM1637/digit2<4>".Q "TM1637/digit2<5>".Q "TM1637/digit2<6>".Q 
+         "TM1637/digit3<0>".Q "TM1637/digit3<1>".Q "TM1637/digit3<2>".Q 
+         "TM1637/digit3<3>".Q "TM1637/digit3<4>".Q "TM1637/digit3<5>".Q 
+         "TM1637/digit3<6>".Q "dio_o".Q "KY_040/s_cnt1_and0000" 
+         "KY_040/slow_clock_counter__add0000<30>"
+.outputs "KY_040/s_cnt1_and0000".X1 "KY_040/s_cnt1_and0000".X2 
+         "KY_040/slow_clock_counter__add0000<30>".X1 
+         "KY_040/slow_clock_counter__add0000<30>".X2 "dio_o".CLK "dio_o".OE 
+         "KY_040/enable_set_val".D "KY_040/enable_set_val".LH 
+         "KY_040/enable_set_val".AP "KY_040/enable_set_val".AR "hund_c<1>".D.X1 
+         "hund_c<1>".D.X2 "hund_c<1>".LH "hund_c<1>".AP "hund_c<1>".AR "hund_c<2>".D.X1 
+         "hund_c<2>".D.X2 "hund_c<2>".LH "hund_c<2>".AP "hund_c<2>".AR "tens_c<1>".D.X1 
+         "tens_c<1>".D.X2 "tens_c<1>".LH "tens_c<1>".AP "tens_c<1>".AR "tens_c<2>".D.X1 
+         "tens_c<2>".D.X2 "tens_c<2>".LH "tens_c<2>".AP "tens_c<2>".AR "thous_c<1>".D 
+         "thous_c<1>".LH "thous_c<1>".AP "thous_c<1>".AR "thous_c<2>".D.X1 
+         "thous_c<2>".D.X2 "thous_c<2>".LH "thous_c<2>".AP "thous_c<2>".AR 
+         "hund_c<0>".D "hund_c<0>".LH "hund_c<0>".AP "hund_c<0>".AR "thous_c<0>".D 
+         "thous_c<0>".LH "thous_c<0>".AP "thous_c<0>".AR "tens_c<0>".D "tens_c<0>".LH 
+         "tens_c<0>".AP "tens_c<0>".AR "uni_c<1>".D "uni_c<1>".LH "uni_c<1>".AP 
+         "uni_c<1>".AR "uni_c<2>".D "uni_c<2>".LH "uni_c<2>".AP "uni_c<2>".AR 
+         "hund_c<3>".D "hund_c<3>".LH "hund_c<3>".AP "hund_c<3>".AR "tens_c<3>".D 
+         "tens_c<3>".LH "tens_c<3>".AP "tens_c<3>".AR "thous_c<3>".D.X1 
+         "thous_c<3>".D.X2 "thous_c<3>".LH "thous_c<3>".AP "thous_c<3>".AR "uni_c<0>".D 
+         "uni_c<0>".LH "uni_c<0>".AP "uni_c<0>".AR "uni_c<3>".D "uni_c<3>".LH 
+         "uni_c<3>".AP "uni_c<3>".AR "LED_o".D "LED_o".LH "LED_o".AP 
+         "TM1637/help_cnt_FSM_FFd139".T "TM1637/help_cnt_FSM_FFd139".CLK 
+         "KY_040/slow_clock".CLK "KY_040/s_cnt0<0>".CLK "KY_040/s_cnt0<1>".CLK 
+         "KY_040/s_cnt2<0>".CLK "KY_040/s_cnt0<2>".CLK "KY_040/s_cnt1<0>".CLK 
+         "KY_040/s_cnt2<1>".CLK "KY_040/s_cnt2<2>".CLK "KY_040/s_cnt3<0>".CLK 
+         "TM1637/help_cnt_FSM_FFd31".T "TM1637/help_cnt_FSM_FFd31".CLK 
+         "TM1637/help_cnt_FSM_FFd33".T "TM1637/help_cnt_FSM_FFd33".CLK 
+         "TM1637/help_cnt_FSM_FFd35".T "TM1637/help_cnt_FSM_FFd35".CLK 
+         "TM1637/help_cnt_FSM_FFd37".T "TM1637/help_cnt_FSM_FFd37".CLK 
+         "TM1637/help_cnt_FSM_FFd39".T "TM1637/help_cnt_FSM_FFd39".CLK 
+         "TM1637/help_cnt_FSM_FFd41".T "TM1637/help_cnt_FSM_FFd41".CLK 
+         "TM1637/help_cnt_FSM_FFd43".T "TM1637/help_cnt_FSM_FFd43".CLK 
+         "TM1637/help_cnt_FSM_FFd49".T "TM1637/help_cnt_FSM_FFd49".CLK 
+         "TM1637/help_cnt_FSM_FFd51".T "TM1637/help_cnt_FSM_FFd51".CLK 
+         "TM1637/help_cnt_FSM_FFd53".T "TM1637/help_cnt_FSM_FFd53".CLK 
+         "TM1637/help_cnt_FSM_FFd55".T "TM1637/help_cnt_FSM_FFd55".CLK 
+         "TM1637/help_cnt_FSM_FFd57".T "TM1637/help_cnt_FSM_FFd57".CLK 
+         "TM1637/help_cnt_FSM_FFd59".T "TM1637/help_cnt_FSM_FFd59".CLK 
+         "TM1637/help_cnt_FSM_FFd61".T "TM1637/help_cnt_FSM_FFd61".CLK 
+         "TM1637/help_cnt_FSM_FFd67".T "TM1637/help_cnt_FSM_FFd67".CLK 
+         "TM1637/help_cnt_FSM_FFd69".T "TM1637/help_cnt_FSM_FFd69".CLK 
+         "TM1637/help_cnt_FSM_FFd71".T "TM1637/help_cnt_FSM_FFd71".CLK 
+         "TM1637/help_cnt_FSM_FFd73".T "TM1637/help_cnt_FSM_FFd73".CLK 
+         "TM1637/help_cnt_FSM_FFd75".T "TM1637/help_cnt_FSM_FFd75".CLK 
+         "TM1637/help_cnt_FSM_FFd77".T "TM1637/help_cnt_FSM_FFd77".CLK 
+         "TM1637/help_cnt_FSM_FFd79".T "TM1637/help_cnt_FSM_FFd79".CLK 
+         "TM1637/help_cnt_FSM_FFd85".T "TM1637/help_cnt_FSM_FFd85".CLK 
+         "TM1637/help_cnt_FSM_FFd87".T "TM1637/help_cnt_FSM_FFd87".CLK 
+         "TM1637/help_cnt_FSM_FFd89".T "TM1637/help_cnt_FSM_FFd89".CLK 
+         "TM1637/help_cnt_FSM_FFd91".T "TM1637/help_cnt_FSM_FFd91".CLK 
+         "TM1637/help_cnt_FSM_FFd93".T "TM1637/help_cnt_FSM_FFd93".CLK 
+         "TM1637/help_cnt_FSM_FFd95".T "TM1637/help_cnt_FSM_FFd95".CLK 
+         "TM1637/help_cnt_FSM_FFd97".T "TM1637/help_cnt_FSM_FFd97".CLK 
+         "KY_040/s_cnt1<1>".CLK "KY_040/s_cnt1<2>".CLK "KY_040/s_cnt3<1>".CLK 
+         "KY_040/s_cnt3<2>".CLK "TM1637/help_cnt_FSM_FFd101".T 
+         "TM1637/help_cnt_FSM_FFd101".CLK "TM1637/help_cnt_FSM_FFd103".T 
+         "TM1637/help_cnt_FSM_FFd103".CLK "TM1637/help_cnt_FSM_FFd105".T 
+         "TM1637/help_cnt_FSM_FFd105".CLK "TM1637/help_cnt_FSM_FFd107".T 
+         "TM1637/help_cnt_FSM_FFd107".CLK "TM1637/help_cnt_FSM_FFd109".T 
+         "TM1637/help_cnt_FSM_FFd109".CLK "TM1637/help_cnt_FSM_FFd11".T 
+         "TM1637/help_cnt_FSM_FFd11".CLK "TM1637/help_cnt_FSM_FFd111".T 
+         "TM1637/help_cnt_FSM_FFd111".CLK "TM1637/help_cnt_FSM_FFd113".T 
+         "TM1637/help_cnt_FSM_FFd113".CLK "TM1637/help_cnt_FSM_FFd115".T 
+         "TM1637/help_cnt_FSM_FFd115".CLK "TM1637/help_cnt_FSM_FFd116".T 
+         "TM1637/help_cnt_FSM_FFd116".CLK "TM1637/help_cnt_FSM_FFd117".T 
+         "TM1637/help_cnt_FSM_FFd117".CLK "TM1637/help_cnt_FSM_FFd119".T 
+         "TM1637/help_cnt_FSM_FFd119".CLK "TM1637/help_cnt_FSM_FFd121".T 
+         "TM1637/help_cnt_FSM_FFd121".CLK "TM1637/help_cnt_FSM_FFd123".T 
+         "TM1637/help_cnt_FSM_FFd123".CLK "TM1637/help_cnt_FSM_FFd125".T 
+         "TM1637/help_cnt_FSM_FFd125".CLK "TM1637/help_cnt_FSM_FFd127".T 
+         "TM1637/help_cnt_FSM_FFd127".CLK "TM1637/help_cnt_FSM_FFd129".T 
+         "TM1637/help_cnt_FSM_FFd129".CLK "TM1637/help_cnt_FSM_FFd13".T 
+         "TM1637/help_cnt_FSM_FFd13".CLK "TM1637/help_cnt_FSM_FFd131".T 
+         "TM1637/help_cnt_FSM_FFd131".CLK "TM1637/help_cnt_FSM_FFd133".T 
+         "TM1637/help_cnt_FSM_FFd133".CLK "TM1637/help_cnt_FSM_FFd135".T 
+         "TM1637/help_cnt_FSM_FFd135".CLK "TM1637/help_cnt_FSM_FFd137".T 
+         "TM1637/help_cnt_FSM_FFd137".CLK "TM1637/help_cnt_FSM_FFd138".T 
+         "TM1637/help_cnt_FSM_FFd138".CLK "TM1637/help_cnt_FSM_FFd15".T 
+         "TM1637/help_cnt_FSM_FFd15".CLK "TM1637/help_cnt_FSM_FFd17".T 
+         "TM1637/help_cnt_FSM_FFd17".CLK "TM1637/help_cnt_FSM_FFd19".T 
+         "TM1637/help_cnt_FSM_FFd19".CLK "TM1637/help_cnt_FSM_FFd21".T 
+         "TM1637/help_cnt_FSM_FFd21".CLK "TM1637/help_cnt_FSM_FFd25".T 
+         "TM1637/help_cnt_FSM_FFd25".CLK "TM1637/help_cnt_FSM_FFd27".T 
+         "TM1637/help_cnt_FSM_FFd27".CLK "TM1637/help_cnt_FSM_FFd29".T 
+         "TM1637/help_cnt_FSM_FFd29".CLK "TM1637/help_cnt_FSM_FFd45".T 
+         "TM1637/help_cnt_FSM_FFd45".CLK "TM1637/help_cnt_FSM_FFd47".T 
+         "TM1637/help_cnt_FSM_FFd47".CLK "TM1637/help_cnt_FSM_FFd63".T 
+         "TM1637/help_cnt_FSM_FFd63".CLK "TM1637/help_cnt_FSM_FFd65".T 
+         "TM1637/help_cnt_FSM_FFd65".CLK "TM1637/help_cnt_FSM_FFd7".T 
+         "TM1637/help_cnt_FSM_FFd7".CLK "TM1637/help_cnt_FSM_FFd81".T 
+         "TM1637/help_cnt_FSM_FFd81".CLK "TM1637/help_cnt_FSM_FFd83".T 
+         "TM1637/help_cnt_FSM_FFd83".CLK "TM1637/help_cnt_FSM_FFd9".T 
+         "TM1637/help_cnt_FSM_FFd9".CLK "TM1637/help_cnt_FSM_FFd99".T 
+         "TM1637/help_cnt_FSM_FFd99".CLK "KY_040/s_cnt0<3>".CLK "KY_040/s_cnt2<3>".CLK 
+         "TM1637/help_cnt_FSM_FFd22".T "TM1637/help_cnt_FSM_FFd22".CLK 
+         "TM1637/help_cnt_FSM_FFd23".T "TM1637/help_cnt_FSM_FFd23".CLK 
+         "TM1637/help_cnt_FSM_FFd5".T "TM1637/help_cnt_FSM_FFd5".CLK 
+         "KY_040/s_cnt1<3>".CLK "KY_040/s_cnt3<3>".CLK "TM1637/help_cnt_FSM_FFd3".T 
+         "TM1637/help_cnt_FSM_FFd3".CLK "TM1637/help_cnt_FSM_FFd10".T 
+         "TM1637/help_cnt_FSM_FFd10".CLK "TM1637/help_cnt_FSM_FFd100".T 
+         "TM1637/help_cnt_FSM_FFd100".CLK "TM1637/help_cnt_FSM_FFd102".T 
+         "TM1637/help_cnt_FSM_FFd102".CLK "TM1637/help_cnt_FSM_FFd104".T 
+         "TM1637/help_cnt_FSM_FFd104".CLK "TM1637/help_cnt_FSM_FFd106".T 
+         "TM1637/help_cnt_FSM_FFd106".CLK "TM1637/help_cnt_FSM_FFd108".T 
+         "TM1637/help_cnt_FSM_FFd108".CLK "TM1637/help_cnt_FSM_FFd110".T 
+         "TM1637/help_cnt_FSM_FFd110".CLK "TM1637/help_cnt_FSM_FFd112".T 
+         "TM1637/help_cnt_FSM_FFd112".CLK "TM1637/help_cnt_FSM_FFd114".T 
+         "TM1637/help_cnt_FSM_FFd114".CLK "TM1637/help_cnt_FSM_FFd118".T 
+         "TM1637/help_cnt_FSM_FFd118".CLK "TM1637/help_cnt_FSM_FFd12".T 
+         "TM1637/help_cnt_FSM_FFd12".CLK "TM1637/help_cnt_FSM_FFd120".T 
+         "TM1637/help_cnt_FSM_FFd120".CLK "TM1637/help_cnt_FSM_FFd122".T 
+         "TM1637/help_cnt_FSM_FFd122".CLK "TM1637/help_cnt_FSM_FFd124".T 
+         "TM1637/help_cnt_FSM_FFd124".CLK "TM1637/help_cnt_FSM_FFd126".T 
+         "TM1637/help_cnt_FSM_FFd126".CLK "TM1637/help_cnt_FSM_FFd128".T 
+         "TM1637/help_cnt_FSM_FFd128".CLK "TM1637/help_cnt_FSM_FFd130".T 
+         "TM1637/help_cnt_FSM_FFd130".CLK "TM1637/help_cnt_FSM_FFd132".T 
+         "TM1637/help_cnt_FSM_FFd132".CLK "TM1637/help_cnt_FSM_FFd134".T 
+         "TM1637/help_cnt_FSM_FFd134".CLK "TM1637/help_cnt_FSM_FFd136".T 
+         "TM1637/help_cnt_FSM_FFd136".CLK "TM1637/help_cnt_FSM_FFd14".T 
+         "TM1637/help_cnt_FSM_FFd14".CLK "TM1637/help_cnt_FSM_FFd16".T 
+         "TM1637/help_cnt_FSM_FFd16".CLK "TM1637/help_cnt_FSM_FFd18".T 
+         "TM1637/help_cnt_FSM_FFd18".CLK "TM1637/help_cnt_FSM_FFd2".T 
+         "TM1637/help_cnt_FSM_FFd2".CLK "TM1637/help_cnt_FSM_FFd20".T 
+         "TM1637/help_cnt_FSM_FFd20".CLK "TM1637/help_cnt_FSM_FFd24".T 
+         "TM1637/help_cnt_FSM_FFd24".CLK "TM1637/help_cnt_FSM_FFd26".T 
+         "TM1637/help_cnt_FSM_FFd26".CLK "TM1637/help_cnt_FSM_FFd28".T 
+         "TM1637/help_cnt_FSM_FFd28".CLK "TM1637/help_cnt_FSM_FFd30".T 
+         "TM1637/help_cnt_FSM_FFd30".CLK "TM1637/help_cnt_FSM_FFd32".T 
+         "TM1637/help_cnt_FSM_FFd32".CLK "TM1637/help_cnt_FSM_FFd34".T 
+         "TM1637/help_cnt_FSM_FFd34".CLK "TM1637/help_cnt_FSM_FFd36".T 
+         "TM1637/help_cnt_FSM_FFd36".CLK "TM1637/help_cnt_FSM_FFd38".T 
+         "TM1637/help_cnt_FSM_FFd38".CLK "TM1637/help_cnt_FSM_FFd4".T 
+         "TM1637/help_cnt_FSM_FFd4".CLK "TM1637/help_cnt_FSM_FFd40".T 
+         "TM1637/help_cnt_FSM_FFd40".CLK "TM1637/help_cnt_FSM_FFd42".T 
+         "TM1637/help_cnt_FSM_FFd42".CLK "TM1637/help_cnt_FSM_FFd44".T 
+         "TM1637/help_cnt_FSM_FFd44".CLK "TM1637/help_cnt_FSM_FFd46".T 
+         "TM1637/help_cnt_FSM_FFd46".CLK "TM1637/help_cnt_FSM_FFd48".T 
+         "TM1637/help_cnt_FSM_FFd48".CLK "TM1637/help_cnt_FSM_FFd50".T 
+         "TM1637/help_cnt_FSM_FFd50".CLK "TM1637/help_cnt_FSM_FFd52".T 
+         "TM1637/help_cnt_FSM_FFd52".CLK "TM1637/help_cnt_FSM_FFd54".T 
+         "TM1637/help_cnt_FSM_FFd54".CLK "TM1637/help_cnt_FSM_FFd56".T 
+         "TM1637/help_cnt_FSM_FFd56".CLK "TM1637/help_cnt_FSM_FFd58".T 
+         "TM1637/help_cnt_FSM_FFd58".CLK "TM1637/help_cnt_FSM_FFd6".T 
+         "TM1637/help_cnt_FSM_FFd6".CLK "TM1637/help_cnt_FSM_FFd60".T 
+         "TM1637/help_cnt_FSM_FFd60".CLK "TM1637/help_cnt_FSM_FFd62".T 
+         "TM1637/help_cnt_FSM_FFd62".CLK "TM1637/help_cnt_FSM_FFd64".T 
+         "TM1637/help_cnt_FSM_FFd64".CLK "TM1637/help_cnt_FSM_FFd66".T 
+         "TM1637/help_cnt_FSM_FFd66".CLK "TM1637/help_cnt_FSM_FFd68".T 
+         "TM1637/help_cnt_FSM_FFd68".CLK "TM1637/help_cnt_FSM_FFd70".T 
+         "TM1637/help_cnt_FSM_FFd70".CLK "TM1637/help_cnt_FSM_FFd72".T 
+         "TM1637/help_cnt_FSM_FFd72".CLK "TM1637/help_cnt_FSM_FFd74".T 
+         "TM1637/help_cnt_FSM_FFd74".CLK "TM1637/help_cnt_FSM_FFd76".T 
+         "TM1637/help_cnt_FSM_FFd76".CLK "TM1637/help_cnt_FSM_FFd78".T 
+         "TM1637/help_cnt_FSM_FFd78".CLK "TM1637/help_cnt_FSM_FFd8".T 
+         "TM1637/help_cnt_FSM_FFd8".CLK "TM1637/help_cnt_FSM_FFd80".T 
+         "TM1637/help_cnt_FSM_FFd80".CLK "TM1637/help_cnt_FSM_FFd82".T 
+         "TM1637/help_cnt_FSM_FFd82".CLK "TM1637/help_cnt_FSM_FFd84".T 
+         "TM1637/help_cnt_FSM_FFd84".CLK "TM1637/help_cnt_FSM_FFd86".T 
+         "TM1637/help_cnt_FSM_FFd86".CLK "TM1637/help_cnt_FSM_FFd88".T 
+         "TM1637/help_cnt_FSM_FFd88".CLK "TM1637/help_cnt_FSM_FFd90".T 
+         "TM1637/help_cnt_FSM_FFd90".CLK "TM1637/help_cnt_FSM_FFd92".T 
+         "TM1637/help_cnt_FSM_FFd92".CLK "TM1637/help_cnt_FSM_FFd94".T 
+         "TM1637/help_cnt_FSM_FFd94".CLK "TM1637/help_cnt_FSM_FFd96".T 
+         "TM1637/help_cnt_FSM_FFd96".CLK "TM1637/help_cnt_FSM_FFd98".T 
+         "TM1637/help_cnt_FSM_FFd98".CLK "TM1637/help_cnt_FSM_FFd1".T 
+         "TM1637/help_cnt_FSM_FFd1".CLK "KY_040/prev_A".D "KY_040/prev_A".CLK 
+         "KY_040/prev_A".CE "TM1637/Mtrien_dio".D "TM1637/Mtrien_dio".CLK "sclk_o".D 
+         "sclk_o".CLK "KY_040/clock_en".D "KY_040/clock_en".CLK 
+         "KY_040/clock_enable/s_cnt<10>".D "KY_040/clock_enable/s_cnt<10>".CLK 
+         "KY_040/clock_enable/s_cnt<11>".D "KY_040/clock_enable/s_cnt<11>".CLK 
+         "KY_040/clock_enable/s_cnt<12>".D "KY_040/clock_enable/s_cnt<12>".CLK 
+         "KY_040/clock_enable/s_cnt<13>".D "KY_040/clock_enable/s_cnt<13>".CLK 
+         "KY_040/clock_enable/s_cnt<14>".D "KY_040/clock_enable/s_cnt<14>".CLK 
+         "KY_040/clock_enable/s_cnt<8>".D "KY_040/clock_enable/s_cnt<8>".CLK 
+         "KY_040/clock_enable/s_cnt<9>".D "KY_040/clock_enable/s_cnt<9>".CLK 
+         "KY_040/slow_clock_counter<0>".CLK "KY_040/clock_enable/s_cnt<15>".D 
+         "KY_040/clock_enable/s_cnt<15>".CLK "KY_040/clock_enable/s_cnt<3>".D 
+         "KY_040/clock_enable/s_cnt<3>".CLK "KY_040/slow_clock_counter<10>".CLK 
+         "KY_040/slow_clock_counter<11>".CLK "KY_040/slow_clock_counter<12>".CLK 
+         "KY_040/slow_clock_counter<13>".CLK "KY_040/slow_clock_counter<14>".CLK 
+         "KY_040/slow_clock_counter<15>".CLK "KY_040/slow_clock_counter<16>".CLK 
+         "KY_040/slow_clock_counter<17>".CLK "KY_040/slow_clock_counter<18>".CLK 
+         "KY_040/slow_clock_counter<19>".CLK "KY_040/slow_clock_counter<1>".D 
+         "KY_040/slow_clock_counter<1>".CLK "KY_040/slow_clock_counter<20>".CLK 
+         "KY_040/slow_clock_counter<21>".CLK "KY_040/slow_clock_counter<22>".CLK 
+         "KY_040/slow_clock_counter<23>".CLK "KY_040/slow_clock_counter<24>".CLK 
+         "KY_040/slow_clock_counter<25>".CLK "KY_040/slow_clock_counter<26>".CLK 
+         "KY_040/slow_clock_counter<27>".CLK "KY_040/slow_clock_counter<28>".D 
+         "KY_040/slow_clock_counter<28>".CLK "KY_040/slow_clock_counter<29>".D 
+         "KY_040/slow_clock_counter<29>".CLK "KY_040/slow_clock_counter<2>".CLK 
+         "KY_040/slow_clock_counter<30>".D "KY_040/slow_clock_counter<30>".CLK 
+         "KY_040/slow_clock_counter<3>".CLK "KY_040/slow_clock_counter<4>".CLK 
+         "KY_040/slow_clock_counter<5>".CLK "KY_040/slow_clock_counter<6>".CLK 
+         "KY_040/slow_clock_counter<7>".CLK "KY_040/slow_clock_counter<8>".CLK 
+         "KY_040/slow_clock_counter<9>".CLK "KY_040/clock_enable/s_cnt<4>".D 
+         "KY_040/clock_enable/s_cnt<4>".CLK "KY_040/clock_enable/s_cnt<5>".D 
+         "KY_040/clock_enable/s_cnt<5>".CLK "KY_040/clock_enable/s_cnt<6>".D 
+         "KY_040/clock_enable/s_cnt<6>".CLK "KY_040/clock_enable/s_cnt<7>".D 
+         "KY_040/clock_enable/s_cnt<7>".CLK "KY_040/slow_clock_counter<31>".CLK 
+         "TM1637/digit0<0>".D "TM1637/digit0<0>".LH "TM1637/digit0<1>".D 
+         "TM1637/digit0<1>".LH "TM1637/digit0<2>".D "TM1637/digit0<2>".LH 
+         "TM1637/digit0<3>".D "TM1637/digit0<3>".LH "TM1637/digit0<4>".D 
+         "TM1637/digit0<4>".LH "TM1637/digit0<5>".D "TM1637/digit0<5>".LH 
+         "TM1637/digit0<6>".D.X1 "TM1637/digit0<6>".D.X2 "TM1637/digit0<6>".LH 
+         "TM1637/digit1<0>".D "TM1637/digit1<0>".LH "TM1637/digit1<1>".D 
+         "TM1637/digit1<1>".LH "TM1637/digit1<2>".D "TM1637/digit1<2>".LH 
+         "TM1637/digit1<3>".D "TM1637/digit1<3>".LH "TM1637/digit1<4>".D 
+         "TM1637/digit1<4>".LH "TM1637/digit1<5>".D "TM1637/digit1<5>".LH 
+         "TM1637/digit1<6>".D.X1 "TM1637/digit1<6>".D.X2 "TM1637/digit1<6>".LH 
+         "TM1637/digit2<0>".D "TM1637/digit2<0>".LH "TM1637/digit2<1>".D 
+         "TM1637/digit2<1>".LH "TM1637/digit2<2>".D "TM1637/digit2<2>".LH 
+         "TM1637/digit2<3>".D "TM1637/digit2<3>".LH "TM1637/digit2<4>".D 
+         "TM1637/digit2<4>".LH "TM1637/digit2<5>".D "TM1637/digit2<5>".LH 
+         "TM1637/digit2<6>".D.X1 "TM1637/digit2<6>".D.X2 "TM1637/digit2<6>".LH 
+         "TM1637/digit3<0>".D "TM1637/digit3<0>".LH "TM1637/digit3<1>".D 
+         "TM1637/digit3<1>".LH "TM1637/digit3<2>".D "TM1637/digit3<2>".LH 
+         "TM1637/digit3<3>".D "TM1637/digit3<3>".LH "TM1637/digit3<4>".D 
+         "TM1637/digit3<4>".LH "TM1637/digit3<5>".D "TM1637/digit3<5>".LH 
+         "TM1637/digit3<6>".D.X1 "TM1637/digit3<6>".D.X2 "TM1637/digit3<6>".LH 
+         "KY_040/slow_clock_counter<0>".T "KY_040/slow_clock".T "KY_040/s_cnt0<0>".T 
+         "KY_040/s_cnt0<1>".T "KY_040/s_cnt0<2>".T "KY_040/s_cnt2<1>".T 
+         "KY_040/s_cnt2<2>".T "KY_040/s_cnt1<1>".T "KY_040/s_cnt1<2>".T 
+         "KY_040/s_cnt3<1>".T "KY_040/s_cnt3<2>".T "KY_040/s_cnt0<3>".T 
+         "KY_040/s_cnt2<3>".T "KY_040/s_cnt1<3>".T "KY_040/s_cnt3<3>".T 
+         "KY_040/slow_clock_counter<10>".T "KY_040/slow_clock_counter<11>".T 
+         "KY_040/slow_clock_counter<12>".T "KY_040/slow_clock_counter<13>".T 
+         "KY_040/slow_clock_counter<14>".T "KY_040/slow_clock_counter<15>".T 
+         "KY_040/slow_clock_counter<16>".T "KY_040/slow_clock_counter<17>".T 
+         "KY_040/slow_clock_counter<18>".T "KY_040/slow_clock_counter<19>".T 
+         "KY_040/slow_clock_counter<20>".T "KY_040/slow_clock_counter<21>".T 
+         "KY_040/slow_clock_counter<22>".T "KY_040/slow_clock_counter<23>".T 
+         "KY_040/slow_clock_counter<24>".T "KY_040/slow_clock_counter<25>".T 
+         "KY_040/slow_clock_counter<26>".T "KY_040/slow_clock_counter<27>".T 
+         "KY_040/slow_clock_counter<2>".T "KY_040/slow_clock_counter<3>".T 
+         "KY_040/slow_clock_counter<4>".T "KY_040/slow_clock_counter<5>".T 
+         "KY_040/slow_clock_counter<6>".T "KY_040/slow_clock_counter<7>".T 
+         "KY_040/slow_clock_counter<8>".T "KY_040/slow_clock_counter<9>".T 
+         "KY_040/slow_clock_counter<31>".T "dio_o".D "KY_040/s_cnt2<0>".D 
+         "KY_040/s_cnt1<0>".D "KY_040/s_cnt3<0>".D
+.names "TM1637/help_cnt_FSM_FFd122".Q "TM1637/help_cnt_FSM_FFd124".Q 
+       "TM1637/help_cnt_FSM_FFd126".Q "TM1637/help_cnt_FSM_FFd128".Q 
+       "TM1637/help_cnt_FSM_FFd130".Q "TM1637/help_cnt_FSM_FFd132".Q 
+       "TM1637/help_cnt_FSM_FFd134".Q "TM1637/help_cnt_FSM_FFd136".Q 
+        "TM1637/sclk_mux00001"
+00000000 1
+.names "TM1637/help_cnt_FSM_FFd28".Q "TM1637/help_cnt_FSM_FFd30".Q 
+       "TM1637/help_cnt_FSM_FFd32".Q "TM1637/help_cnt_FSM_FFd34".Q 
+       "TM1637/help_cnt_FSM_FFd36".Q "TM1637/help_cnt_FSM_FFd38".Q 
+       "TM1637/help_cnt_FSM_FFd40".Q "TM1637/help_cnt_FSM_FFd42".Q 
+        "TM1637/sclk_mux00007"
+00000000 1
+.names "TM1637/help_cnt_FSM_FFd44".Q "TM1637/help_cnt_FSM_FFd46".Q 
+       "TM1637/help_cnt_FSM_FFd48".Q "TM1637/help_cnt_FSM_FFd50".Q 
+       "TM1637/help_cnt_FSM_FFd52".Q "TM1637/help_cnt_FSM_FFd54".Q 
+       "TM1637/help_cnt_FSM_FFd56".Q "TM1637/help_cnt_FSM_FFd58".Q 
+        "TM1637/sclk_mux00006"
+00000000 1
+.names "TM1637/help_cnt_FSM_FFd60".Q "TM1637/help_cnt_FSM_FFd62".Q 
+       "TM1637/help_cnt_FSM_FFd64".Q "TM1637/help_cnt_FSM_FFd66".Q 
+       "TM1637/help_cnt_FSM_FFd68".Q "TM1637/help_cnt_FSM_FFd70".Q 
+       "TM1637/help_cnt_FSM_FFd72".Q "TM1637/help_cnt_FSM_FFd74".Q 
+        "TM1637/sclk_mux00005"
+00000000 1
+.names "TM1637/help_cnt_FSM_FFd76".Q "TM1637/help_cnt_FSM_FFd78".Q 
+       "TM1637/help_cnt_FSM_FFd80".Q "TM1637/help_cnt_FSM_FFd82".Q 
+       "TM1637/help_cnt_FSM_FFd84".Q "TM1637/help_cnt_FSM_FFd86".Q 
+       "TM1637/help_cnt_FSM_FFd88".Q "TM1637/help_cnt_FSM_FFd90".Q 
+        "TM1637/sclk_mux00004"
+00000000 1
+.names "TM1637/help_cnt_FSM_FFd113".Q "TM1637/help_cnt_FSM_FFd115".Q 
+       "TM1637/help_cnt_FSM_FFd116".Q "TM1637/help_cnt_FSM_FFd117".Q 
+       "TM1637/help_cnt_FSM_FFd119".Q "TM1637/help_cnt_FSM_FFd121".Q 
+       "TM1637/help_cnt_FSM_FFd123".Q "TM1637/help_cnt_FSM_FFd125".Q 
+        "TM1637/Mtridata_dio_and000079"
+00000000 1
+.names "TM1637/help_cnt_FSM_FFd59".Q "TM1637/help_cnt_FSM_FFd61".Q 
+       "TM1637/help_cnt_FSM_FFd67".Q "TM1637/help_cnt_FSM_FFd69".Q 
+       "TM1637/help_cnt_FSM_FFd71".Q "TM1637/help_cnt_FSM_FFd73".Q 
+       "TM1637/help_cnt_FSM_FFd63".Q "TM1637/help_cnt_FSM_FFd65".Q 
+        "TM1637/sclk_mux000082"
+00000000 1
+.names "TM1637/help_cnt_FSM_FFd95".Q "TM1637/help_cnt_FSM_FFd97".Q 
+       "TM1637/help_cnt_FSM_FFd101".Q "TM1637/help_cnt_FSM_FFd103".Q 
+       "TM1637/help_cnt_FSM_FFd105".Q "TM1637/help_cnt_FSM_FFd107".Q 
+       "TM1637/help_cnt_FSM_FFd109".Q "TM1637/help_cnt_FSM_FFd111".Q 
+       "TM1637/help_cnt_FSM_FFd113".Q "TM1637/help_cnt_FSM_FFd115".Q 
+       "TM1637/help_cnt_FSM_FFd116".Q "TM1637/help_cnt_FSM_FFd117".Q 
+       "TM1637/help_cnt_FSM_FFd119".Q "TM1637/help_cnt_FSM_FFd121".Q 
+       "TM1637/help_cnt_FSM_FFd123".Q "TM1637/help_cnt_FSM_FFd125".Q 
+       "TM1637/help_cnt_FSM_FFd127".Q "TM1637/help_cnt_FSM_FFd138".Q 
+       "TM1637/help_cnt_FSM_FFd99".Q "TM1637/digit3<0>".Q "TM1637/digit3<1>".Q 
+       "N_PZ_748" "N_PZ_1050"  "TM1637/Mtridata_dio_mux0000"
+---------------100----1 1
+-----------1000-00----1 1
+--1-0000000-000-00----1 1
+---10000000-000-00----1 1
+-1--0000000-000-0001--1 1
+10--0000000-000-000-1-1 1
+00--0000000-000-000--11 1
+.names "TM1637/Mtridata_dio_and000079" "TM1637/help_cnt_FSM_FFd139".Q 
+       "TM1637/help_cnt_FSM_FFd61".Q "TM1637/help_cnt_FSM_FFd67".Q 
+       "TM1637/help_cnt_FSM_FFd69".Q "TM1637/help_cnt_FSM_FFd71".Q 
+       "TM1637/help_cnt_FSM_FFd73".Q "TM1637/help_cnt_FSM_FFd75".Q 
+       "TM1637/help_cnt_FSM_FFd77".Q "TM1637/help_cnt_FSM_FFd79".Q 
+       "TM1637/help_cnt_FSM_FFd11".Q "TM1637/help_cnt_FSM_FFd127".Q 
+       "TM1637/help_cnt_FSM_FFd13".Q "TM1637/help_cnt_FSM_FFd138".Q 
+       "TM1637/help_cnt_FSM_FFd15".Q "TM1637/help_cnt_FSM_FFd17".Q 
+       "TM1637/help_cnt_FSM_FFd19".Q "TM1637/help_cnt_FSM_FFd21".Q 
+       "TM1637/help_cnt_FSM_FFd25".Q "TM1637/help_cnt_FSM_FFd63".Q 
+       "TM1637/help_cnt_FSM_FFd65".Q "TM1637/help_cnt_FSM_FFd7".Q 
+       "TM1637/help_cnt_FSM_FFd9".Q "TM1637/help_cnt_FSM_FFd22".Q 
+       "TM1637/help_cnt_FSM_FFd23".Q "N_PZ_972" "N_PZ_1045" "N_PZ_1050" 
+        "TM1637/Mtridata_dio__or0001"
+1000000000000000000000000111 1
+.names "s_reset_i" "KY_040/signal_LED_or0000" "KY_040/s_cnt2<1>".Q 
+        "KY_040/cnt2_1__or0000"
+-1- 1
+1-1 1
+.names "s_reset_i" "KY_040/signal_LED_or0000" "KY_040/s_cnt2<2>".Q 
+        "KY_040/cnt2_2__or0000"
+-1- 1
+1-1 1
+.names "s_reset_i" "KY_040/signal_LED_or0000" "KY_040/s_cnt1<1>".Q 
+        "KY_040/cnt1_1__or0000"
+-1- 1
+1-1 1
+.names "s_reset_i" "KY_040/signal_LED_or0000" "KY_040/s_cnt1<2>".Q 
+        "KY_040/cnt1_2__or0000"
+-1- 1
+1-1 1
+.names "s_reset_i" "KY_040/signal_LED_or0000" "KY_040/s_cnt3<1>".Q 
+        "KY_040/cnt3_1__or0000"
+-1- 1
+1-1 1
+.names "s_reset_i" "KY_040/signal_LED_or0000" "KY_040/s_cnt3<2>".Q 
+        "KY_040/cnt3_2__or0000"
+-1- 1
+1-1 1
+.names "s_reset_i" "KY_040/signal_LED_or0000" "KY_040/s_cnt2<0>".Q 
+        "KY_040/cnt2_0__or0000"
+-1- 1
+1-1 1
+.names "s_reset_i" "KY_040/signal_LED_or0000" "KY_040/s_cnt3<0>".Q 
+        "KY_040/cnt3_0__or0000"
+-1- 1
+1-1 1
+.names "s_reset_i" "KY_040/signal_LED_or0000" "KY_040/s_cnt1<0>".Q 
+        "KY_040/cnt1_0__or0000"
+-1- 1
+1-1 1
+.names "s_reset_i" "KY_040/signal_LED_or0000" "KY_040/s_cnt0<1>".Q 
+        "KY_040/cnt0_1__or0000"
+-1- 1
+1-1 1
+.names "s_reset_i" "KY_040/signal_LED_or0000" "KY_040/s_cnt0<2>".Q 
+        "KY_040/cnt0_2__or0000"
+-1- 1
+1-1 1
+.names "s_reset_i" "KY_040/signal_LED_or0000" "KY_040/s_cnt2<3>".Q 
+        "KY_040/cnt2_3__or0000"
+-1- 1
+1-1 1
+.names "s_reset_i" "KY_040/signal_LED_or0000" "KY_040/s_cnt1<3>".Q 
+        "KY_040/cnt1_3__or0000"
+-1- 1
+1-1 1
+.names "s_reset_i" "KY_040/signal_LED_or0000" "KY_040/s_cnt3<3>".Q 
+        "KY_040/cnt3_3__or0000"
+-1- 1
+1-1 1
+.names "s_reset_i" "KY_040/signal_LED_or0000" "KY_040/s_cnt0<0>".Q 
+        "KY_040/cnt0_0__or0000"
+-1- 1
+1-1 1
+.names "s_reset_i" "KY_040/signal_LED_or0000" "KY_040/s_cnt0<3>".Q 
+        "KY_040/cnt0_3__or0000"
+-1- 1
+1-1 1
+.names "s_reset_i" "butt_i" "KY_040/enable_set_val".Q  "KY_040/signal_LED_or0000"
+10- 1
+1-0 1
+.names "KY_040/slow_clock_counter<0>".Q "KY_040/slow_clock_counter<10>".Q 
+       "KY_040/slow_clock_counter<11>".Q "KY_040/slow_clock_counter<12>".Q 
+       "KY_040/slow_clock_counter<13>".Q "KY_040/slow_clock_counter<14>".Q 
+       "KY_040/slow_clock_counter<15>".Q "KY_040/slow_clock_counter<16>".Q 
+       "KY_040/slow_clock_counter<17>".Q "KY_040/slow_clock_counter<18>".Q 
+       "KY_040/slow_clock_counter<19>".Q "KY_040/slow_clock_counter<1>".Q 
+       "KY_040/slow_clock_counter<20>".Q "KY_040/slow_clock_counter<21>".Q 
+       "KY_040/slow_clock_counter<22>".Q "KY_040/slow_clock_counter<23>".Q 
+       "KY_040/slow_clock_counter<24>".Q "KY_040/slow_clock_counter<25>".Q 
+       "KY_040/slow_clock_counter<26>".Q "KY_040/slow_clock_counter<27>".Q 
+       "KY_040/slow_clock_counter<28>".Q "KY_040/slow_clock_counter<29>".Q 
+       "KY_040/slow_clock_counter<2>".Q "KY_040/slow_clock_counter<30>".Q 
+       "KY_040/slow_clock_counter<3>".Q "KY_040/slow_clock_counter<4>".Q 
+       "KY_040/slow_clock_counter<5>".Q "KY_040/slow_clock_counter<6>".Q 
+       "KY_040/slow_clock_counter<7>".Q "KY_040/slow_clock_counter<8>".Q 
+       "KY_040/slow_clock_counter<9>".Q "KY_040/slow_clock_counter<31>".Q 
+        "KY_040/slow_clock_cmp_eq0000"
+10000000000000000000000000000000 1
+.names "KY_040/s_cnt1_and0000" "KY_040/s_cnt2<0>".Q "KY_040/s_cnt2<1>".Q 
+       "KY_040/s_cnt2<2>".Q "KY_040/s_cnt2<3>".Q  "KY_040/s_cnt2_and0000"
+0---- 1
+----0 1
+-000- 1
+.names "KY_040/s_cnt1_and0000" "KY_040/s_cnt1_0__or0000" "KY_040/s_cnt1<0>".Q 
+       "KY_040/s_cnt1<1>".Q "KY_040/s_cnt1<2>".Q "KY_040/s_cnt1<3>".Q "N_PZ_961" 
+        "KY_040/s_cnt2_0__or0000"
+1------ 1
+-100001 1
+.names "KY_040/s_cnt1_0__or0000" "KY_040/s_cnt1<3>".Q "N_PZ_961" 
+        "KY_040/s_cnt1_and0000".X1
+110 1
+.names "KY_040/s_cnt1_0__or0000" "KY_040/s_cnt1<0>".Q "KY_040/s_cnt1<1>".Q 
+       "KY_040/s_cnt1<2>".Q "KY_040/s_cnt1<3>".Q "N_PZ_961"  "KY_040/s_cnt1_and0000".X2
+100010 1
+.names "KY_040/enable_set_val".Q "KY_040/s_cnt0<3>".Q "N_PZ_718" "N_PZ_961" "N_PZ_965" 
+        "KY_040/s_cnt1_0__or0000"
+10110 1
+11000 1
+.names "KY_040/s_cnt2_and0000" "KY_040/s_cnt3<0>".Q "KY_040/s_cnt3<1>".Q 
+       "KY_040/s_cnt3<2>".Q "KY_040/s_cnt3<3>".Q  "KY_040/s_cnt3_and0000"
+1---- 1
+----0 1
+-000- 1
+.names "KY_040/s_cnt2_and0000" "KY_040/enable_set_val".Q "KY_040/s_cnt2<0>".Q 
+       "KY_040/s_cnt1<0>".Q "KY_040/s_cnt2<1>".Q "KY_040/s_cnt2<2>".Q 
+       "KY_040/s_cnt1<1>".Q "KY_040/s_cnt1<2>".Q "KY_040/s_cnt0<3>".Q 
+       "KY_040/s_cnt2<3>".Q "KY_040/s_cnt1<3>".Q "N_PZ_718" "N_PZ_961" "N_PZ_965" 
+        "KY_040/s_cnt3_0__or0000"
+0------------- 1
+-1000000000110 1
+.names "TM1637/sclk_mux000088" "TM1637/help_cnt_FSM_FFd139".Q 
+       "TM1637/help_cnt_FSM_FFd138".Q "TM1637/help_cnt_FSM_FFd2".Q 
+       "TM1637/help_cnt_FSM_FFd4".Q "TM1637/help_cnt_FSM_FFd6".Q 
+       "TM1637/help_cnt_FSM_FFd8".Q  "TM1637/sclk_mux000090"
+0000000 1
+.names "KY_040/slow_clock_counter<30>".Q  "KY_040/slow_clock_counter__add0000<30>".X1
+1 1
+.names "KY_040/slow_clock_counter<0>".Q "KY_040/slow_clock_counter<10>".Q 
+       "KY_040/slow_clock_counter<11>".Q "KY_040/slow_clock_counter<12>".Q 
+       "KY_040/slow_clock_counter<13>".Q "KY_040/slow_clock_counter<14>".Q 
+       "KY_040/slow_clock_counter<15>".Q "KY_040/slow_clock_counter<16>".Q 
+       "KY_040/slow_clock_counter<17>".Q "KY_040/slow_clock_counter<18>".Q 
+       "KY_040/slow_clock_counter<19>".Q "KY_040/slow_clock_counter<1>".Q 
+       "KY_040/slow_clock_counter<20>".Q "KY_040/slow_clock_counter<21>".Q 
+       "KY_040/slow_clock_counter<22>".Q "KY_040/slow_clock_counter<23>".Q 
+       "KY_040/slow_clock_counter<24>".Q "KY_040/slow_clock_counter<25>".Q 
+       "KY_040/slow_clock_counter<26>".Q "KY_040/slow_clock_counter<27>".Q 
+       "KY_040/slow_clock_counter<28>".Q "KY_040/slow_clock_counter<29>".Q 
+       "KY_040/slow_clock_counter<2>".Q "KY_040/slow_clock_counter<30>".Q 
+       "KY_040/slow_clock_counter<3>".Q "KY_040/slow_clock_counter<4>".Q 
+       "KY_040/slow_clock_counter<5>".Q "KY_040/slow_clock_counter<6>".Q 
+       "KY_040/slow_clock_counter<7>".Q "KY_040/slow_clock_counter<8>".Q 
+       "KY_040/slow_clock_counter<9>".Q "N_PZ_649" 
+        "KY_040/slow_clock_counter__add0000<30>".X2
+-----------------------1----1111 1
+1111111111111111111111101111111- 1
+.names "sclk_o".Q "TM1637/sclk_mux000082" "TM1637/help_cnt_FSM_FFd43".Q 
+       "TM1637/help_cnt_FSM_FFd49".Q "TM1637/help_cnt_FSM_FFd51".Q 
+       "TM1637/help_cnt_FSM_FFd53".Q "TM1637/help_cnt_FSM_FFd55".Q 
+       "TM1637/help_cnt_FSM_FFd57".Q "TM1637/help_cnt_FSM_FFd75".Q 
+       "TM1637/help_cnt_FSM_FFd77".Q "TM1637/help_cnt_FSM_FFd79".Q 
+       "TM1637/help_cnt_FSM_FFd11".Q "TM1637/help_cnt_FSM_FFd113".Q 
+       "TM1637/help_cnt_FSM_FFd115".Q "TM1637/help_cnt_FSM_FFd119".Q 
+       "TM1637/help_cnt_FSM_FFd121".Q "TM1637/help_cnt_FSM_FFd123".Q 
+       "TM1637/help_cnt_FSM_FFd125".Q "TM1637/help_cnt_FSM_FFd127".Q 
+       "TM1637/help_cnt_FSM_FFd13".Q "TM1637/help_cnt_FSM_FFd15".Q 
+       "TM1637/help_cnt_FSM_FFd17".Q "TM1637/help_cnt_FSM_FFd19".Q 
+       "TM1637/help_cnt_FSM_FFd21".Q "TM1637/help_cnt_FSM_FFd25".Q 
+       "TM1637/help_cnt_FSM_FFd45".Q "TM1637/help_cnt_FSM_FFd47".Q 
+       "TM1637/help_cnt_FSM_FFd7".Q "TM1637/help_cnt_FSM_FFd9".Q "N_PZ_1045" 
+       "N_PZ_1050"  "TM1637/sclk_mux000088"
+1100000000000000000000000000011 1
+.names "TM1637/help_cnt_FSM_FFd61".Q "TM1637/help_cnt_FSM_FFd67".Q 
+       "TM1637/help_cnt_FSM_FFd69".Q "TM1637/help_cnt_FSM_FFd71".Q 
+       "TM1637/help_cnt_FSM_FFd73".Q "TM1637/help_cnt_FSM_FFd75".Q 
+       "TM1637/help_cnt_FSM_FFd77".Q "TM1637/help_cnt_FSM_FFd79".Q 
+       "TM1637/help_cnt_FSM_FFd11".Q "TM1637/help_cnt_FSM_FFd113".Q 
+       "TM1637/help_cnt_FSM_FFd115".Q "TM1637/help_cnt_FSM_FFd116".Q 
+       "TM1637/help_cnt_FSM_FFd117".Q "TM1637/help_cnt_FSM_FFd119".Q 
+       "TM1637/help_cnt_FSM_FFd121".Q "TM1637/help_cnt_FSM_FFd123".Q 
+       "TM1637/help_cnt_FSM_FFd127".Q "TM1637/help_cnt_FSM_FFd13".Q 
+       "TM1637/help_cnt_FSM_FFd15".Q "TM1637/help_cnt_FSM_FFd17".Q 
+       "TM1637/help_cnt_FSM_FFd19".Q "TM1637/help_cnt_FSM_FFd21".Q 
+       "TM1637/help_cnt_FSM_FFd25".Q "TM1637/help_cnt_FSM_FFd63".Q 
+       "TM1637/help_cnt_FSM_FFd65".Q "TM1637/help_cnt_FSM_FFd7".Q 
+       "TM1637/help_cnt_FSM_FFd9".Q "TM1637/help_cnt_FSM_FFd22".Q 
+       "TM1637/help_cnt_FSM_FFd23".Q "N_PZ_972" "N_PZ_1045" 
+        "TM1637/Mtrien_dio_and000082"
+0000000000000000000000000000011 1
+.names "clk_i"  "dio_o".CLK
+1 1
+.names "TM1637/Mtrien_dio".Q  "dio_o".OE
+0 1
+.names "butt_i" "KY_040/enable_set_val".Q "thous_c<1>".Q "thous_c<2>".Q "thous_c<0>".Q 
+       "thous_c<3>".Q "N_PZ_930"  "KY_040/enable_set_val".D
+-1----- 1
+0-00001 1
+.names "N_PZ_717"  "KY_040/enable_set_val".LH
+1 1
+.names "s_reset_i"  "KY_040/enable_set_val".AP
+0 1
+.names "s_reset_i" "butt_i" "KY_040/enable_set_val".Q  "KY_040/enable_set_val".AR
+111 1
+.names "hund_c<1>".Q "N_PZ_717" "N_PZ_930"  "hund_c<1>".D.X1
+110 1
+.names "hund_c<0>".Q "KY_040/s_cnt2<1>".Q "N_PZ_717" "N_PZ_930" "N_PZ_979" 
+        "hund_c<1>".D.X2
+-10-- 1
+0-101 1
+.names "butt_i"  "hund_c<1>".LH-
+1 1
+.names "butt_i" "KY_040/enable_set_val".Q "KY_040/s_cnt2<1>".Q  "hund_c<1>".AP
+111 1
+.names "KY_040/cnt2_1__or0000"  "hund_c<1>".AR
+0 1
+.names "hund_c<2>".Q "N_PZ_717"  "hund_c<2>".D.X1
+11 1
+.names "hund_c<1>".Q "hund_c<2>".Q "hund_c<0>".Q "hund_c<3>".Q "KY_040/s_cnt2<2>".Q 
+       "N_PZ_717" "N_PZ_979"  "hund_c<2>".D.X2
+----10- 1
+010--11 1
+0001-11 1
+.names "butt_i"  "hund_c<2>".LH-
+1 1
+.names "butt_i" "KY_040/enable_set_val".Q "KY_040/s_cnt2<2>".Q  "hund_c<2>".AP
+111 1
+.names "KY_040/cnt2_2__or0000"  "hund_c<2>".AR
+0 1
+.names "tens_c<1>".Q "N_PZ_717" "N_PZ_979"  "tens_c<1>".D.X1
+110 1
+.names "tens_c<0>".Q "KY_040/s_cnt1<1>".Q "N_PZ_717" "N_PZ_967" "N_PZ_979" 
+        "tens_c<1>".D.X2
+-10-- 1
+0-110 1
+.names "butt_i"  "tens_c<1>".LH-
+1 1
+.names "butt_i" "KY_040/enable_set_val".Q "KY_040/s_cnt1<1>".Q  "tens_c<1>".AP
+111 1
+.names "KY_040/cnt1_1__or0000"  "tens_c<1>".AR
+0 1
+.names "tens_c<2>".Q "N_PZ_717"  "tens_c<2>".D.X1
+11 1
+.names "tens_c<1>".Q "tens_c<2>".Q "tens_c<0>".Q "tens_c<3>".Q "KY_040/s_cnt1<2>".Q 
+       "N_PZ_717" "N_PZ_967"  "tens_c<2>".D.X2
+----10- 1
+010--11 1
+0001-11 1
+.names "butt_i"  "tens_c<2>".LH-
+1 1
+.names "butt_i" "KY_040/enable_set_val".Q "KY_040/s_cnt1<2>".Q  "tens_c<2>".AP
+111 1
+.names "KY_040/cnt1_2__or0000"  "tens_c<2>".AR
+0 1
+.names "thous_c<1>".Q "thous_c<2>".Q "thous_c<0>".Q "thous_c<3>".Q "KY_040/s_cnt3<1>".Q 
+       "N_PZ_717" "N_PZ_930"  "thous_c<1>".D-
+----00- 1
+0----10 1
+0-1--11 1
+1-0--11 1
+0000-1- 1
+.names "butt_i"  "thous_c<1>".LH-
+1 1
+.names "butt_i" "KY_040/enable_set_val".Q "KY_040/s_cnt3<1>".Q  "thous_c<1>".AP
+111 1
+.names "KY_040/cnt3_1__or0000"  "thous_c<1>".AR
+0 1
+.names "thous_c<2>".Q "N_PZ_717"  "thous_c<2>".D.X1
+11 1
+.names "thous_c<1>".Q "thous_c<2>".Q "thous_c<0>".Q "thous_c<3>".Q "KY_040/s_cnt3<2>".Q 
+       "N_PZ_717" "N_PZ_930"  "thous_c<2>".D.X2
+----10- 1
+010--11 1
+0001-11 1
+.names "butt_i"  "thous_c<2>".LH-
+1 1
+.names "butt_i" "KY_040/enable_set_val".Q "KY_040/s_cnt3<2>".Q  "thous_c<2>".AP
+111 1
+.names "KY_040/cnt3_2__or0000"  "thous_c<2>".AR
+0 1
+.names "hund_c<0>".Q "KY_040/s_cnt2<0>".Q "N_PZ_717" "N_PZ_979"  "hund_c<0>".D-
+-00- 1
+1-11 1
+0-10 1
+.names "butt_i"  "hund_c<0>".LH-
+1 1
+.names "butt_i" "KY_040/enable_set_val".Q "KY_040/s_cnt2<0>".Q  "hund_c<0>".AP
+111 1
+.names "KY_040/cnt2_0__or0000"  "hund_c<0>".AR
+0 1
+.names "thous_c<0>".Q "KY_040/s_cnt3<0>".Q "N_PZ_717" "N_PZ_930"  "thous_c<0>".D-
+-00- 1
+1-11 1
+0-10 1
+.names "butt_i"  "thous_c<0>".LH-
+1 1
+.names "butt_i" "KY_040/enable_set_val".Q "KY_040/s_cnt3<0>".Q  "thous_c<0>".AP
+111 1
+.names "KY_040/cnt3_0__or0000"  "thous_c<0>".AR
+0 1
+.names "tens_c<0>".Q "KY_040/s_cnt1<0>".Q "N_PZ_717" "N_PZ_967"  "tens_c<0>".D-
+-00- 1
+1-11 1
+0-10 1
+.names "butt_i"  "tens_c<0>".LH-
+1 1
+.names "butt_i" "KY_040/enable_set_val".Q "KY_040/s_cnt1<0>".Q  "tens_c<0>".AP
+111 1
+.names "KY_040/cnt1_0__or0000"  "tens_c<0>".AR
+0 1
+.names "KY_040/s_cnt0<0>".Q "KY_040/s_cnt0<1>".Q "N_PZ_717" "N_PZ_967"  "uni_c<1>".D
+-10- 1
+11-0 1
+0010 1
+.names "butt_i"  "uni_c<1>".LH-
+1 1
+.names "butt_i" "KY_040/enable_set_val".Q "KY_040/s_cnt0<1>".Q  "uni_c<1>".AP
+111 1
+.names "KY_040/cnt0_1__or0000"  "uni_c<1>".AR
+0 1
+.names "KY_040/s_cnt0<0>".Q "KY_040/s_cnt0<1>".Q "KY_040/s_cnt0<2>".Q "N_PZ_717" 
+       "N_PZ_961" "N_PZ_967"  "uni_c<2>".D-
+--00-- 1
+--0-0- 1
+---1-1 1
+00-10- 1
+.names "butt_i"  "uni_c<2>".LH-
+1 1
+.names "butt_i" "KY_040/enable_set_val".Q "KY_040/s_cnt0<2>".Q  "uni_c<2>".AP
+111 1
+.names "KY_040/cnt0_2__or0000"  "uni_c<2>".AR
+0 1
+.names "hund_c<1>".Q "hund_c<2>".Q "hund_c<0>".Q "hund_c<3>".Q "KY_040/s_cnt2<3>".Q 
+       "N_PZ_717" "N_PZ_930" "N_PZ_979"  "hund_c<3>".D-
+----00-- 1
+---0-10- 1
+000--101 1
+.names "butt_i"  "hund_c<3>".LH-
+1 1
+.names "butt_i" "KY_040/enable_set_val".Q "KY_040/s_cnt2<3>".Q  "hund_c<3>".AP
+111 1
+.names "KY_040/cnt2_3__or0000"  "hund_c<3>".AR
+0 1
+.names "tens_c<1>".Q "tens_c<2>".Q "tens_c<0>".Q "tens_c<3>".Q "KY_040/s_cnt1<3>".Q 
+       "N_PZ_717" "N_PZ_967" "N_PZ_979"  "tens_c<3>".D-
+----00-- 1
+---0-1-0 1
+000--110 1
+.names "butt_i"  "tens_c<3>".LH-
+1 1
+.names "butt_i" "KY_040/enable_set_val".Q "KY_040/s_cnt1<3>".Q  "tens_c<3>".AP
+111 1
+.names "KY_040/cnt1_3__or0000"  "tens_c<3>".AR
+0 1
+.names "thous_c<3>".Q "N_PZ_717"  "thous_c<3>".D.X1
+01 1
+.names "thous_c<1>".Q "thous_c<2>".Q "thous_c<0>".Q "KY_040/s_cnt3<3>".Q "N_PZ_717" 
+       "N_PZ_930"  "thous_c<3>".D.X2-
+---00- 1
+000-11 1
+.names "butt_i"  "thous_c<3>".LH-
+1 1
+.names "butt_i" "KY_040/enable_set_val".Q "KY_040/s_cnt3<3>".Q  "thous_c<3>".AP
+111 1
+.names "KY_040/cnt3_3__or0000"  "thous_c<3>".AR
+0 1
+.names "KY_040/s_cnt0<0>".Q "N_PZ_717" "N_PZ_967"  "uni_c<0>".D-
+00- 1
+110 1
+.names "butt_i"  "uni_c<0>".LH-
+1 1
+.names "butt_i" "KY_040/enable_set_val".Q "KY_040/s_cnt0<0>".Q  "uni_c<0>".AP
+111 1
+.names "KY_040/cnt0_0__or0000"  "uni_c<0>".AR
+0 1
+.names "KY_040/s_cnt0<3>".Q "N_PZ_717" "N_PZ_961" "N_PZ_967"  "uni_c<3>".D-
+00-- 1
+0-00 1
+1110 1
+.names "butt_i"  "uni_c<3>".LH-
+1 1
+.names "butt_i" "KY_040/enable_set_val".Q "KY_040/s_cnt0<3>".Q  "uni_c<3>".AP
+111 1
+.names "KY_040/cnt0_3__or0000"  "uni_c<3>".AR
+0 1
+.names "butt_i" "LED_o".Q "thous_c<1>".Q "thous_c<2>".Q "thous_c<0>".Q "thous_c<3>".Q 
+       "N_PZ_930"  "LED_o".D-
+-0----- 1
+0-00001 1
+.names "N_PZ_717"  "LED_o".LH
+1 1
+.names "KY_040/signal_LED_or0000"  "LED_o".AP
+0 1
+.names "TM1637/help_cnt_FSM_FFd139".Q "TM1637/help_cnt_FSM_FFd1".Q 
+        "TM1637/help_cnt_FSM_FFd139".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd139".CLK
+1 1
+.names "clk_i"  "KY_040/slow_clock".CLK
+1 1
+.names "KY_040/slow_clock".Q  "KY_040/s_cnt0<0>".CLK-
+1 1
+.names "KY_040/slow_clock".Q  "KY_040/s_cnt0<1>".CLK-
+1 1
+.names "KY_040/slow_clock".Q  "KY_040/s_cnt2<0>".CLK-
+1 1
+.names "KY_040/slow_clock".Q  "KY_040/s_cnt0<2>".CLK-
+1 1
+.names "KY_040/slow_clock".Q  "KY_040/s_cnt1<0>".CLK-
+1 1
+.names "KY_040/slow_clock".Q  "KY_040/s_cnt2<1>".CLK-
+1 1
+.names "KY_040/slow_clock".Q  "KY_040/s_cnt2<2>".CLK-
+1 1
+.names "KY_040/slow_clock".Q  "KY_040/s_cnt3<0>".CLK-
+1 1
+.names "TM1637/help_cnt_FSM_FFd31".Q "TM1637/help_cnt_FSM_FFd32".Q 
+        "TM1637/help_cnt_FSM_FFd31".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd31".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd33".Q "TM1637/help_cnt_FSM_FFd34".Q 
+        "TM1637/help_cnt_FSM_FFd33".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd33".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd35".Q "TM1637/help_cnt_FSM_FFd36".Q 
+        "TM1637/help_cnt_FSM_FFd35".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd35".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd37".Q "TM1637/help_cnt_FSM_FFd38".Q 
+        "TM1637/help_cnt_FSM_FFd37".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd37".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd39".Q "TM1637/help_cnt_FSM_FFd40".Q 
+        "TM1637/help_cnt_FSM_FFd39".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd39".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd41".Q "TM1637/help_cnt_FSM_FFd42".Q 
+        "TM1637/help_cnt_FSM_FFd41".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd41".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd43".Q "TM1637/help_cnt_FSM_FFd44".Q 
+        "TM1637/help_cnt_FSM_FFd43".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd43".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd49".Q "TM1637/help_cnt_FSM_FFd50".Q 
+        "TM1637/help_cnt_FSM_FFd49".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd49".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd51".Q "TM1637/help_cnt_FSM_FFd52".Q 
+        "TM1637/help_cnt_FSM_FFd51".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd51".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd53".Q "TM1637/help_cnt_FSM_FFd54".Q 
+        "TM1637/help_cnt_FSM_FFd53".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd53".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd55".Q "TM1637/help_cnt_FSM_FFd56".Q 
+        "TM1637/help_cnt_FSM_FFd55".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd55".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd57".Q "TM1637/help_cnt_FSM_FFd58".Q 
+        "TM1637/help_cnt_FSM_FFd57".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd57".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd59".Q "TM1637/help_cnt_FSM_FFd60".Q 
+        "TM1637/help_cnt_FSM_FFd59".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd59".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd61".Q "TM1637/help_cnt_FSM_FFd62".Q 
+        "TM1637/help_cnt_FSM_FFd61".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd61".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd67".Q "TM1637/help_cnt_FSM_FFd68".Q 
+        "TM1637/help_cnt_FSM_FFd67".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd67".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd69".Q "TM1637/help_cnt_FSM_FFd70".Q 
+        "TM1637/help_cnt_FSM_FFd69".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd69".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd71".Q "TM1637/help_cnt_FSM_FFd72".Q 
+        "TM1637/help_cnt_FSM_FFd71".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd71".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd73".Q "TM1637/help_cnt_FSM_FFd74".Q 
+        "TM1637/help_cnt_FSM_FFd73".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd73".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd75".Q "TM1637/help_cnt_FSM_FFd76".Q 
+        "TM1637/help_cnt_FSM_FFd75".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd75".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd77".Q "TM1637/help_cnt_FSM_FFd78".Q 
+        "TM1637/help_cnt_FSM_FFd77".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd77".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd79".Q "TM1637/help_cnt_FSM_FFd80".Q 
+        "TM1637/help_cnt_FSM_FFd79".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd79".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd85".Q "TM1637/help_cnt_FSM_FFd86".Q 
+        "TM1637/help_cnt_FSM_FFd85".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd85".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd87".Q "TM1637/help_cnt_FSM_FFd88".Q 
+        "TM1637/help_cnt_FSM_FFd87".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd87".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd89".Q "TM1637/help_cnt_FSM_FFd90".Q 
+        "TM1637/help_cnt_FSM_FFd89".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd89".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd91".Q "TM1637/help_cnt_FSM_FFd92".Q 
+        "TM1637/help_cnt_FSM_FFd91".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd91".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd93".Q "TM1637/help_cnt_FSM_FFd94".Q 
+        "TM1637/help_cnt_FSM_FFd93".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd93".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd95".Q "TM1637/help_cnt_FSM_FFd96".Q 
+        "TM1637/help_cnt_FSM_FFd95".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd95".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd97".Q "TM1637/help_cnt_FSM_FFd98".Q 
+        "TM1637/help_cnt_FSM_FFd97".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd97".CLK
+1 1
+.names "KY_040/slow_clock".Q  "KY_040/s_cnt1<1>".CLK-
+1 1
+.names "KY_040/slow_clock".Q  "KY_040/s_cnt1<2>".CLK-
+1 1
+.names "KY_040/slow_clock".Q  "KY_040/s_cnt3<1>".CLK-
+1 1
+.names "KY_040/slow_clock".Q  "KY_040/s_cnt3<2>".CLK-
+1 1
+.names "TM1637/help_cnt_FSM_FFd101".Q "TM1637/help_cnt_FSM_FFd102".Q 
+        "TM1637/help_cnt_FSM_FFd101".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd101".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd103".Q "TM1637/help_cnt_FSM_FFd104".Q 
+        "TM1637/help_cnt_FSM_FFd103".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd103".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd105".Q "TM1637/help_cnt_FSM_FFd106".Q 
+        "TM1637/help_cnt_FSM_FFd105".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd105".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd107".Q "TM1637/help_cnt_FSM_FFd108".Q 
+        "TM1637/help_cnt_FSM_FFd107".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd107".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd109".Q "TM1637/help_cnt_FSM_FFd110".Q 
+        "TM1637/help_cnt_FSM_FFd109".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd109".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd11".Q "TM1637/help_cnt_FSM_FFd12".Q 
+        "TM1637/help_cnt_FSM_FFd11".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd11".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd111".Q "TM1637/help_cnt_FSM_FFd112".Q 
+        "TM1637/help_cnt_FSM_FFd111".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd111".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd113".Q "TM1637/help_cnt_FSM_FFd114".Q 
+        "TM1637/help_cnt_FSM_FFd113".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd113".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd115".Q "TM1637/help_cnt_FSM_FFd116".Q 
+        "TM1637/help_cnt_FSM_FFd115".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd115".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd116".Q "TM1637/help_cnt_FSM_FFd117".Q 
+        "TM1637/help_cnt_FSM_FFd116".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd116".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd117".Q "TM1637/help_cnt_FSM_FFd118".Q 
+        "TM1637/help_cnt_FSM_FFd117".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd117".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd119".Q "TM1637/help_cnt_FSM_FFd120".Q 
+        "TM1637/help_cnt_FSM_FFd119".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd119".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd121".Q "TM1637/help_cnt_FSM_FFd122".Q 
+        "TM1637/help_cnt_FSM_FFd121".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd121".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd123".Q "TM1637/help_cnt_FSM_FFd124".Q 
+        "TM1637/help_cnt_FSM_FFd123".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd123".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd125".Q "TM1637/help_cnt_FSM_FFd126".Q 
+        "TM1637/help_cnt_FSM_FFd125".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd125".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd127".Q "TM1637/help_cnt_FSM_FFd128".Q 
+        "TM1637/help_cnt_FSM_FFd127".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd127".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd129".Q "TM1637/help_cnt_FSM_FFd130".Q 
+        "TM1637/help_cnt_FSM_FFd129".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd129".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd13".Q "TM1637/help_cnt_FSM_FFd14".Q 
+        "TM1637/help_cnt_FSM_FFd13".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd13".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd131".Q "TM1637/help_cnt_FSM_FFd132".Q 
+        "TM1637/help_cnt_FSM_FFd131".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd131".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd133".Q "TM1637/help_cnt_FSM_FFd134".Q 
+        "TM1637/help_cnt_FSM_FFd133".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd133".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd135".Q "TM1637/help_cnt_FSM_FFd136".Q 
+        "TM1637/help_cnt_FSM_FFd135".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd135".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd137".Q "TM1637/help_cnt_FSM_FFd138".Q 
+        "TM1637/help_cnt_FSM_FFd137".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd137".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd139".Q "TM1637/help_cnt_FSM_FFd138".Q 
+        "TM1637/help_cnt_FSM_FFd138".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd138".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd15".Q "TM1637/help_cnt_FSM_FFd16".Q 
+        "TM1637/help_cnt_FSM_FFd15".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd15".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd17".Q "TM1637/help_cnt_FSM_FFd18".Q 
+        "TM1637/help_cnt_FSM_FFd17".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd17".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd19".Q "TM1637/help_cnt_FSM_FFd20".Q 
+        "TM1637/help_cnt_FSM_FFd19".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd19".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd21".Q "TM1637/help_cnt_FSM_FFd22".Q 
+        "TM1637/help_cnt_FSM_FFd21".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd21".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd25".Q "TM1637/help_cnt_FSM_FFd26".Q 
+        "TM1637/help_cnt_FSM_FFd25".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd25".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd27".Q "TM1637/help_cnt_FSM_FFd28".Q 
+        "TM1637/help_cnt_FSM_FFd27".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd27".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd29".Q "TM1637/help_cnt_FSM_FFd30".Q 
+        "TM1637/help_cnt_FSM_FFd29".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd29".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd45".Q "TM1637/help_cnt_FSM_FFd46".Q 
+        "TM1637/help_cnt_FSM_FFd45".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd45".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd47".Q "TM1637/help_cnt_FSM_FFd48".Q 
+        "TM1637/help_cnt_FSM_FFd47".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd47".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd63".Q "TM1637/help_cnt_FSM_FFd64".Q 
+        "TM1637/help_cnt_FSM_FFd63".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd63".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd65".Q "TM1637/help_cnt_FSM_FFd66".Q 
+        "TM1637/help_cnt_FSM_FFd65".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd65".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd7".Q "TM1637/help_cnt_FSM_FFd8".Q 
+        "TM1637/help_cnt_FSM_FFd7".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd7".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd81".Q "TM1637/help_cnt_FSM_FFd82".Q 
+        "TM1637/help_cnt_FSM_FFd81".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd81".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd83".Q "TM1637/help_cnt_FSM_FFd84".Q 
+        "TM1637/help_cnt_FSM_FFd83".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd83".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd9".Q "TM1637/help_cnt_FSM_FFd10".Q 
+        "TM1637/help_cnt_FSM_FFd9".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd9".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd99".Q "TM1637/help_cnt_FSM_FFd100".Q 
+        "TM1637/help_cnt_FSM_FFd99".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd99".CLK
+1 1
+.names "KY_040/slow_clock".Q  "KY_040/s_cnt0<3>".CLK-
+1 1
+.names "KY_040/slow_clock".Q  "KY_040/s_cnt2<3>".CLK-
+1 1
+.names "TM1637/help_cnt_FSM_FFd22".Q "TM1637/help_cnt_FSM_FFd23".Q 
+        "TM1637/help_cnt_FSM_FFd22".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd22".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd23".Q "TM1637/help_cnt_FSM_FFd24".Q 
+        "TM1637/help_cnt_FSM_FFd23".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd23".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd5".Q "TM1637/help_cnt_FSM_FFd6".Q 
+        "TM1637/help_cnt_FSM_FFd5".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd5".CLK
+1 1
+.names "KY_040/slow_clock".Q  "KY_040/s_cnt1<3>".CLK-
+1 1
+.names "KY_040/slow_clock".Q  "KY_040/s_cnt3<3>".CLK-
+1 1
+.names "TM1637/help_cnt_FSM_FFd3".Q "TM1637/help_cnt_FSM_FFd4".Q 
+        "TM1637/help_cnt_FSM_FFd3".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd3".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd11".Q "TM1637/help_cnt_FSM_FFd10".Q 
+        "TM1637/help_cnt_FSM_FFd10".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd10".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd101".Q "TM1637/help_cnt_FSM_FFd100".Q 
+        "TM1637/help_cnt_FSM_FFd100".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd100".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd103".Q "TM1637/help_cnt_FSM_FFd102".Q 
+        "TM1637/help_cnt_FSM_FFd102".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd102".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd105".Q "TM1637/help_cnt_FSM_FFd104".Q 
+        "TM1637/help_cnt_FSM_FFd104".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd104".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd107".Q "TM1637/help_cnt_FSM_FFd106".Q 
+        "TM1637/help_cnt_FSM_FFd106".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd106".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd109".Q "TM1637/help_cnt_FSM_FFd108".Q 
+        "TM1637/help_cnt_FSM_FFd108".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd108".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd111".Q "TM1637/help_cnt_FSM_FFd110".Q 
+        "TM1637/help_cnt_FSM_FFd110".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd110".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd113".Q "TM1637/help_cnt_FSM_FFd112".Q 
+        "TM1637/help_cnt_FSM_FFd112".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd112".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd115".Q "TM1637/help_cnt_FSM_FFd114".Q 
+        "TM1637/help_cnt_FSM_FFd114".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd114".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd119".Q "TM1637/help_cnt_FSM_FFd118".Q 
+        "TM1637/help_cnt_FSM_FFd118".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd118".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd13".Q "TM1637/help_cnt_FSM_FFd12".Q 
+        "TM1637/help_cnt_FSM_FFd12".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd12".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd121".Q "TM1637/help_cnt_FSM_FFd120".Q 
+        "TM1637/help_cnt_FSM_FFd120".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd120".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd123".Q "TM1637/help_cnt_FSM_FFd122".Q 
+        "TM1637/help_cnt_FSM_FFd122".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd122".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd125".Q "TM1637/help_cnt_FSM_FFd124".Q 
+        "TM1637/help_cnt_FSM_FFd124".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd124".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd127".Q "TM1637/help_cnt_FSM_FFd126".Q 
+        "TM1637/help_cnt_FSM_FFd126".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd126".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd129".Q "TM1637/help_cnt_FSM_FFd128".Q 
+        "TM1637/help_cnt_FSM_FFd128".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd128".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd131".Q "TM1637/help_cnt_FSM_FFd130".Q 
+        "TM1637/help_cnt_FSM_FFd130".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd130".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd133".Q "TM1637/help_cnt_FSM_FFd132".Q 
+        "TM1637/help_cnt_FSM_FFd132".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd132".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd135".Q "TM1637/help_cnt_FSM_FFd134".Q 
+        "TM1637/help_cnt_FSM_FFd134".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd134".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd137".Q "TM1637/help_cnt_FSM_FFd136".Q 
+        "TM1637/help_cnt_FSM_FFd136".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd136".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd15".Q "TM1637/help_cnt_FSM_FFd14".Q 
+        "TM1637/help_cnt_FSM_FFd14".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd14".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd17".Q "TM1637/help_cnt_FSM_FFd16".Q 
+        "TM1637/help_cnt_FSM_FFd16".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd16".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd19".Q "TM1637/help_cnt_FSM_FFd18".Q 
+        "TM1637/help_cnt_FSM_FFd18".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd18".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd3".Q "TM1637/help_cnt_FSM_FFd2".Q 
+        "TM1637/help_cnt_FSM_FFd2".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd2".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd21".Q "TM1637/help_cnt_FSM_FFd20".Q 
+        "TM1637/help_cnt_FSM_FFd20".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd20".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd25".Q "TM1637/help_cnt_FSM_FFd24".Q 
+        "TM1637/help_cnt_FSM_FFd24".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd24".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd27".Q "TM1637/help_cnt_FSM_FFd26".Q 
+        "TM1637/help_cnt_FSM_FFd26".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd26".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd29".Q "TM1637/help_cnt_FSM_FFd28".Q 
+        "TM1637/help_cnt_FSM_FFd28".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd28".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd31".Q "TM1637/help_cnt_FSM_FFd30".Q 
+        "TM1637/help_cnt_FSM_FFd30".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd30".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd33".Q "TM1637/help_cnt_FSM_FFd32".Q 
+        "TM1637/help_cnt_FSM_FFd32".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd32".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd35".Q "TM1637/help_cnt_FSM_FFd34".Q 
+        "TM1637/help_cnt_FSM_FFd34".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd34".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd37".Q "TM1637/help_cnt_FSM_FFd36".Q 
+        "TM1637/help_cnt_FSM_FFd36".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd36".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd39".Q "TM1637/help_cnt_FSM_FFd38".Q 
+        "TM1637/help_cnt_FSM_FFd38".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd38".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd5".Q "TM1637/help_cnt_FSM_FFd4".Q 
+        "TM1637/help_cnt_FSM_FFd4".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd4".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd41".Q "TM1637/help_cnt_FSM_FFd40".Q 
+        "TM1637/help_cnt_FSM_FFd40".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd40".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd43".Q "TM1637/help_cnt_FSM_FFd42".Q 
+        "TM1637/help_cnt_FSM_FFd42".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd42".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd45".Q "TM1637/help_cnt_FSM_FFd44".Q 
+        "TM1637/help_cnt_FSM_FFd44".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd44".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd47".Q "TM1637/help_cnt_FSM_FFd46".Q 
+        "TM1637/help_cnt_FSM_FFd46".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd46".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd49".Q "TM1637/help_cnt_FSM_FFd48".Q 
+        "TM1637/help_cnt_FSM_FFd48".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd48".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd51".Q "TM1637/help_cnt_FSM_FFd50".Q 
+        "TM1637/help_cnt_FSM_FFd50".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd50".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd53".Q "TM1637/help_cnt_FSM_FFd52".Q 
+        "TM1637/help_cnt_FSM_FFd52".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd52".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd55".Q "TM1637/help_cnt_FSM_FFd54".Q 
+        "TM1637/help_cnt_FSM_FFd54".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd54".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd57".Q "TM1637/help_cnt_FSM_FFd56".Q 
+        "TM1637/help_cnt_FSM_FFd56".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd56".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd59".Q "TM1637/help_cnt_FSM_FFd58".Q 
+        "TM1637/help_cnt_FSM_FFd58".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd58".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd7".Q "TM1637/help_cnt_FSM_FFd6".Q 
+        "TM1637/help_cnt_FSM_FFd6".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd6".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd61".Q "TM1637/help_cnt_FSM_FFd60".Q 
+        "TM1637/help_cnt_FSM_FFd60".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd60".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd63".Q "TM1637/help_cnt_FSM_FFd62".Q 
+        "TM1637/help_cnt_FSM_FFd62".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd62".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd65".Q "TM1637/help_cnt_FSM_FFd64".Q 
+        "TM1637/help_cnt_FSM_FFd64".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd64".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd67".Q "TM1637/help_cnt_FSM_FFd66".Q 
+        "TM1637/help_cnt_FSM_FFd66".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd66".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd69".Q "TM1637/help_cnt_FSM_FFd68".Q 
+        "TM1637/help_cnt_FSM_FFd68".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd68".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd71".Q "TM1637/help_cnt_FSM_FFd70".Q 
+        "TM1637/help_cnt_FSM_FFd70".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd70".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd73".Q "TM1637/help_cnt_FSM_FFd72".Q 
+        "TM1637/help_cnt_FSM_FFd72".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd72".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd75".Q "TM1637/help_cnt_FSM_FFd74".Q 
+        "TM1637/help_cnt_FSM_FFd74".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd74".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd77".Q "TM1637/help_cnt_FSM_FFd76".Q 
+        "TM1637/help_cnt_FSM_FFd76".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd76".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd79".Q "TM1637/help_cnt_FSM_FFd78".Q 
+        "TM1637/help_cnt_FSM_FFd78".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd78".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd9".Q "TM1637/help_cnt_FSM_FFd8".Q 
+        "TM1637/help_cnt_FSM_FFd8".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd8".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd81".Q "TM1637/help_cnt_FSM_FFd80".Q 
+        "TM1637/help_cnt_FSM_FFd80".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd80".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd83".Q "TM1637/help_cnt_FSM_FFd82".Q 
+        "TM1637/help_cnt_FSM_FFd82".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd82".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd85".Q "TM1637/help_cnt_FSM_FFd84".Q 
+        "TM1637/help_cnt_FSM_FFd84".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd84".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd87".Q "TM1637/help_cnt_FSM_FFd86".Q 
+        "TM1637/help_cnt_FSM_FFd86".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd86".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd89".Q "TM1637/help_cnt_FSM_FFd88".Q 
+        "TM1637/help_cnt_FSM_FFd88".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd88".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd91".Q "TM1637/help_cnt_FSM_FFd90".Q 
+        "TM1637/help_cnt_FSM_FFd90".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd90".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd93".Q "TM1637/help_cnt_FSM_FFd92".Q 
+        "TM1637/help_cnt_FSM_FFd92".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd92".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd95".Q "TM1637/help_cnt_FSM_FFd94".Q 
+        "TM1637/help_cnt_FSM_FFd94".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd94".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd97".Q "TM1637/help_cnt_FSM_FFd96".Q 
+        "TM1637/help_cnt_FSM_FFd96".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd96".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd99".Q "TM1637/help_cnt_FSM_FFd98".Q 
+        "TM1637/help_cnt_FSM_FFd98".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd98".CLK
+1 1
+.names "TM1637/help_cnt_FSM_FFd2".Q "TM1637/help_cnt_FSM_FFd1".Q 
+        "TM1637/help_cnt_FSM_FFd1".T
+01 1
+10 1
+.names "clk_i"  "TM1637/help_cnt_FSM_FFd1".CLK
+1 1
+.names "pinA_i"  "KY_040/prev_A".D
+1 1
+.names "KY_040/slow_clock".Q  "KY_040/prev_A".CLK-
+1 1
+.names "KY_040/enable_set_val".Q  "KY_040/prev_A".CE
+1 1
+.names "TM1637/Mtrien_dio_and000082" "TM1637/help_cnt_FSM_FFd139".Q 
+       "TM1637/help_cnt_FSM_FFd123".Q "TM1637/help_cnt_FSM_FFd125".Q 
+       "TM1637/help_cnt_FSM_FFd127".Q "TM1637/help_cnt_FSM_FFd138".Q 
+       "TM1637/Mtrien_dio".Q "N_PZ_960" "N_PZ_1050"  "TM1637/Mtrien_dio".D
+10-0-01-1 1
+000000-11 1
+.names "clk_i"  "TM1637/Mtrien_dio".CLK
+1 1
+.names "TM1637/sclk_mux00001" "TM1637/sclk_mux00007" "TM1637/sclk_mux00006" 
+       "TM1637/sclk_mux00005" "TM1637/sclk_mux00004" "TM1637/sclk_mux000090" 
+       "TM1637/help_cnt_FSM_FFd116".Q "TM1637/help_cnt_FSM_FFd117".Q 
+       "TM1637/help_cnt_FSM_FFd10".Q "TM1637/help_cnt_FSM_FFd100".Q 
+       "TM1637/help_cnt_FSM_FFd102".Q "TM1637/help_cnt_FSM_FFd104".Q 
+       "TM1637/help_cnt_FSM_FFd106".Q "TM1637/help_cnt_FSM_FFd108".Q 
+       "TM1637/help_cnt_FSM_FFd110".Q "TM1637/help_cnt_FSM_FFd112".Q 
+       "TM1637/help_cnt_FSM_FFd114".Q "TM1637/help_cnt_FSM_FFd118".Q 
+       "TM1637/help_cnt_FSM_FFd12".Q "TM1637/help_cnt_FSM_FFd120".Q 
+       "TM1637/help_cnt_FSM_FFd14".Q "TM1637/help_cnt_FSM_FFd16".Q 
+       "TM1637/help_cnt_FSM_FFd18".Q "TM1637/help_cnt_FSM_FFd20".Q 
+       "TM1637/help_cnt_FSM_FFd24".Q "TM1637/help_cnt_FSM_FFd26".Q 
+       "TM1637/help_cnt_FSM_FFd92".Q "TM1637/help_cnt_FSM_FFd94".Q 
+       "TM1637/help_cnt_FSM_FFd96".Q "TM1637/help_cnt_FSM_FFd98".Q  "sclk_o".D-
+111111000000000000000000000000 1
+.names "clk_i"  "sclk_o".CLK
+1 1
+.names "s_reset_i" "KY_040/clock_enable/s_cnt<10>".Q "KY_040/clock_enable/s_cnt<11>".Q 
+       "KY_040/clock_enable/s_cnt<12>".Q "KY_040/clock_enable/s_cnt<13>".Q 
+       "KY_040/clock_enable/s_cnt<14>".Q "KY_040/clock_enable/s_cnt<8>".Q 
+       "KY_040/clock_enable/s_cnt<9>".Q "KY_040/clock_enable/s_cnt<15>".Q 
+        "KY_040/clock_en".D-
+0-------- 1
+-00000000 1
+.names "clk_i"  "KY_040/clock_en".CLK
+1 1
+.names "s_reset_i" "KY_040/clock_enable/s_cnt<10>".Q "KY_040/clock_enable/s_cnt<11>".Q 
+       "KY_040/clock_enable/s_cnt<12>".Q "KY_040/clock_enable/s_cnt<13>".Q 
+       "KY_040/clock_enable/s_cnt<14>".Q "KY_040/clock_enable/s_cnt<8>".Q 
+       "KY_040/clock_enable/s_cnt<9>".Q "KY_040/clock_enable/s_cnt<15>".Q "N_PZ_829" 
+        "KY_040/clock_enable/s_cnt<10>".D
+1000000001 1
+.names "clk_i"  "KY_040/clock_enable/s_cnt<10>".CLK
+1 1
+.names  "KY_040/clock_enable/s_cnt<11>".D
+.names "clk_i"  "KY_040/clock_enable/s_cnt<11>".CLK
+1 1
+.names "s_reset_i" "KY_040/clock_enable/s_cnt<10>".Q "KY_040/clock_enable/s_cnt<11>".Q 
+       "KY_040/clock_enable/s_cnt<12>".Q "KY_040/clock_enable/s_cnt<13>".Q 
+       "KY_040/clock_enable/s_cnt<14>".Q "KY_040/clock_enable/s_cnt<8>".Q 
+       "KY_040/clock_enable/s_cnt<9>".Q "KY_040/clock_enable/s_cnt<15>".Q 
+        "KY_040/clock_enable/s_cnt<12>".D
+100000000 1
+.names "clk_i"  "KY_040/clock_enable/s_cnt<12>".CLK
+1 1
+.names  "KY_040/clock_enable/s_cnt<13>".D
+.names "clk_i"  "KY_040/clock_enable/s_cnt<13>".CLK
+1 1
+.names  "KY_040/clock_enable/s_cnt<14>".D
+.names "clk_i"  "KY_040/clock_enable/s_cnt<14>".CLK
+1 1
+.names "s_reset_i" "KY_040/clock_enable/s_cnt<10>".Q "KY_040/clock_enable/s_cnt<11>".Q 
+       "KY_040/clock_enable/s_cnt<12>".Q "KY_040/clock_enable/s_cnt<13>".Q 
+       "KY_040/clock_enable/s_cnt<14>".Q "KY_040/clock_enable/s_cnt<8>".Q 
+       "KY_040/clock_enable/s_cnt<9>".Q "KY_040/clock_enable/s_cnt<15>".Q "N_PZ_829" 
+        "KY_040/clock_enable/s_cnt<8>".D
+1000000000 1
+.names "clk_i"  "KY_040/clock_enable/s_cnt<8>".CLK
+1 1
+.names "s_reset_i" "KY_040/clock_enable/s_cnt<10>".Q "KY_040/clock_enable/s_cnt<11>".Q 
+       "KY_040/clock_enable/s_cnt<12>".Q "KY_040/clock_enable/s_cnt<13>".Q 
+       "KY_040/clock_enable/s_cnt<14>".Q "KY_040/clock_enable/s_cnt<8>".Q 
+       "KY_040/clock_enable/s_cnt<9>".Q "KY_040/clock_enable/s_cnt<15>".Q "N_PZ_829" 
+        "KY_040/clock_enable/s_cnt<9>".D
+1000000000 1
+.names "clk_i"  "KY_040/clock_enable/s_cnt<9>".CLK
+1 1
+.names "clk_i"  "KY_040/slow_clock_counter<0>".CLK
+1 1
+.names  "KY_040/clock_enable/s_cnt<15>".D
+.names "clk_i"  "KY_040/clock_enable/s_cnt<15>".CLK
+1 1
+.names "s_reset_i" "KY_040/clock_enable/s_cnt<10>".Q "KY_040/clock_enable/s_cnt<11>".Q 
+       "KY_040/clock_enable/s_cnt<12>".Q "KY_040/clock_enable/s_cnt<13>".Q 
+       "KY_040/clock_enable/s_cnt<14>".Q "KY_040/clock_enable/s_cnt<8>".Q 
+       "KY_040/clock_enable/s_cnt<9>".Q "KY_040/clock_enable/s_cnt<15>".Q 
+       "KY_040/clock_enable/s_cnt<3>".Q  "KY_040/clock_enable/s_cnt<3>".D
+1000000000 1
+.names "clk_i"  "KY_040/clock_enable/s_cnt<3>".CLK
+1 1
+.names "clk_i"  "KY_040/slow_clock_counter<10>".CLK
+1 1
+.names "clk_i"  "KY_040/slow_clock_counter<11>".CLK
+1 1
+.names "clk_i"  "KY_040/slow_clock_counter<12>".CLK
+1 1
+.names "clk_i"  "KY_040/slow_clock_counter<13>".CLK
+1 1
+.names "clk_i"  "KY_040/slow_clock_counter<14>".CLK
+1 1
+.names "clk_i"  "KY_040/slow_clock_counter<15>".CLK
+1 1
+.names "clk_i"  "KY_040/slow_clock_counter<16>".CLK
+1 1
+.names "clk_i"  "KY_040/slow_clock_counter<17>".CLK
+1 1
+.names "clk_i"  "KY_040/slow_clock_counter<18>".CLK
+1 1
+.names "clk_i"  "KY_040/slow_clock_counter<19>".CLK
+1 1
+.names "KY_040/slow_clock_cmp_eq0000" "KY_040/slow_clock_counter<0>".Q 
+       "KY_040/slow_clock_counter<1>".Q  "KY_040/slow_clock_counter<1>".D
+001 1
+010 1
+.names "clk_i"  "KY_040/slow_clock_counter<1>".CLK
+1 1
+.names "clk_i"  "KY_040/slow_clock_counter<20>".CLK
+1 1
+.names "clk_i"  "KY_040/slow_clock_counter<21>".CLK
+1 1
+.names "clk_i"  "KY_040/slow_clock_counter<22>".CLK
+1 1
+.names "clk_i"  "KY_040/slow_clock_counter<23>".CLK
+1 1
+.names "clk_i"  "KY_040/slow_clock_counter<24>".CLK
+1 1
+.names "clk_i"  "KY_040/slow_clock_counter<25>".CLK
+1 1
+.names "clk_i"  "KY_040/slow_clock_counter<26>".CLK
+1 1
+.names "clk_i"  "KY_040/slow_clock_counter<27>".CLK
+1 1
+.names "KY_040/slow_clock_cmp_eq0000" "KY_040/slow_clock_counter<0>".Q 
+       "KY_040/slow_clock_counter<10>".Q "KY_040/slow_clock_counter<11>".Q 
+       "KY_040/slow_clock_counter<12>".Q "KY_040/slow_clock_counter<13>".Q 
+       "KY_040/slow_clock_counter<14>".Q "KY_040/slow_clock_counter<15>".Q 
+       "KY_040/slow_clock_counter<16>".Q "KY_040/slow_clock_counter<17>".Q 
+       "KY_040/slow_clock_counter<18>".Q "KY_040/slow_clock_counter<19>".Q 
+       "KY_040/slow_clock_counter<1>".Q "KY_040/slow_clock_counter<20>".Q 
+       "KY_040/slow_clock_counter<21>".Q "KY_040/slow_clock_counter<22>".Q 
+       "KY_040/slow_clock_counter<23>".Q "KY_040/slow_clock_counter<24>".Q 
+       "KY_040/slow_clock_counter<25>".Q "KY_040/slow_clock_counter<26>".Q 
+       "KY_040/slow_clock_counter<27>".Q "KY_040/slow_clock_counter<28>".Q 
+       "KY_040/slow_clock_counter<2>".Q "KY_040/slow_clock_counter<3>".Q 
+       "KY_040/slow_clock_counter<4>".Q "KY_040/slow_clock_counter<5>".Q 
+       "KY_040/slow_clock_counter<6>".Q "KY_040/slow_clock_counter<7>".Q 
+       "KY_040/slow_clock_counter<8>".Q "KY_040/slow_clock_counter<9>".Q "N_PZ_630" 
+        "KY_040/slow_clock_counter<28>".D
+0-----------------------------0 1
+011111111111111111111011111111- 1
+.names "clk_i"  "KY_040/slow_clock_counter<28>".CLK
+1 1
+.names "KY_040/slow_clock_cmp_eq0000" "KY_040/slow_clock_counter<0>".Q 
+       "KY_040/slow_clock_counter<10>".Q "KY_040/slow_clock_counter<11>".Q 
+       "KY_040/slow_clock_counter<12>".Q "KY_040/slow_clock_counter<13>".Q 
+       "KY_040/slow_clock_counter<14>".Q "KY_040/slow_clock_counter<15>".Q 
+       "KY_040/slow_clock_counter<16>".Q "KY_040/slow_clock_counter<17>".Q 
+       "KY_040/slow_clock_counter<18>".Q "KY_040/slow_clock_counter<19>".Q 
+       "KY_040/slow_clock_counter<1>".Q "KY_040/slow_clock_counter<20>".Q 
+       "KY_040/slow_clock_counter<21>".Q "KY_040/slow_clock_counter<22>".Q 
+       "KY_040/slow_clock_counter<23>".Q "KY_040/slow_clock_counter<24>".Q 
+       "KY_040/slow_clock_counter<25>".Q "KY_040/slow_clock_counter<26>".Q 
+       "KY_040/slow_clock_counter<27>".Q "KY_040/slow_clock_counter<28>".Q 
+       "KY_040/slow_clock_counter<29>".Q "KY_040/slow_clock_counter<2>".Q 
+       "KY_040/slow_clock_counter<3>".Q "KY_040/slow_clock_counter<4>".Q 
+       "KY_040/slow_clock_counter<5>".Q "KY_040/slow_clock_counter<6>".Q 
+       "KY_040/slow_clock_counter<7>".Q "KY_040/slow_clock_counter<8>".Q 
+       "KY_040/slow_clock_counter<9>".Q "N_PZ_636"  "KY_040/slow_clock_counter<29>".D
+0------------------------------0 1
+0---------------------1-------0- 1
+0111111111111111111111011111111- 1
+.names "clk_i"  "KY_040/slow_clock_counter<29>".CLK
+1 1
+.names "clk_i"  "KY_040/slow_clock_counter<2>".CLK
+1 1
+.names "KY_040/slow_clock_cmp_eq0000" "KY_040/slow_clock_counter__add0000<30>" 
+        "KY_040/slow_clock_counter<30>".D
+01 1
+.names "clk_i"  "KY_040/slow_clock_counter<30>".CLK
+1 1
+.names "clk_i"  "KY_040/slow_clock_counter<3>".CLK
+1 1
+.names "clk_i"  "KY_040/slow_clock_counter<4>".CLK
+1 1
+.names "clk_i"  "KY_040/slow_clock_counter<5>".CLK
+1 1
+.names "clk_i"  "KY_040/slow_clock_counter<6>".CLK
+1 1
+.names "clk_i"  "KY_040/slow_clock_counter<7>".CLK
+1 1
+.names "clk_i"  "KY_040/slow_clock_counter<8>".CLK
+1 1
+.names "clk_i"  "KY_040/slow_clock_counter<9>".CLK
+1 1
+.names "s_reset_i" "KY_040/clock_enable/s_cnt<10>".Q "KY_040/clock_enable/s_cnt<11>".Q 
+       "KY_040/clock_enable/s_cnt<12>".Q "KY_040/clock_enable/s_cnt<13>".Q 
+       "KY_040/clock_enable/s_cnt<14>".Q "KY_040/clock_enable/s_cnt<8>".Q 
+       "KY_040/clock_enable/s_cnt<9>".Q "KY_040/clock_enable/s_cnt<15>".Q 
+       "KY_040/clock_enable/s_cnt<3>".Q "KY_040/clock_enable/s_cnt<4>".Q 
+        "KY_040/clock_enable/s_cnt<4>".D
+10000000001 1
+10000000010 1
+.names "clk_i"  "KY_040/clock_enable/s_cnt<4>".CLK
+1 1
+.names "s_reset_i" "KY_040/clock_enable/s_cnt<10>".Q "KY_040/clock_enable/s_cnt<11>".Q 
+       "KY_040/clock_enable/s_cnt<12>".Q "KY_040/clock_enable/s_cnt<13>".Q 
+       "KY_040/clock_enable/s_cnt<14>".Q "KY_040/clock_enable/s_cnt<8>".Q 
+       "KY_040/clock_enable/s_cnt<9>".Q "KY_040/clock_enable/s_cnt<15>".Q 
+       "KY_040/clock_enable/s_cnt<3>".Q "KY_040/clock_enable/s_cnt<4>".Q 
+       "KY_040/clock_enable/s_cnt<5>".Q  "KY_040/clock_enable/s_cnt<5>".D
+1000000000-1 1
+100000000-01 1
+100000000110 1
+.names "clk_i"  "KY_040/clock_enable/s_cnt<5>".CLK
+1 1
+.names "s_reset_i" "KY_040/clock_enable/s_cnt<10>".Q "KY_040/clock_enable/s_cnt<11>".Q 
+       "KY_040/clock_enable/s_cnt<12>".Q "KY_040/clock_enable/s_cnt<13>".Q 
+       "KY_040/clock_enable/s_cnt<14>".Q "KY_040/clock_enable/s_cnt<8>".Q 
+       "KY_040/clock_enable/s_cnt<9>".Q "KY_040/clock_enable/s_cnt<15>".Q 
+       "KY_040/clock_enable/s_cnt<3>".Q "KY_040/clock_enable/s_cnt<4>".Q 
+       "KY_040/clock_enable/s_cnt<5>".Q "KY_040/clock_enable/s_cnt<6>".Q 
+        "KY_040/clock_enable/s_cnt<6>".D
+1000000000--1 1
+100000000-0-1 1
+100000000--01 1
+1000000001110 1
+.names "clk_i"  "KY_040/clock_enable/s_cnt<6>".CLK
+1 1
+.names "s_reset_i" "KY_040/clock_enable/s_cnt<10>".Q "KY_040/clock_enable/s_cnt<11>".Q 
+       "KY_040/clock_enable/s_cnt<12>".Q "KY_040/clock_enable/s_cnt<13>".Q 
+       "KY_040/clock_enable/s_cnt<14>".Q "KY_040/clock_enable/s_cnt<8>".Q 
+       "KY_040/clock_enable/s_cnt<9>".Q "KY_040/clock_enable/s_cnt<15>".Q 
+       "KY_040/clock_enable/s_cnt<3>".Q "KY_040/clock_enable/s_cnt<4>".Q 
+       "KY_040/clock_enable/s_cnt<5>".Q "KY_040/clock_enable/s_cnt<6>".Q 
+       "KY_040/clock_enable/s_cnt<7>".Q "N_PZ_829"  "KY_040/clock_enable/s_cnt<7>".D
+100000000-----0 1
+10000000011111- 1
+.names "clk_i"  "KY_040/clock_enable/s_cnt<7>".CLK
+1 1
+.names "clk_i"  "KY_040/slow_clock_counter<31>".CLK
+1 1
+.names "uni_c<1>".Q "uni_c<2>".Q "uni_c<0>".Q "uni_c<3>".Q  "TM1637/digit0<0>".D-
+0010 1
+0100 1
+.names "TM1637/help_cnt_FSM_FFd139".Q  "TM1637/digit0<0>".LH
+1 1
+.names "uni_c<1>".Q "uni_c<2>".Q "uni_c<0>".Q "uni_c<3>".Q  "TM1637/digit0<1>".D-
+0110 1
+1100 1
+.names "TM1637/help_cnt_FSM_FFd139".Q  "TM1637/digit0<1>".LH
+1 1
+.names "uni_c<1>".Q "uni_c<2>".Q "uni_c<0>".Q "uni_c<3>".Q  "TM1637/digit0<2>".D-
+1000 1
+.names "TM1637/help_cnt_FSM_FFd139".Q  "TM1637/digit0<2>".LH
+1 1
+.names "uni_c<1>".Q "uni_c<2>".Q "uni_c<0>".Q "uni_c<3>".Q  "TM1637/digit0<3>".D-
+1110 1
+0010 1
+0100 1
+.names "TM1637/help_cnt_FSM_FFd139".Q  "TM1637/digit0<3>".LH
+1 1
+.names "uni_c<1>".Q "uni_c<2>".Q "uni_c<0>".Q "uni_c<3>".Q  "TM1637/digit0<4>".D-
+--10 1
+001- 1
+01-0 1
+.names "TM1637/help_cnt_FSM_FFd139".Q  "TM1637/digit0<4>".LH
+1 1
+.names "uni_c<1>".Q "uni_c<2>".Q "uni_c<0>".Q "uni_c<3>".Q "N_PZ_967" 
+        "TM1637/digit0<5>".D-
+1-10- 1
+-0-00 1
+.names "TM1637/help_cnt_FSM_FFd139".Q  "TM1637/digit0<5>".LH
+1 1
+.names "uni_c<3>".Q  "TM1637/digit0<6>".D.X1
+1 1
+.names "uni_c<1>".Q "uni_c<2>".Q "uni_c<0>".Q "uni_c<3>".Q  "TM1637/digit0<6>".D.X2-
+1110 1
+00-- 1
+.names "TM1637/help_cnt_FSM_FFd139".Q  "TM1637/digit0<6>".LH
+1 1
+.names "tens_c<1>".Q "tens_c<2>".Q "tens_c<0>".Q "tens_c<3>".Q  "TM1637/digit1<0>".D-
+0010 1
+0100 1
+.names "TM1637/help_cnt_FSM_FFd139".Q  "TM1637/digit1<0>".LH
+1 1
+.names "tens_c<1>".Q "tens_c<2>".Q "tens_c<0>".Q "tens_c<3>".Q  "TM1637/digit1<1>".D-
+0110 1
+1100 1
+.names "TM1637/help_cnt_FSM_FFd139".Q  "TM1637/digit1<1>".LH
+1 1
+.names "tens_c<1>".Q "tens_c<2>".Q "tens_c<0>".Q "tens_c<3>".Q  "TM1637/digit1<2>".D-
+1000 1
+.names "TM1637/help_cnt_FSM_FFd139".Q  "TM1637/digit1<2>".LH
+1 1
+.names "tens_c<1>".Q "tens_c<2>".Q "tens_c<0>".Q "tens_c<3>".Q  "TM1637/digit1<3>".D-
+1110 1
+0010 1
+0100 1
+.names "TM1637/help_cnt_FSM_FFd139".Q  "TM1637/digit1<3>".LH
+1 1
+.names "tens_c<1>".Q "tens_c<2>".Q "tens_c<0>".Q "tens_c<3>".Q  "TM1637/digit1<4>".D-
+--10 1
+001- 1
+01-0 1
+.names "TM1637/help_cnt_FSM_FFd139".Q  "TM1637/digit1<4>".LH
+1 1
+.names "tens_c<1>".Q "tens_c<2>".Q "tens_c<0>".Q "tens_c<3>".Q  "TM1637/digit1<5>".D-
+10-0 1
+1-10 1
+-010 1
+.names "TM1637/help_cnt_FSM_FFd139".Q  "TM1637/digit1<5>".LH
+1 1
+.names "tens_c<3>".Q  "TM1637/digit1<6>".D.X1
+1 1
+.names "tens_c<1>".Q "tens_c<2>".Q "tens_c<0>".Q "tens_c<3>".Q 
+        "TM1637/digit1<6>".D.X2-
+1110 1
+00-- 1
+.names "TM1637/help_cnt_FSM_FFd139".Q  "TM1637/digit1<6>".LH
+1 1
+.names "hund_c<1>".Q "hund_c<2>".Q "hund_c<0>".Q "hund_c<3>".Q  "TM1637/digit2<0>".D-
+0010 1
+0100 1
+.names "TM1637/help_cnt_FSM_FFd139".Q  "TM1637/digit2<0>".LH
+1 1
+.names "hund_c<1>".Q "hund_c<2>".Q "hund_c<0>".Q "hund_c<3>".Q  "TM1637/digit2<1>".D-
+0110 1
+1100 1
+.names "TM1637/help_cnt_FSM_FFd139".Q  "TM1637/digit2<1>".LH
+1 1
+.names "hund_c<1>".Q "hund_c<2>".Q "hund_c<0>".Q "hund_c<3>".Q  "TM1637/digit2<2>".D-
+1000 1
+.names "TM1637/help_cnt_FSM_FFd139".Q  "TM1637/digit2<2>".LH
+1 1
+.names "hund_c<1>".Q "hund_c<2>".Q "hund_c<0>".Q "hund_c<3>".Q  "TM1637/digit2<3>".D-
+1110 1
+0010 1
+0100 1
+.names "TM1637/help_cnt_FSM_FFd139".Q  "TM1637/digit2<3>".LH
+1 1
+.names "hund_c<1>".Q "hund_c<2>".Q "hund_c<0>".Q "hund_c<3>".Q  "TM1637/digit2<4>".D-
+--10 1
+001- 1
+01-0 1
+.names "TM1637/help_cnt_FSM_FFd139".Q  "TM1637/digit2<4>".LH
+1 1
+.names "hund_c<1>".Q "hund_c<2>".Q "hund_c<0>".Q "hund_c<3>".Q  "TM1637/digit2<5>".D-
+10-0 1
+1-10 1
+-010 1
+.names "TM1637/help_cnt_FSM_FFd139".Q  "TM1637/digit2<5>".LH
+1 1
+.names "hund_c<3>".Q  "TM1637/digit2<6>".D.X1
+1 1
+.names "hund_c<1>".Q "hund_c<2>".Q "hund_c<0>".Q "hund_c<3>".Q 
+        "TM1637/digit2<6>".D.X2-
+1110 1
+00-- 1
+.names "TM1637/help_cnt_FSM_FFd139".Q  "TM1637/digit2<6>".LH
+1 1
+.names "thous_c<1>".Q "thous_c<2>".Q "thous_c<0>".Q "thous_c<3>".Q 
+        "TM1637/digit3<0>".D-
+0010 1
+0100 1
+.names "TM1637/help_cnt_FSM_FFd139".Q  "TM1637/digit3<0>".LH
+1 1
+.names "thous_c<1>".Q "thous_c<2>".Q "thous_c<0>".Q "thous_c<3>".Q 
+        "TM1637/digit3<1>".D-
+0110 1
+1100 1
+.names "TM1637/help_cnt_FSM_FFd139".Q  "TM1637/digit3<1>".LH
+1 1
+.names "thous_c<1>".Q "thous_c<2>".Q "thous_c<0>".Q "thous_c<3>".Q 
+        "TM1637/digit3<2>".D-
+1000 1
+.names "TM1637/help_cnt_FSM_FFd139".Q  "TM1637/digit3<2>".LH
+1 1
+.names "thous_c<1>".Q "thous_c<2>".Q "thous_c<0>".Q "thous_c<3>".Q 
+        "TM1637/digit3<3>".D-
+1110 1
+0010 1
+0100 1
+.names "TM1637/help_cnt_FSM_FFd139".Q  "TM1637/digit3<3>".LH
+1 1
+.names "thous_c<1>".Q "thous_c<2>".Q "thous_c<0>".Q "thous_c<3>".Q 
+        "TM1637/digit3<4>".D-
+--10 1
+001- 1
+01-0 1
+.names "TM1637/help_cnt_FSM_FFd139".Q  "TM1637/digit3<4>".LH
+1 1
+.names "thous_c<1>".Q "thous_c<2>".Q "thous_c<0>".Q "thous_c<3>".Q 
+        "TM1637/digit3<5>".D-
+10-0 1
+1-10 1
+-010 1
+.names "TM1637/help_cnt_FSM_FFd139".Q  "TM1637/digit3<5>".LH
+1 1
+.names "thous_c<3>".Q  "TM1637/digit3<6>".D.X1
+1 1
+.names "thous_c<1>".Q "thous_c<2>".Q "thous_c<0>".Q "thous_c<3>".Q 
+        "TM1637/digit3<6>".D.X2-
+1110 1
+00-- 1
+.names "TM1637/help_cnt_FSM_FFd139".Q  "TM1637/digit3<6>".LH
+1 1
+.names  "KY_040/slow_clock_counter<0>".T
+1
+.names "KY_040/slow_clock_cmp_eq0000"  "KY_040/slow_clock".T
+1 1
+.names "KY_040/enable_set_val".Q "KY_040/s_cnt0<0>".Q "KY_040/s_cnt0<3>".Q "N_PZ_718" 
+       "N_PZ_961" "N_PZ_965"  "KY_040/s_cnt0<0>".T-
+0----- 1
+-----1 1
+-0100- 1
+.names "KY_040/slow_clock_counter<0>".Q "KY_040/slow_clock_counter<10>".Q 
+       "KY_040/slow_clock_counter<11>".Q "KY_040/slow_clock_counter<12>".Q 
+       "KY_040/slow_clock_counter<13>".Q "KY_040/slow_clock_counter<14>".Q 
+       "KY_040/slow_clock_counter<15>".Q "KY_040/slow_clock_counter<16>".Q 
+       "KY_040/slow_clock_counter<17>".Q "KY_040/slow_clock_counter<18>".Q 
+       "KY_040/slow_clock_counter<19>".Q "KY_040/slow_clock_counter<1>".Q 
+       "KY_040/slow_clock_counter<20>".Q "KY_040/slow_clock_counter<21>".Q 
+       "KY_040/slow_clock_counter<22>".Q "KY_040/slow_clock_counter<23>".Q 
+       "KY_040/slow_clock_counter<24>".Q "KY_040/slow_clock_counter<25>".Q 
+       "KY_040/slow_clock_counter<26>".Q "KY_040/slow_clock_counter<27>".Q 
+       "KY_040/slow_clock_counter<28>".Q "KY_040/slow_clock_counter<2>".Q 
+       "KY_040/slow_clock_counter<3>".Q "KY_040/slow_clock_counter<4>".Q 
+       "KY_040/slow_clock_counter<5>".Q "KY_040/slow_clock_counter<6>".Q 
+       "KY_040/slow_clock_counter<7>".Q "KY_040/slow_clock_counter<8>".Q 
+       "KY_040/slow_clock_counter<9>".Q  "N_PZ_630"
+--------------------0-------- 1
+11111111111111111111-11111111 1
+.names "KY_040/slow_clock_counter<0>".Q "KY_040/slow_clock_counter<10>".Q 
+       "KY_040/slow_clock_counter<11>".Q "KY_040/slow_clock_counter<12>".Q 
+       "KY_040/slow_clock_counter<13>".Q "KY_040/slow_clock_counter<14>".Q 
+       "KY_040/slow_clock_counter<15>".Q "KY_040/slow_clock_counter<16>".Q 
+       "KY_040/slow_clock_counter<17>".Q "KY_040/slow_clock_counter<18>".Q 
+       "KY_040/slow_clock_counter<19>".Q "KY_040/slow_clock_counter<1>".Q 
+       "KY_040/slow_clock_counter<20>".Q "KY_040/slow_clock_counter<21>".Q 
+       "KY_040/slow_clock_counter<22>".Q "KY_040/slow_clock_counter<23>".Q 
+       "KY_040/slow_clock_counter<24>".Q "KY_040/slow_clock_counter<25>".Q 
+       "KY_040/slow_clock_counter<26>".Q "KY_040/slow_clock_counter<27>".Q 
+       "KY_040/slow_clock_counter<28>".Q "KY_040/slow_clock_counter<29>".Q 
+       "KY_040/slow_clock_counter<2>".Q "KY_040/slow_clock_counter<3>".Q 
+       "KY_040/slow_clock_counter<4>".Q "KY_040/slow_clock_counter<5>".Q 
+       "KY_040/slow_clock_counter<6>".Q "KY_040/slow_clock_counter<7>".Q 
+       "KY_040/slow_clock_counter<8>".Q  "N_PZ_636"
+---------------------0------- 1
+111111111111111111111-1111111 1
+.names "KY_040/slow_clock_counter<0>".Q "KY_040/slow_clock_counter<10>".Q 
+       "KY_040/slow_clock_counter<11>".Q "KY_040/slow_clock_counter<12>".Q 
+       "KY_040/slow_clock_counter<13>".Q "KY_040/slow_clock_counter<14>".Q 
+       "KY_040/slow_clock_counter<15>".Q "KY_040/slow_clock_counter<16>".Q 
+       "KY_040/slow_clock_counter<17>".Q "KY_040/slow_clock_counter<18>".Q 
+       "KY_040/slow_clock_counter<19>".Q "KY_040/slow_clock_counter<1>".Q 
+       "KY_040/slow_clock_counter<20>".Q "KY_040/slow_clock_counter<21>".Q 
+       "KY_040/slow_clock_counter<22>".Q "KY_040/slow_clock_counter<23>".Q 
+       "KY_040/slow_clock_counter<24>".Q "KY_040/slow_clock_counter<25>".Q 
+       "KY_040/slow_clock_counter<26>".Q "KY_040/slow_clock_counter<27>".Q 
+       "KY_040/slow_clock_counter<28>".Q "KY_040/slow_clock_counter<29>".Q 
+       "KY_040/slow_clock_counter<2>".Q "KY_040/slow_clock_counter<30>".Q 
+       "KY_040/slow_clock_counter<3>".Q "KY_040/slow_clock_counter<4>".Q 
+       "KY_040/slow_clock_counter<5>".Q "KY_040/slow_clock_counter<6>".Q  "N_PZ_649"
+1111111111111111111111111111 1
+.names "KY_040/s_cnt1_0__or0000" "KY_040/enable_set_val".Q "KY_040/s_cnt0<0>".Q 
+       "KY_040/s_cnt0<1>".Q "KY_040/s_cnt0<3>".Q "N_PZ_718" "N_PZ_965" 
+        "KY_040/s_cnt0<1>".T
+1--1--- 1
+010--10 1
+-10-110 1
+-11-000 1
+.names "KY_040/s_cnt1_0__or0000" "KY_040/enable_set_val".Q "KY_040/s_cnt0<0>".Q 
+       "KY_040/s_cnt0<1>".Q "KY_040/s_cnt0<2>".Q "KY_040/s_cnt0<3>".Q "N_PZ_718" 
+       "N_PZ_965"  "KY_040/s_cnt0<2>".T
+1---1--- 1
+0100--10 1
+-111-000 1
+.names "KY_040/s_cnt2_and0000" "KY_040/s_cnt2_0__or0000" "KY_040/s_cnt2<0>".Q 
+       "KY_040/s_cnt2<1>".Q "KY_040/s_cnt2<2>".Q "KY_040/s_cnt2<3>".Q "N_PZ_718" 
+        "KY_040/s_cnt2<1>".T-
+-0----- 1
+0--0--- 1
+1-1---1 1
+1-0---0 1
+--0000- 1
+.names "KY_040/s_cnt2_and0000" "KY_040/s_cnt2_0__or0000" "KY_040/s_cnt2<0>".Q 
+       "KY_040/s_cnt2<1>".Q "KY_040/s_cnt2<2>".Q "KY_040/s_cnt2<3>".Q "N_PZ_718" 
+        "KY_040/s_cnt2<2>".T
+01--1-- 1
+-1001-1 1
+1111--0 1
+1100-11 1
+.names "KY_040/s_cnt1_and0000" "KY_040/s_cnt1_0__or0000" "KY_040/s_cnt1<0>".Q 
+       "KY_040/s_cnt1<1>".Q "KY_040/s_cnt1<2>".Q "KY_040/s_cnt1<3>".Q "N_PZ_718" 
+        "KY_040/s_cnt1<1>".T-
+-0----- 1
+1--0--- 1
+0-1---1 1
+0-0---0 1
+--0000- 1
+.names "KY_040/s_cnt1_and0000" "KY_040/s_cnt1_0__or0000" "KY_040/s_cnt1<0>".Q 
+       "KY_040/s_cnt1<1>".Q "KY_040/s_cnt1<2>".Q "KY_040/s_cnt1<3>".Q "N_PZ_718" 
+        "KY_040/s_cnt1<2>".T
+11--1-- 1
+-1001-1 1
+0111--0 1
+0100-11 1
+.names "KY_040/s_cnt3_and0000" "KY_040/s_cnt3_0__or0000" "KY_040/s_cnt3<0>".Q 
+       "KY_040/s_cnt3<1>".Q "KY_040/s_cnt3<2>".Q "KY_040/s_cnt3<3>".Q "N_PZ_718" 
+        "KY_040/s_cnt3<1>".T-
+-0----- 1
+0--0--- 1
+1-1---1 1
+1-0---0 1
+--0000- 1
+.names "KY_040/s_cnt3_and0000" "KY_040/s_cnt3_0__or0000" "KY_040/s_cnt3<0>".Q 
+       "KY_040/s_cnt3<1>".Q "KY_040/s_cnt3<2>".Q "KY_040/s_cnt3<3>".Q "N_PZ_718" 
+        "KY_040/s_cnt3<2>".T
+01--1-- 1
+-1001-1 1
+1111--0 1
+1100-11 1
+.names "KY_040/s_cnt1_0__or0000" "KY_040/enable_set_val".Q "KY_040/s_cnt0<0>".Q 
+       "KY_040/s_cnt0<1>".Q "KY_040/s_cnt0<2>".Q "N_PZ_718" "N_PZ_961" "N_PZ_965" 
+        "KY_040/s_cnt0<3>".T
+1------- 1
+-1---110 1
+-11110-0 1
+.names "KY_040/s_cnt2_and0000" "KY_040/s_cnt2_0__or0000" "KY_040/s_cnt2<0>".Q 
+       "KY_040/s_cnt2<1>".Q "KY_040/s_cnt2<2>".Q "KY_040/s_cnt2<3>".Q "N_PZ_718" 
+        "KY_040/s_cnt2<3>".T
+01---1- 1
+11000-1 1
+11111-0 1
+.names "KY_040/s_cnt1_and0000" "KY_040/s_cnt1_0__or0000" "KY_040/s_cnt1<0>".Q 
+       "KY_040/s_cnt1<1>".Q "KY_040/s_cnt1<2>".Q "KY_040/s_cnt1<3>".Q "N_PZ_718" 
+        "KY_040/s_cnt1<3>".T
+11---1- 1
+01000-1 1
+01111-0 1
+.names "KY_040/s_cnt3_and0000" "KY_040/s_cnt3_0__or0000" "KY_040/s_cnt3<0>".Q 
+       "KY_040/s_cnt3<1>".Q "KY_040/s_cnt3<2>".Q "KY_040/s_cnt3<3>".Q "N_PZ_718" 
+        "KY_040/s_cnt3<3>".T
+01---1- 1
+11000-1 1
+11111-0 1
+.names "KY_040/slow_clock_cmp_eq0000" "KY_040/slow_clock_counter<0>".Q 
+       "KY_040/slow_clock_counter<10>".Q "KY_040/slow_clock_counter<1>".Q 
+       "KY_040/slow_clock_counter<2>".Q "KY_040/slow_clock_counter<3>".Q 
+       "KY_040/slow_clock_counter<4>".Q "KY_040/slow_clock_counter<5>".Q 
+       "KY_040/slow_clock_counter<6>".Q "KY_040/slow_clock_counter<7>".Q 
+       "KY_040/slow_clock_counter<8>".Q "KY_040/slow_clock_counter<9>".Q 
+        "KY_040/slow_clock_counter<10>".T
+1-1--------- 1
+01-111111111 1
+.names "KY_040/slow_clock_cmp_eq0000" "KY_040/slow_clock_counter<0>".Q 
+       "KY_040/slow_clock_counter<10>".Q "KY_040/slow_clock_counter<11>".Q 
+       "KY_040/slow_clock_counter<1>".Q "KY_040/slow_clock_counter<2>".Q 
+       "KY_040/slow_clock_counter<3>".Q "KY_040/slow_clock_counter<4>".Q 
+       "KY_040/slow_clock_counter<5>".Q "KY_040/slow_clock_counter<6>".Q 
+       "KY_040/slow_clock_counter<7>".Q "KY_040/slow_clock_counter<8>".Q 
+       "KY_040/slow_clock_counter<9>".Q  "KY_040/slow_clock_counter<11>".T
+1--1--------- 1
+011-111111111 1
+.names "KY_040/slow_clock_cmp_eq0000" "KY_040/slow_clock_counter<0>".Q 
+       "KY_040/slow_clock_counter<10>".Q "KY_040/slow_clock_counter<11>".Q 
+       "KY_040/slow_clock_counter<12>".Q "KY_040/slow_clock_counter<1>".Q 
+       "KY_040/slow_clock_counter<2>".Q "KY_040/slow_clock_counter<3>".Q 
+       "KY_040/slow_clock_counter<4>".Q "KY_040/slow_clock_counter<5>".Q 
+       "KY_040/slow_clock_counter<6>".Q "KY_040/slow_clock_counter<7>".Q 
+       "KY_040/slow_clock_counter<8>".Q "KY_040/slow_clock_counter<9>".Q 
+        "KY_040/slow_clock_counter<12>".T
+1---1--------- 1
+0111-111111111 1
+.names "KY_040/slow_clock_cmp_eq0000" "KY_040/slow_clock_counter<0>".Q 
+       "KY_040/slow_clock_counter<10>".Q "KY_040/slow_clock_counter<11>".Q 
+       "KY_040/slow_clock_counter<12>".Q "KY_040/slow_clock_counter<13>".Q 
+       "KY_040/slow_clock_counter<1>".Q "KY_040/slow_clock_counter<2>".Q 
+       "KY_040/slow_clock_counter<3>".Q "KY_040/slow_clock_counter<4>".Q 
+       "KY_040/slow_clock_counter<5>".Q "KY_040/slow_clock_counter<6>".Q 
+       "KY_040/slow_clock_counter<7>".Q "KY_040/slow_clock_counter<8>".Q 
+       "KY_040/slow_clock_counter<9>".Q  "KY_040/slow_clock_counter<13>".T
+1----1--------- 1
+01111-111111111 1
+.names "KY_040/slow_clock_cmp_eq0000" "KY_040/slow_clock_counter<0>".Q 
+       "KY_040/slow_clock_counter<10>".Q "KY_040/slow_clock_counter<11>".Q 
+       "KY_040/slow_clock_counter<12>".Q "KY_040/slow_clock_counter<13>".Q 
+       "KY_040/slow_clock_counter<14>".Q "KY_040/slow_clock_counter<1>".Q 
+       "KY_040/slow_clock_counter<2>".Q "KY_040/slow_clock_counter<3>".Q 
+       "KY_040/slow_clock_counter<4>".Q "KY_040/slow_clock_counter<5>".Q 
+       "KY_040/slow_clock_counter<6>".Q "KY_040/slow_clock_counter<7>".Q 
+       "KY_040/slow_clock_counter<8>".Q "KY_040/slow_clock_counter<9>".Q 
+        "KY_040/slow_clock_counter<14>".T
+1-----1--------- 1
+011111-111111111 1
+.names "KY_040/slow_clock_cmp_eq0000" "KY_040/slow_clock_counter<0>".Q 
+       "KY_040/slow_clock_counter<10>".Q "KY_040/slow_clock_counter<11>".Q 
+       "KY_040/slow_clock_counter<12>".Q "KY_040/slow_clock_counter<13>".Q 
+       "KY_040/slow_clock_counter<14>".Q "KY_040/slow_clock_counter<15>".Q 
+       "KY_040/slow_clock_counter<1>".Q "KY_040/slow_clock_counter<2>".Q 
+       "KY_040/slow_clock_counter<3>".Q "KY_040/slow_clock_counter<4>".Q 
+       "KY_040/slow_clock_counter<5>".Q "KY_040/slow_clock_counter<6>".Q 
+       "KY_040/slow_clock_counter<7>".Q "KY_040/slow_clock_counter<8>".Q 
+       "KY_040/slow_clock_counter<9>".Q  "KY_040/slow_clock_counter<15>".T
+1------1--------- 1
+0111111-111111111 1
+.names "KY_040/slow_clock_cmp_eq0000" "KY_040/slow_clock_counter<0>".Q 
+       "KY_040/slow_clock_counter<10>".Q "KY_040/slow_clock_counter<11>".Q 
+       "KY_040/slow_clock_counter<12>".Q "KY_040/slow_clock_counter<13>".Q 
+       "KY_040/slow_clock_counter<14>".Q "KY_040/slow_clock_counter<15>".Q 
+       "KY_040/slow_clock_counter<16>".Q "KY_040/slow_clock_counter<1>".Q 
+       "KY_040/slow_clock_counter<2>".Q "KY_040/slow_clock_counter<3>".Q 
+       "KY_040/slow_clock_counter<4>".Q "KY_040/slow_clock_counter<5>".Q 
+       "KY_040/slow_clock_counter<6>".Q "KY_040/slow_clock_counter<7>".Q 
+       "KY_040/slow_clock_counter<8>".Q "KY_040/slow_clock_counter<9>".Q 
+        "KY_040/slow_clock_counter<16>".T
+1-------1--------- 1
+01111111-111111111 1
+.names "KY_040/slow_clock_cmp_eq0000" "KY_040/slow_clock_counter<0>".Q 
+       "KY_040/slow_clock_counter<10>".Q "KY_040/slow_clock_counter<11>".Q 
+       "KY_040/slow_clock_counter<12>".Q "KY_040/slow_clock_counter<13>".Q 
+       "KY_040/slow_clock_counter<14>".Q "KY_040/slow_clock_counter<15>".Q 
+       "KY_040/slow_clock_counter<16>".Q "KY_040/slow_clock_counter<17>".Q 
+       "KY_040/slow_clock_counter<1>".Q "KY_040/slow_clock_counter<2>".Q 
+       "KY_040/slow_clock_counter<3>".Q "KY_040/slow_clock_counter<4>".Q 
+       "KY_040/slow_clock_counter<5>".Q "KY_040/slow_clock_counter<6>".Q 
+       "KY_040/slow_clock_counter<7>".Q "KY_040/slow_clock_counter<8>".Q 
+       "KY_040/slow_clock_counter<9>".Q  "KY_040/slow_clock_counter<17>".T
+1--------1--------- 1
+011111111-111111111 1
+.names "KY_040/slow_clock_cmp_eq0000" "KY_040/slow_clock_counter<0>".Q 
+       "KY_040/slow_clock_counter<10>".Q "KY_040/slow_clock_counter<11>".Q 
+       "KY_040/slow_clock_counter<12>".Q "KY_040/slow_clock_counter<13>".Q 
+       "KY_040/slow_clock_counter<14>".Q "KY_040/slow_clock_counter<15>".Q 
+       "KY_040/slow_clock_counter<16>".Q "KY_040/slow_clock_counter<17>".Q 
+       "KY_040/slow_clock_counter<18>".Q "KY_040/slow_clock_counter<1>".Q 
+       "KY_040/slow_clock_counter<2>".Q "KY_040/slow_clock_counter<3>".Q 
+       "KY_040/slow_clock_counter<4>".Q "KY_040/slow_clock_counter<5>".Q 
+       "KY_040/slow_clock_counter<6>".Q "KY_040/slow_clock_counter<7>".Q 
+       "KY_040/slow_clock_counter<8>".Q "KY_040/slow_clock_counter<9>".Q 
+        "KY_040/slow_clock_counter<18>".T
+1---------1--------- 1
+0111111111-111111111 1
+.names "KY_040/slow_clock_cmp_eq0000" "KY_040/slow_clock_counter<0>".Q 
+       "KY_040/slow_clock_counter<10>".Q "KY_040/slow_clock_counter<11>".Q 
+       "KY_040/slow_clock_counter<12>".Q "KY_040/slow_clock_counter<13>".Q 
+       "KY_040/slow_clock_counter<14>".Q "KY_040/slow_clock_counter<15>".Q 
+       "KY_040/slow_clock_counter<16>".Q "KY_040/slow_clock_counter<17>".Q 
+       "KY_040/slow_clock_counter<18>".Q "KY_040/slow_clock_counter<19>".Q 
+       "KY_040/slow_clock_counter<1>".Q "KY_040/slow_clock_counter<2>".Q 
+       "KY_040/slow_clock_counter<3>".Q "KY_040/slow_clock_counter<4>".Q 
+       "KY_040/slow_clock_counter<5>".Q "KY_040/slow_clock_counter<6>".Q 
+       "KY_040/slow_clock_counter<7>".Q "KY_040/slow_clock_counter<8>".Q 
+       "KY_040/slow_clock_counter<9>".Q  "KY_040/slow_clock_counter<19>".T
+1----------1--------- 1
+01111111111-111111111 1
+.names "KY_040/slow_clock_cmp_eq0000" "KY_040/slow_clock_counter<0>".Q 
+       "KY_040/slow_clock_counter<10>".Q "KY_040/slow_clock_counter<11>".Q 
+       "KY_040/slow_clock_counter<12>".Q "KY_040/slow_clock_counter<13>".Q 
+       "KY_040/slow_clock_counter<14>".Q "KY_040/slow_clock_counter<15>".Q 
+       "KY_040/slow_clock_counter<16>".Q "KY_040/slow_clock_counter<17>".Q 
+       "KY_040/slow_clock_counter<18>".Q "KY_040/slow_clock_counter<19>".Q 
+       "KY_040/slow_clock_counter<1>".Q "KY_040/slow_clock_counter<20>".Q 
+       "KY_040/slow_clock_counter<2>".Q "KY_040/slow_clock_counter<3>".Q 
+       "KY_040/slow_clock_counter<4>".Q "KY_040/slow_clock_counter<5>".Q 
+       "KY_040/slow_clock_counter<6>".Q "KY_040/slow_clock_counter<7>".Q 
+       "KY_040/slow_clock_counter<8>".Q "KY_040/slow_clock_counter<9>".Q 
+        "KY_040/slow_clock_counter<20>".T
+1------------1-------- 1
+0111111111111-11111111 1
+.names "KY_040/slow_clock_cmp_eq0000" "KY_040/slow_clock_counter<0>".Q 
+       "KY_040/slow_clock_counter<10>".Q "KY_040/slow_clock_counter<11>".Q 
+       "KY_040/slow_clock_counter<12>".Q "KY_040/slow_clock_counter<13>".Q 
+       "KY_040/slow_clock_counter<14>".Q "KY_040/slow_clock_counter<15>".Q 
+       "KY_040/slow_clock_counter<16>".Q "KY_040/slow_clock_counter<17>".Q 
+       "KY_040/slow_clock_counter<18>".Q "KY_040/slow_clock_counter<19>".Q 
+       "KY_040/slow_clock_counter<1>".Q "KY_040/slow_clock_counter<20>".Q 
+       "KY_040/slow_clock_counter<21>".Q "KY_040/slow_clock_counter<2>".Q 
+       "KY_040/slow_clock_counter<3>".Q "KY_040/slow_clock_counter<4>".Q 
+       "KY_040/slow_clock_counter<5>".Q "KY_040/slow_clock_counter<6>".Q 
+       "KY_040/slow_clock_counter<7>".Q "KY_040/slow_clock_counter<8>".Q 
+       "KY_040/slow_clock_counter<9>".Q  "KY_040/slow_clock_counter<21>".T
+1-------------1-------- 1
+01111111111111-11111111 1
+.names "KY_040/slow_clock_cmp_eq0000" "KY_040/slow_clock_counter<0>".Q 
+       "KY_040/slow_clock_counter<10>".Q "KY_040/slow_clock_counter<11>".Q 
+       "KY_040/slow_clock_counter<12>".Q "KY_040/slow_clock_counter<13>".Q 
+       "KY_040/slow_clock_counter<14>".Q "KY_040/slow_clock_counter<15>".Q 
+       "KY_040/slow_clock_counter<16>".Q "KY_040/slow_clock_counter<17>".Q 
+       "KY_040/slow_clock_counter<18>".Q "KY_040/slow_clock_counter<19>".Q 
+       "KY_040/slow_clock_counter<1>".Q "KY_040/slow_clock_counter<20>".Q 
+       "KY_040/slow_clock_counter<21>".Q "KY_040/slow_clock_counter<22>".Q 
+       "KY_040/slow_clock_counter<2>".Q "KY_040/slow_clock_counter<3>".Q 
+       "KY_040/slow_clock_counter<4>".Q "KY_040/slow_clock_counter<5>".Q 
+       "KY_040/slow_clock_counter<6>".Q "KY_040/slow_clock_counter<7>".Q 
+       "KY_040/slow_clock_counter<8>".Q "KY_040/slow_clock_counter<9>".Q 
+        "KY_040/slow_clock_counter<22>".T
+1--------------1-------- 1
+011111111111111-11111111 1
+.names "KY_040/slow_clock_cmp_eq0000" "KY_040/slow_clock_counter<0>".Q 
+       "KY_040/slow_clock_counter<10>".Q "KY_040/slow_clock_counter<11>".Q 
+       "KY_040/slow_clock_counter<12>".Q "KY_040/slow_clock_counter<13>".Q 
+       "KY_040/slow_clock_counter<14>".Q "KY_040/slow_clock_counter<15>".Q 
+       "KY_040/slow_clock_counter<16>".Q "KY_040/slow_clock_counter<17>".Q 
+       "KY_040/slow_clock_counter<18>".Q "KY_040/slow_clock_counter<19>".Q 
+       "KY_040/slow_clock_counter<1>".Q "KY_040/slow_clock_counter<20>".Q 
+       "KY_040/slow_clock_counter<21>".Q "KY_040/slow_clock_counter<22>".Q 
+       "KY_040/slow_clock_counter<23>".Q "KY_040/slow_clock_counter<2>".Q 
+       "KY_040/slow_clock_counter<3>".Q "KY_040/slow_clock_counter<4>".Q 
+       "KY_040/slow_clock_counter<5>".Q "KY_040/slow_clock_counter<6>".Q 
+       "KY_040/slow_clock_counter<7>".Q "KY_040/slow_clock_counter<8>".Q 
+       "KY_040/slow_clock_counter<9>".Q  "KY_040/slow_clock_counter<23>".T
+1---------------1-------- 1
+0111111111111111-11111111 1
+.names "KY_040/slow_clock_cmp_eq0000" "KY_040/slow_clock_counter<0>".Q 
+       "KY_040/slow_clock_counter<10>".Q "KY_040/slow_clock_counter<11>".Q 
+       "KY_040/slow_clock_counter<12>".Q "KY_040/slow_clock_counter<13>".Q 
+       "KY_040/slow_clock_counter<14>".Q "KY_040/slow_clock_counter<15>".Q 
+       "KY_040/slow_clock_counter<16>".Q "KY_040/slow_clock_counter<17>".Q 
+       "KY_040/slow_clock_counter<18>".Q "KY_040/slow_clock_counter<19>".Q 
+       "KY_040/slow_clock_counter<1>".Q "KY_040/slow_clock_counter<20>".Q 
+       "KY_040/slow_clock_counter<21>".Q "KY_040/slow_clock_counter<22>".Q 
+       "KY_040/slow_clock_counter<23>".Q "KY_040/slow_clock_counter<24>".Q 
+       "KY_040/slow_clock_counter<2>".Q "KY_040/slow_clock_counter<3>".Q 
+       "KY_040/slow_clock_counter<4>".Q "KY_040/slow_clock_counter<5>".Q 
+       "KY_040/slow_clock_counter<6>".Q "KY_040/slow_clock_counter<7>".Q 
+       "KY_040/slow_clock_counter<8>".Q "KY_040/slow_clock_counter<9>".Q 
+        "KY_040/slow_clock_counter<24>".T
+1----------------1-------- 1
+01111111111111111-11111111 1
+.names "KY_040/slow_clock_cmp_eq0000" "KY_040/slow_clock_counter<0>".Q 
+       "KY_040/slow_clock_counter<10>".Q "KY_040/slow_clock_counter<11>".Q 
+       "KY_040/slow_clock_counter<12>".Q "KY_040/slow_clock_counter<13>".Q 
+       "KY_040/slow_clock_counter<14>".Q "KY_040/slow_clock_counter<15>".Q 
+       "KY_040/slow_clock_counter<16>".Q "KY_040/slow_clock_counter<17>".Q 
+       "KY_040/slow_clock_counter<18>".Q "KY_040/slow_clock_counter<19>".Q 
+       "KY_040/slow_clock_counter<1>".Q "KY_040/slow_clock_counter<20>".Q 
+       "KY_040/slow_clock_counter<21>".Q "KY_040/slow_clock_counter<22>".Q 
+       "KY_040/slow_clock_counter<23>".Q "KY_040/slow_clock_counter<24>".Q 
+       "KY_040/slow_clock_counter<25>".Q "KY_040/slow_clock_counter<2>".Q 
+       "KY_040/slow_clock_counter<3>".Q "KY_040/slow_clock_counter<4>".Q 
+       "KY_040/slow_clock_counter<5>".Q "KY_040/slow_clock_counter<6>".Q 
+       "KY_040/slow_clock_counter<7>".Q "KY_040/slow_clock_counter<8>".Q 
+       "KY_040/slow_clock_counter<9>".Q  "KY_040/slow_clock_counter<25>".T
+1-----------------1-------- 1
+011111111111111111-11111111 1
+.names "KY_040/slow_clock_cmp_eq0000" "KY_040/slow_clock_counter<0>".Q 
+       "KY_040/slow_clock_counter<10>".Q "KY_040/slow_clock_counter<11>".Q 
+       "KY_040/slow_clock_counter<12>".Q "KY_040/slow_clock_counter<13>".Q 
+       "KY_040/slow_clock_counter<14>".Q "KY_040/slow_clock_counter<15>".Q 
+       "KY_040/slow_clock_counter<16>".Q "KY_040/slow_clock_counter<17>".Q 
+       "KY_040/slow_clock_counter<18>".Q "KY_040/slow_clock_counter<19>".Q 
+       "KY_040/slow_clock_counter<1>".Q "KY_040/slow_clock_counter<20>".Q 
+       "KY_040/slow_clock_counter<21>".Q "KY_040/slow_clock_counter<22>".Q 
+       "KY_040/slow_clock_counter<23>".Q "KY_040/slow_clock_counter<24>".Q 
+       "KY_040/slow_clock_counter<25>".Q "KY_040/slow_clock_counter<26>".Q 
+       "KY_040/slow_clock_counter<2>".Q "KY_040/slow_clock_counter<3>".Q 
+       "KY_040/slow_clock_counter<4>".Q "KY_040/slow_clock_counter<5>".Q 
+       "KY_040/slow_clock_counter<6>".Q "KY_040/slow_clock_counter<7>".Q 
+       "KY_040/slow_clock_counter<8>".Q "KY_040/slow_clock_counter<9>".Q 
+        "KY_040/slow_clock_counter<26>".T
+1------------------1-------- 1
+0111111111111111111-11111111 1
+.names "KY_040/slow_clock_cmp_eq0000" "KY_040/slow_clock_counter<0>".Q 
+       "KY_040/slow_clock_counter<10>".Q "KY_040/slow_clock_counter<11>".Q 
+       "KY_040/slow_clock_counter<12>".Q "KY_040/slow_clock_counter<13>".Q 
+       "KY_040/slow_clock_counter<14>".Q "KY_040/slow_clock_counter<15>".Q 
+       "KY_040/slow_clock_counter<16>".Q "KY_040/slow_clock_counter<17>".Q 
+       "KY_040/slow_clock_counter<18>".Q "KY_040/slow_clock_counter<19>".Q 
+       "KY_040/slow_clock_counter<1>".Q "KY_040/slow_clock_counter<20>".Q 
+       "KY_040/slow_clock_counter<21>".Q "KY_040/slow_clock_counter<22>".Q 
+       "KY_040/slow_clock_counter<23>".Q "KY_040/slow_clock_counter<24>".Q 
+       "KY_040/slow_clock_counter<25>".Q "KY_040/slow_clock_counter<26>".Q 
+       "KY_040/slow_clock_counter<27>".Q "KY_040/slow_clock_counter<2>".Q 
+       "KY_040/slow_clock_counter<3>".Q "KY_040/slow_clock_counter<4>".Q 
+       "KY_040/slow_clock_counter<5>".Q "KY_040/slow_clock_counter<6>".Q 
+       "KY_040/slow_clock_counter<7>".Q "KY_040/slow_clock_counter<8>".Q 
+       "KY_040/slow_clock_counter<9>".Q  "KY_040/slow_clock_counter<27>".T
+1-------------------1-------- 1
+01111111111111111111-11111111 1
+.names "KY_040/slow_clock_cmp_eq0000" "KY_040/slow_clock_counter<0>".Q 
+       "KY_040/slow_clock_counter<1>".Q "KY_040/slow_clock_counter<2>".Q 
+        "KY_040/slow_clock_counter<2>".T
+1--1 1
+011- 1
+.names "KY_040/slow_clock_cmp_eq0000" "KY_040/slow_clock_counter<0>".Q 
+       "KY_040/slow_clock_counter<1>".Q "KY_040/slow_clock_counter<2>".Q 
+       "KY_040/slow_clock_counter<3>".Q  "KY_040/slow_clock_counter<3>".T
+1---1 1
+0111- 1
+.names "KY_040/slow_clock_cmp_eq0000" "KY_040/slow_clock_counter<0>".Q 
+       "KY_040/slow_clock_counter<1>".Q "KY_040/slow_clock_counter<2>".Q 
+       "KY_040/slow_clock_counter<3>".Q "KY_040/slow_clock_counter<4>".Q 
+        "KY_040/slow_clock_counter<4>".T
+1----1 1
+01111- 1
+.names "KY_040/slow_clock_cmp_eq0000" "KY_040/slow_clock_counter<0>".Q 
+       "KY_040/slow_clock_counter<1>".Q "KY_040/slow_clock_counter<2>".Q 
+       "KY_040/slow_clock_counter<3>".Q "KY_040/slow_clock_counter<4>".Q 
+       "KY_040/slow_clock_counter<5>".Q  "KY_040/slow_clock_counter<5>".T
+1-----1 1
+011111- 1
+.names "KY_040/slow_clock_cmp_eq0000" "KY_040/slow_clock_counter<0>".Q 
+       "KY_040/slow_clock_counter<1>".Q "KY_040/slow_clock_counter<2>".Q 
+       "KY_040/slow_clock_counter<3>".Q "KY_040/slow_clock_counter<4>".Q 
+       "KY_040/slow_clock_counter<5>".Q "KY_040/slow_clock_counter<6>".Q 
+        "KY_040/slow_clock_counter<6>".T
+1------1 1
+0111111- 1
+.names "KY_040/slow_clock_cmp_eq0000" "KY_040/slow_clock_counter<0>".Q 
+       "KY_040/slow_clock_counter<1>".Q "KY_040/slow_clock_counter<2>".Q 
+       "KY_040/slow_clock_counter<3>".Q "KY_040/slow_clock_counter<4>".Q 
+       "KY_040/slow_clock_counter<5>".Q "KY_040/slow_clock_counter<6>".Q 
+       "KY_040/slow_clock_counter<7>".Q  "KY_040/slow_clock_counter<7>".T
+1-------1 1
+01111111- 1
+.names "KY_040/slow_clock_cmp_eq0000" "KY_040/slow_clock_counter<0>".Q 
+       "KY_040/slow_clock_counter<1>".Q "KY_040/slow_clock_counter<2>".Q 
+       "KY_040/slow_clock_counter<3>".Q "KY_040/slow_clock_counter<4>".Q 
+       "KY_040/slow_clock_counter<5>".Q "KY_040/slow_clock_counter<6>".Q 
+       "KY_040/slow_clock_counter<7>".Q "KY_040/slow_clock_counter<8>".Q 
+        "KY_040/slow_clock_counter<8>".T
+1--------1 1
+011111111- 1
+.names "KY_040/slow_clock_cmp_eq0000" "KY_040/slow_clock_counter<0>".Q 
+       "KY_040/slow_clock_counter<1>".Q "KY_040/slow_clock_counter<2>".Q 
+       "KY_040/slow_clock_counter<3>".Q "KY_040/slow_clock_counter<4>".Q 
+       "KY_040/slow_clock_counter<5>".Q "KY_040/slow_clock_counter<6>".Q 
+       "KY_040/slow_clock_counter<7>".Q "KY_040/slow_clock_counter<8>".Q 
+       "KY_040/slow_clock_counter<9>".Q  "KY_040/slow_clock_counter<9>".T
+1---------1 1
+0111111111- 1
+.names "KY_040/slow_clock_cmp_eq0000" "KY_040/slow_clock_counter<7>".Q 
+       "KY_040/slow_clock_counter<8>".Q "KY_040/slow_clock_counter<9>".Q 
+       "KY_040/slow_clock_counter<31>".Q "N_PZ_649"  "KY_040/slow_clock_counter<31>".T
+1---1- 1
+0111-1 1
+.names "TM1637/Mtridata_dio_mux0000" "TM1637/Mtridata_dio__or0001" 
+       "TM1637/help_cnt_FSM_FFd139".Q "dio_o".Q  "dio_o".D-
+-1-0 1
+000- 1
+.names "KY_040/s_cnt2_and0000" "KY_040/s_cnt2_0__or0000" "KY_040/s_cnt2<0>".Q 
+        "KY_040/s_cnt2<0>".D
+-01 1
+110 1
+.names "KY_040/s_cnt1_and0000" "KY_040/s_cnt1_0__or0000" "KY_040/s_cnt1<0>".Q 
+        "KY_040/s_cnt1<0>".D
+-01 1
+010 1
+.names "KY_040/s_cnt3_and0000" "KY_040/s_cnt3_0__or0000" "KY_040/s_cnt3<0>".Q 
+        "KY_040/s_cnt3<0>".D
+-01 1
+110 1
+.names "KY_040/enable_set_val".Q "KY_040/clock_en".Q  "N_PZ_717"
+01 1
+.names "pinB_i" "KY_040/prev_A".Q  "N_PZ_718"
+11 1
+00 1
+.names "TM1637/help_cnt_FSM_FFd61".Q "TM1637/help_cnt_FSM_FFd67".Q 
+       "TM1637/help_cnt_FSM_FFd69".Q "TM1637/help_cnt_FSM_FFd71".Q 
+       "TM1637/help_cnt_FSM_FFd73".Q "TM1637/help_cnt_FSM_FFd75".Q 
+       "TM1637/help_cnt_FSM_FFd77".Q "TM1637/help_cnt_FSM_FFd79".Q 
+       "TM1637/help_cnt_FSM_FFd85".Q "TM1637/help_cnt_FSM_FFd87".Q 
+       "TM1637/help_cnt_FSM_FFd89".Q "TM1637/help_cnt_FSM_FFd91".Q 
+       "TM1637/help_cnt_FSM_FFd93".Q "TM1637/help_cnt_FSM_FFd63".Q 
+       "TM1637/help_cnt_FSM_FFd65".Q "TM1637/help_cnt_FSM_FFd81".Q 
+       "TM1637/help_cnt_FSM_FFd83".Q "TM1637/digit1<0>".Q "TM1637/digit2<0>".Q 
+       "TM1637/digit2<1>".Q "TM1637/digit2<2>".Q "TM1637/digit2<3>".Q 
+       "TM1637/digit2<4>".Q "TM1637/digit2<5>".Q "TM1637/digit2<6>".Q 
+       "TM1637/digit3<2>".Q "TM1637/digit3<3>".Q "TM1637/digit3<4>".Q 
+       "TM1637/digit3<5>".Q "TM1637/digit3<6>".Q "N_PZ_763"  "N_PZ_748"
+------------1------------1----- 1
+-----------10-------------1---- 1
+----------100--------------1--- 1
+---------1000---------------1-- 1
+--------10000----------------1- 1
+-------100000--00-1------------ 1
+------1000000--00--1----------- 1
+-----10000000--00---1---------- 1
+----100000000--00----1--------- 1
+---1000000000--00-----1-------- 1
+--10000000000--00------1------- 1
+-100000000000--00-------1------ 1
+100000000000000001------------- 1
+00000000000000000-------------1 1
+.names "TM1637/help_cnt_FSM_FFd31".Q "TM1637/help_cnt_FSM_FFd33".Q 
+       "TM1637/help_cnt_FSM_FFd35".Q "TM1637/help_cnt_FSM_FFd37".Q 
+       "TM1637/help_cnt_FSM_FFd39".Q "TM1637/help_cnt_FSM_FFd41".Q 
+       "TM1637/help_cnt_FSM_FFd57".Q "TM1637/help_cnt_FSM_FFd59".Q 
+       "TM1637/help_cnt_FSM_FFd11".Q "TM1637/help_cnt_FSM_FFd13".Q 
+       "TM1637/help_cnt_FSM_FFd15".Q "TM1637/help_cnt_FSM_FFd17".Q 
+       "TM1637/help_cnt_FSM_FFd19".Q "TM1637/help_cnt_FSM_FFd21".Q 
+       "TM1637/help_cnt_FSM_FFd25".Q "TM1637/help_cnt_FSM_FFd27".Q 
+       "TM1637/help_cnt_FSM_FFd29".Q "TM1637/help_cnt_FSM_FFd7".Q 
+       "TM1637/help_cnt_FSM_FFd9".Q "TM1637/help_cnt_FSM_FFd22".Q 
+       "TM1637/help_cnt_FSM_FFd23".Q "TM1637/digit0<1>".Q "TM1637/digit0<2>".Q 
+       "TM1637/digit0<3>".Q "TM1637/digit0<4>".Q "TM1637/digit0<5>".Q 
+       "TM1637/digit0<6>".Q "TM1637/digit1<1>".Q "TM1637/digit1<2>".Q "N_PZ_972" 
+       "N_PZ_1038"  "N_PZ_763"
+-------1-------------------1--- 1
+------10--------------------1-- 1
+-----1---------------1-------1- 1
+------00----------------------1 1
+----10----------------1------1- 1
+---100-----------------1-----1- 1
+--1000------------------1----1- 1
+-10000-------------------1---1- 1
+100000--------------------1--1- 1
+000000--------000---1--------1- 1
+000000----1---000--0---------1- 1
+000000-----1--000--0---------1- 1
+000000------1-000--0---------1- 1
+000000-------1000--0---------1- 1
+000000--00----000100---------1- 1
+.names "KY_040/clock_enable/s_cnt<3>".Q "KY_040/clock_enable/s_cnt<4>".Q 
+       "KY_040/clock_enable/s_cnt<5>".Q "KY_040/clock_enable/s_cnt<6>".Q 
+       "KY_040/clock_enable/s_cnt<7>".Q  "N_PZ_829"
+----1 1
+1111- 1
+.names "hund_c<1>".Q "hund_c<2>".Q "hund_c<0>".Q "hund_c<3>".Q "N_PZ_979"  "N_PZ_930"
+00001 1
+.names "TM1637/help_cnt_FSM_FFd67".Q "TM1637/help_cnt_FSM_FFd69".Q 
+       "TM1637/help_cnt_FSM_FFd71".Q "TM1637/help_cnt_FSM_FFd73".Q 
+       "TM1637/help_cnt_FSM_FFd75".Q "TM1637/help_cnt_FSM_FFd77".Q 
+       "TM1637/help_cnt_FSM_FFd79".Q "TM1637/help_cnt_FSM_FFd85".Q 
+       "TM1637/help_cnt_FSM_FFd87".Q "TM1637/help_cnt_FSM_FFd89".Q 
+       "TM1637/help_cnt_FSM_FFd91".Q "TM1637/help_cnt_FSM_FFd93".Q 
+       "TM1637/help_cnt_FSM_FFd95".Q "TM1637/help_cnt_FSM_FFd97".Q 
+       "TM1637/help_cnt_FSM_FFd101".Q "TM1637/help_cnt_FSM_FFd103".Q 
+       "TM1637/help_cnt_FSM_FFd105".Q "TM1637/help_cnt_FSM_FFd107".Q 
+       "TM1637/help_cnt_FSM_FFd109".Q "TM1637/help_cnt_FSM_FFd111".Q 
+       "TM1637/help_cnt_FSM_FFd113".Q "TM1637/help_cnt_FSM_FFd115".Q 
+       "TM1637/help_cnt_FSM_FFd116".Q "TM1637/help_cnt_FSM_FFd117".Q 
+       "TM1637/help_cnt_FSM_FFd119".Q "TM1637/help_cnt_FSM_FFd121".Q 
+       "TM1637/help_cnt_FSM_FFd65".Q "TM1637/help_cnt_FSM_FFd81".Q 
+       "TM1637/help_cnt_FSM_FFd83".Q "TM1637/help_cnt_FSM_FFd99".Q "N_PZ_993" 
+        "N_PZ_960"
+-------------------------1----- 1
+--------------00000000000----1- 1
+-------000000000000000000--10-- 1
+0000000000000000000000000-0-0-1 1
+.names "KY_040/s_cnt0<0>".Q "KY_040/s_cnt0<1>".Q "KY_040/s_cnt0<2>".Q  "N_PZ_961"
+000 1
+.names "pinA_i" "KY_040/prev_A".Q  "N_PZ_965"
+11 1
+00 1
+.names "uni_c<1>".Q "uni_c<2>".Q "uni_c<0>".Q "uni_c<3>".Q  "N_PZ_967"
+0000 1
+.names "TM1637/help_cnt_FSM_FFd43".Q "TM1637/help_cnt_FSM_FFd49".Q 
+       "TM1637/help_cnt_FSM_FFd51".Q "TM1637/help_cnt_FSM_FFd53".Q 
+       "TM1637/help_cnt_FSM_FFd55".Q "TM1637/help_cnt_FSM_FFd57".Q 
+       "TM1637/help_cnt_FSM_FFd59".Q "TM1637/help_cnt_FSM_FFd45".Q 
+       "TM1637/help_cnt_FSM_FFd47".Q  "N_PZ_972"
+000000000 1
+.names "tens_c<1>".Q "tens_c<2>".Q "tens_c<0>".Q "tens_c<3>".Q "N_PZ_967"  "N_PZ_979"
+00001 1
+.names "TM1637/help_cnt_FSM_FFd31".Q "TM1637/help_cnt_FSM_FFd33".Q 
+       "TM1637/help_cnt_FSM_FFd35".Q "TM1637/help_cnt_FSM_FFd37".Q 
+       "TM1637/help_cnt_FSM_FFd39".Q "TM1637/help_cnt_FSM_FFd41".Q 
+       "TM1637/help_cnt_FSM_FFd43".Q "TM1637/help_cnt_FSM_FFd49".Q 
+       "TM1637/help_cnt_FSM_FFd51".Q "TM1637/help_cnt_FSM_FFd53".Q 
+       "TM1637/help_cnt_FSM_FFd55".Q "TM1637/help_cnt_FSM_FFd57".Q 
+       "TM1637/help_cnt_FSM_FFd59".Q "TM1637/help_cnt_FSM_FFd61".Q 
+       "TM1637/help_cnt_FSM_FFd11".Q "TM1637/help_cnt_FSM_FFd13".Q 
+       "TM1637/help_cnt_FSM_FFd15".Q "TM1637/help_cnt_FSM_FFd17".Q 
+       "TM1637/help_cnt_FSM_FFd19".Q "TM1637/help_cnt_FSM_FFd21".Q 
+       "TM1637/help_cnt_FSM_FFd25".Q "TM1637/help_cnt_FSM_FFd27".Q 
+       "TM1637/help_cnt_FSM_FFd29".Q "TM1637/help_cnt_FSM_FFd45".Q 
+       "TM1637/help_cnt_FSM_FFd47".Q "TM1637/help_cnt_FSM_FFd63".Q 
+       "TM1637/help_cnt_FSM_FFd7".Q "TM1637/help_cnt_FSM_FFd9".Q 
+       "TM1637/help_cnt_FSM_FFd22".Q "TM1637/help_cnt_FSM_FFd23".Q 
+       "TM1637/help_cnt_FSM_FFd5".Q  "N_PZ_993"
+-------------------------1----- 1
+-------0000000---------10------ 1
+00000000000000-------10-0------ 1
+000000000000000000000-0-0-00001 1
+.names "TM1637/help_cnt_FSM_FFd43".Q "TM1637/help_cnt_FSM_FFd49".Q 
+       "TM1637/help_cnt_FSM_FFd51".Q "TM1637/help_cnt_FSM_FFd53".Q 
+       "TM1637/help_cnt_FSM_FFd55".Q "TM1637/help_cnt_FSM_FFd45".Q 
+       "TM1637/help_cnt_FSM_FFd47".Q "TM1637/digit0<0>".Q "TM1637/digit1<3>".Q 
+       "TM1637/digit1<4>".Q "TM1637/digit1<5>".Q "TM1637/digit1<6>".Q  "N_PZ_1038"
+----1---1--- 1
+---10----1-- 1
+--100-----1- 1
+-1000------1 1
+10000001---- 1
+.names "TM1637/help_cnt_FSM_FFd31".Q "TM1637/help_cnt_FSM_FFd33".Q 
+       "TM1637/help_cnt_FSM_FFd35".Q "TM1637/help_cnt_FSM_FFd37".Q 
+       "TM1637/help_cnt_FSM_FFd39".Q "TM1637/help_cnt_FSM_FFd41".Q 
+       "TM1637/help_cnt_FSM_FFd85".Q "TM1637/help_cnt_FSM_FFd87".Q 
+       "TM1637/help_cnt_FSM_FFd89".Q "TM1637/help_cnt_FSM_FFd91".Q 
+       "TM1637/help_cnt_FSM_FFd93".Q "TM1637/help_cnt_FSM_FFd95".Q 
+       "TM1637/help_cnt_FSM_FFd97".Q "TM1637/help_cnt_FSM_FFd101".Q 
+       "TM1637/help_cnt_FSM_FFd103".Q "TM1637/help_cnt_FSM_FFd105".Q 
+       "TM1637/help_cnt_FSM_FFd107".Q "TM1637/help_cnt_FSM_FFd109".Q 
+       "TM1637/help_cnt_FSM_FFd111".Q "TM1637/help_cnt_FSM_FFd27".Q 
+       "TM1637/help_cnt_FSM_FFd29".Q "TM1637/help_cnt_FSM_FFd81".Q 
+       "TM1637/help_cnt_FSM_FFd83".Q "TM1637/help_cnt_FSM_FFd99".Q 
+       "TM1637/help_cnt_FSM_FFd5".Q "TM1637/help_cnt_FSM_FFd3".Q  "N_PZ_1045"
+00000000000000000000000000 1
+.names "TM1637/help_cnt_FSM_FFd129".Q "TM1637/help_cnt_FSM_FFd131".Q 
+       "TM1637/help_cnt_FSM_FFd133".Q "TM1637/help_cnt_FSM_FFd135".Q 
+       "TM1637/help_cnt_FSM_FFd137".Q  "N_PZ_1050"
+00000 1
+.end

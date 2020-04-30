@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -o "D:/SKOLA/letny/DE1/projekt/Projekt/countdown/top_tb00_isim_beh.exe" -prj "D:/SKOLA/letny/DE1/projekt/Projekt/countdown/top_tb00_beh.prj" "work.top_tb00" 

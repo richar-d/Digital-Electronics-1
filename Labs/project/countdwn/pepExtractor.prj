@@ -1,0 +1,4 @@
+work	"KY_040.vhd"
+work	"TM1637.vhd"
+work	"clock_enable.vhd"
+work	"top.vhd"

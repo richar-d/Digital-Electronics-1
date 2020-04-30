@@ -1,0 +1,11 @@
+# INPUTS
+NET butt_i	LOC = P104;
+NET clk_i	LOC = P102;
+NET pinA_i	LOC = P100;
+NET pinB_i	LOC = P97;
+NET s_reset_i	LOC = P103;
+
+# OUTPUTS
+NET dio_o	LOC = P101;
+NET sclk_o	LOC = P98;
+NET LED_o	LOC = P96;
