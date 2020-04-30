@@ -80,7 +80,7 @@ Enkodér obsahuje dva switche, jeden spája pin A a pin C, druhý spája pin B a
 Nízka úroveň výstupného signálu je generovaná uzemneným pinom C, ktorý predáva hodnotu do CLK a DT pinov v prípade , keď sú oba switche zatvorené. Vysoká úroveň je generovaná pomocou 5V vstupu a pull-up rezistorov, CLK a DT sú vo vysokej úrovni, keď sú oba switche otvorené. 
 Pri zatlačení tlačítka (pin SW) sa switch, ktorý bol predtým otvorený, uzavrie. Zmenu stavu využívame na začatie odpočtu od nastavenej hodnoty.
 
-<img src = "KYschematic.PNG">
+<img src = "KYschematic.png">
 *Obrázok: Schéma rotačného enkodéru KY-040; zdroj: katalogový list Keyes KY-040*
 
 **Popis entity KY-040**
@@ -88,10 +88,10 @@ Pri zmene logickej úrovne pomocou tlačítka alebo switchu môžu ich mechanick
 Tento problém riešime tak, že v entite používame pomalšie hodiny slow_clock, ktoré sú synchronizované s hodinovým signálom clk_i. Hodnota slow_clock_counter sa inkrementuje pri každej vzostupnej hrane clk_i, pri dosiahnutí nastavenej konštanty LIMIT sa resetuje na 0. Hodnota konštanty LIMIT  teda určuje rýchlosť pomalších hodín, pri hodnote 1 je rýchlosť rovnaká ako clk_i. Túto konštantu treba doladiť pri použití konkrétneho reálneho obvodu.
 Pri vzostupnej hrane slow_clock sa hodnota CLK (z pinu A) uloží do premennej prev_A. Ak je jej hodnota rozdielna od predošlej hodnoty CLK, znamená to, že s enkodérom otáčame. Porovnaním hodnoty DT (z pinu B) s prev_A vieme určiť smer otáčania a na základe neho pričítať alebo odčítať.
 
-<img src = "KYadding.PNG">
+<img src = "KYadding.png">
 *Obrázok: Pripočítavanie pri otáčaní enkodéru v smere hodinových ručičiek*
 
-<img src = "KYsubtraction.PNG">
+<img src = "KYsubtraction.png">
 *Obrázok: Odpočítavanie pri otáčaní enkodéru proti smeru hodinových ručičiek*    
 
 **Popis entity control_logic**       
@@ -110,7 +110,7 @@ Tato entita má na starosti odesílání hodnot jednotlivých cifer pro driver d
 <img src = "encoder_countdown.PNG">
 *Zobrazení vstupů a výstupů na horním obrázku a svázání entit vnitřními signály na dolním obrázku* 
 
-<img src = "CPLD_pins.PNG">
+<img src = "CPLD_pins.png">
 *Obrázek: Tabulka pinu pro CPLD, používali sme J4* 
 
 **Závěr**
