@@ -71,19 +71,19 @@ Není zde implementován ani jakýkoliv reset. Ten se nachází pouze v entitác
 <img src = "TM1637_tb_lastDigit3rdCommandAndStartNewWritingCycle.PNG">
 *Obrázek: odeslání posleního digitu, třetího příkazu a znázornění počátku následující zobrazovací sekvence.*   
 
-<img src = "connecting_SRAM.PNG">
-*Obrázek: Rozložení segmentu v datovém slově*    
+<img src = "conecting_SRAM.PNG">
+*Obrázek: Rozložení segmentu v datovém slově*      
 
-#### KY-040
+**KY-040**            
 Je  rotačný enkodér, ktorý umožňuje určiť o koľko pozícií s ním bolo otočené a do ktorého smeru sa otáča. Pri otáčaní  sa generujú pulzy, čo umožňuje určiť smer otáčania na základe dvoch výstupných fázovo posunutých signálov. Tento enkodér má 30 pozícií na jedno celé otočenie.
 Enkodér obsahuje dva switche, jeden spája pin A a pin C, druhý spája pin B a pin C. V každej pozícií enkodéru sú oba switche zatvorené alebo otvorené. Smer otáčania vieme určiť podľa toho, ktorý z týchto dvoch switchov zmenil svoj stav ako prvý. Pri otáčaní po smere hodinových ručičiek zmení svoj stav ako prvý switch prepájajúci A a C, pri otáčaní proti smeru hodinových ručičiek zmení stav ako prvý switch prepájajúci B a C.
 Nízka úroveň výstupného signálu je generovaná uzemneným pinom C, ktorý predáva hodnotu do CLK a DT pinov v prípade , keď sú oba switche zatvorené. Vysoká úroveň je generovaná pomocou 5V vstupu a pull-up rezistorov, CLK a DT sú vo vysokej úrovni, keď sú oba switche otvorené. 
 Pri zatlačení tlačítka (pin SW) sa switch, ktorý bol predtým otvorený, uzavrie. Zmenu stavu využívame na začatie odpočtu od nastavenej hodnoty.
 
 <img src = "KYschematic.png">
-*Obrázok: Schéma rotačného enkodéru KY-040; zdroj: katalogový list Keyes KY-040*
+*Obrázok: Schéma rotačného enkodéru KY-040; zdroj: katalogový list Keyes KY-040*              
 
-**Popis entity KY-040**
+**Popis entity KY-040**     
 Pri zmene logickej úrovne pomocou tlačítka alebo switchu môžu ich mechanické kontakty generovať parazitné zákmity, čo môže ovplyvniť nadväzujúce obvody. Tento jav sa nazýva switch bouncing.
 Tento problém riešime tak, že v entite používame pomalšie hodiny slow_clock, ktoré sú synchronizované s hodinovým signálom clk_i. Hodnota slow_clock_counter sa inkrementuje pri každej vzostupnej hrane clk_i, pri dosiahnutí nastavenej konštanty LIMIT sa resetuje na 0. Hodnota konštanty LIMIT  teda určuje rýchlosť pomalších hodín, pri hodnote 1 je rýchlosť rovnaká ako clk_i. Túto konštantu treba doladiť pri použití konkrétneho reálneho obvodu.
 Pri vzostupnej hrane slow_clock sa hodnota CLK (z pinu A) uloží do premennej prev_A. Ak je jej hodnota rozdielna od predošlej hodnoty CLK, znamená to, že s enkodérom otáčame. Porovnaním hodnoty DT (z pinu B) s prev_A vieme určiť smer otáčania a na základe neho pričítať alebo odčítať.
@@ -119,9 +119,9 @@ Spojili jsme tedy entitu control_logic s entitou KY_040. Také data jsme přesta
 Po vytvoření UCF souboru a pokusu zkompilovat celý top pro implementaci opět nastala chyba. Program je velký. Implementace tedy nejspíš nebude možná (možná po pár odborných zásazích ano).
 
 <img src = "function_of_program.PNG">
-*Obrázek: Ukázka simulace programu*  
+*Obrázek: Ukázka simulace programu*    
 
-Screenshoty z popisu entity KY040 a control_logic sú z verzie programu, kde ešte neboli prepojené do jednej entity. (zložka countdown0.9)
+Screenshoty z popisu entity KY040 a control_logic sú z verzie programu, kde ešte neboli prepojené do jednej entity. (zložka countdown0.9)    
 
 <img src = "debuging_funkcni.PNG">
 *Obrázek: Debugging starší verze*   
